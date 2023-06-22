@@ -1,4 +1,4 @@
-package com.example.kochbuch;
+package com.example.kochbuch.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
