@@ -1,11 +1,8 @@
-.recipeOverview {
-    -fx-background-radius: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
-}
+.scroll-pane {
+    -fx-border-style: none;
+    -fx-background-color: transparent;
 
-.scrollPane {
-    -fx-border-width: 0px;
-    }
+}
 
 
 .menuBtn {
@@ -17,3 +14,25 @@
      -fx-border-radius: 10px;
      -fx-cursor: hand;
 }
+.menuBtn:hover {
+  -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+  -fx-pref-width: 100px;
+  -fx-pref-height: 40px;
+  -fx-padding: 8px 16px;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-cursor: hand;
+}
+
+.sideBarMenu{
+      -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+}
+
+
+.recipesBox {
+  -fx-background-color: linear-gradient(to right, #ffffff, #DBE7FF, #FBCCF8);
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+}
+
+
