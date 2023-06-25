@@ -7,4 +7,6 @@ public class RecipesController {
     public void onRecipesDetailButtonClick() {
         Main.switchToView(StaticViews.RecipesDetailView);
     }
+
+
 }

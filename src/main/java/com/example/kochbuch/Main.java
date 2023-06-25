@@ -1,12 +1,15 @@
 package com.example.kochbuch;
 
 import com.example.kochbuch.controller.MainController;
+import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 
 public class Main extends Application {
 
@@ -18,7 +21,7 @@ public class Main extends Application {
         mainController = fxmlLoader.getController();
         Scene scene = new Scene(fxmlLoader.getRoot(), 1200, 700);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm()); // CSS zur Scene hinzufügen
-        stage.setTitle("Hello!");
+        stage.setTitle("Cookz - Kochbuch");
         stage.setScene(scene);
         stage.show();
     }
@@ -33,7 +36,17 @@ public class Main extends Application {
         }
     }
 
+
+
     public static void main(String[] args) {
+        DataBaseRecipesHandler dbHandler = new DataBaseRecipesHandler();
+        try {
+            dbHandler.connect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         launch();
     }
 }
