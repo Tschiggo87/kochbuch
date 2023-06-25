@@ -27,6 +27,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewName));
         try {
             mainController.switchContent(fxmlLoader.load());
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

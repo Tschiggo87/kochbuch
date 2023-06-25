@@ -17,7 +17,7 @@ public class MainController {
     }
 
     protected void onRecipesDetailButtonClick() {
-        Main.switchToView(StaticViews.RecipeDetailView);
+        Main.switchToView(StaticViews.RecipesDetailView);
     }
 
     /**
