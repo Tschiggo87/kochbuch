@@ -57,6 +57,21 @@
   -fx-border-radius: 10px;
 }
 
+/* Login View */
+.button-style {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    /* Transition */
+    -fx-transition: all 5s ease;
+}
+
+.button-style:hover {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
 
 
 
