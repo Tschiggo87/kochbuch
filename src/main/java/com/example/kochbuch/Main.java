@@ -1,5 +1,6 @@
 package com.example.kochbuch;
 
+import com.example.kochbuch.controller.LoginController;
 import com.example.kochbuch.controller.MainController;
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import javafx.application.Application;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 
 
 public class Main extends Application {
+
 
     private static MainController mainController;
     @Override

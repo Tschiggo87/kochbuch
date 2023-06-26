@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add Interaction with views">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DataBaseRecipesHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RezeptBild.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RezeptKategorie.java" afterDir="false" />
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Stash test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RecipesModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/Rezept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/Rezept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RezeptZutat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RezeptZutat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/Zutat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/Zutat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DataBaseRecipesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DataBaseRecipesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/login-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/register-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -49,16 +44,24 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "dev",
     "last_directory_selection": "/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch",
-    "last_opened_file_path": "/Users/enrico/IdeaProjects/kochbuch/src/main/resources/com/example/kochbuch",
+    "last_opened_file_path": "C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -80,6 +83,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686858134356</updated>
+      <workItem from="1687764415250" duration="5905000" />
+      <workItem from="1687777332418" duration="11862000" />
+      <workItem from="1687799275199" duration="4227000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -137,8 +143,27 @@
       <option name="project" value="LOCAL" />
       <updated>1687675024214</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Stash test">
+      <option name="closed" value="true" />
+      <created>1687769669384</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687769669384</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Stash test">
+      <option name="closed" value="true" />
+      <created>1687769711083</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1687769711083</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -156,7 +181,22 @@
     <MESSAGE value="Add databasehandler" />
     <MESSAGE value="Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController." />
     <MESSAGE value="Add Interaction with views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Interaction with views" />
+    <MESSAGE value="Stash test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stash test" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

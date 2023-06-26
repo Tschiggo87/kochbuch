@@ -1,7 +1,6 @@
 package com.example.kochbuch.controller;
 
-
-import com.example.kochbuch.databasehandler.DatabaseHandler;
+import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,11 +50,11 @@ public class LoginController implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File brandingFile = new File("images/LoginResources/background1.jpg");
+        File brandingFile = new File("src/main/resources/images/LoginResources/background1.jpg");
         Image brandingImage = new Image(brandingFile.toURI().toString());
         brandingImageView.setImage(brandingImage);
 
-        File lockFile = new File("images/LoginResources/LockLogo1.png");
+        File lockFile = new File("src/main/resources/images/LoginResources/LockLogo1.png");
         Image lockImage = new Image(lockFile.toURI().toString());
         lockImageView.setImage(lockImage);
     }
@@ -76,9 +75,14 @@ public class LoginController implements Initializable
         stage.close();
     }
 
-    private void validateLogin(){
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        Connection connection = databaseHandler.getConnection();
+    private void validateLogin() {
+        DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
+        Connection connection = null;
+        try {
+            connection = dbhandler.connect(); // Hier weisen Sie das Ergebnis der connect() Methode der connection Variablen zu
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         String verifyLogin = "SELECT count(1) FROM Login WHERE username = '" + usernameTextField.getText() + "' AND password = '" + enterPasswordField.getText() + "'";
 
@@ -88,7 +92,7 @@ public class LoginController implements Initializable
 
             while (queryResult.next()){
                 if(queryResult.getInt(1) == 1){
-                    // loginMessageLabel.setText("Congrats!");
+                     loginMessageLabel.setText("Congrats!");
                     createAccountForm();
                 } else {
                     loginMessageLabel.setText("Falsches Passwort, bitte wiederholen!");
@@ -105,7 +109,7 @@ public class LoginController implements Initializable
     public void createAccountForm() {
         try {
 
-            Parent root = FXMLLoader.load(getClass().getResource("register-view.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/kochbuch/register-view.fxml"));
             Stage registerStage = new Stage();
             //registerStage.initStyle(StageStyle.UNDECORATED);
             registerStage.setScene(new Scene(root, 520, 540));

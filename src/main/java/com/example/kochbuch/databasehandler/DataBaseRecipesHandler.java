@@ -12,15 +12,17 @@ public class DataBaseRecipesHandler {
     private static final String PASSWORD = "Admin_ale1";
 
     private Connection connection;
-    public void connect() throws SQLException {
+    public Connection connect() throws SQLException {
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Verbindung erfolgreich!");
+            return connection; // Verbindung zurückgeben
         } catch (SQLException e) {
             System.out.println("Verbindung fehlgeschlagen: " + e.getMessage());
             throw e;
         }
     }
+
 
 
 }

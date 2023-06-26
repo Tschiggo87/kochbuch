@@ -20,6 +20,13 @@ public class MainController {
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
+
+    @FXML
+    protected void onAccountButtonClick() {
+        Main.switchToView(StaticViews.LoginView);
+    }
+
+
     /**
      *
      * @param root The Root Component of the view
