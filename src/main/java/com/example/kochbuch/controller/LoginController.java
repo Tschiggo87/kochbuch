@@ -22,7 +22,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.security.NoSuchAlgorithmException;
+import java.sql.PreparedStatement;
+import java.security.MessageDigest;
 
+
+//LoginController ist für die Anmeldung zuständig
 public class LoginController implements Initializable
 {
     @FXML
@@ -47,7 +52,7 @@ public class LoginController implements Initializable
     private TextField enterPasswordField;
 
 
-
+    //Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("src/main/resources/images/LoginResources/background1.jpg");
@@ -59,7 +64,7 @@ public class LoginController implements Initializable
         lockImageView.setImage(lockImage);
     }
 
-
+    //Login Felder werden überprüft, ob sie leer sind. Wenn nicht, wird die Methode validateLogin() aufgerufen.
     @FXML
     private void loginButtonOnAction(ActionEvent event)
     {
@@ -70,42 +75,62 @@ public class LoginController implements Initializable
         }
     }
 
+    //der Cancel Button schließt das Login Fenster.
     public void cancelButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
+
+    //Methode zum Überprüfen des Logins. Passwort wird gehasht und mit dem gehashten Passwort in der Datenbank verglichen.
     private void validateLogin() {
         DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
         Connection connection = null;
-        try {
-            connection = dbhandler.connect(); // Hier weisen Sie das Ergebnis der connect() Methode der connection Variablen zu
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        String verifyLogin = "SELECT count(1) FROM Login WHERE username = '" + usernameTextField.getText() + "' AND password = '" + enterPasswordField.getText() + "'";
+        String hashedPassword = getHashedPassword(enterPasswordField.getText());
+        String verifyLogin = "SELECT count(1) FROM Login WHERE username = ? AND password = ?";
 
         try {
-            Statement statement = connection.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            connection = dbhandler.connect(); // Verbindung zur Datenbank herstellen
 
-            while (queryResult.next()){
-                if(queryResult.getInt(1) == 1){
-                     loginMessageLabel.setText("Congrats!");
+            PreparedStatement preparedStatement = connection.prepareStatement(verifyLogin);
+            preparedStatement.setString(1, usernameTextField.getText());
+            preparedStatement.setString(2, hashedPassword);
+
+            ResultSet queryResult = preparedStatement.executeQuery();
+
+            while (queryResult.next()) {
+                if (queryResult.getInt(1) == 1) {
+                    loginMessageLabel.setText("Congrats!");
                     createAccountForm();
                 } else {
                     loginMessageLabel.setText("Falsches Passwort, bitte wiederholen!");
                 }
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
-            e.getCause();
         }
     }
 
+//Methode zum Hashen des Passworts.
+    private String getHashedPassword(String password) {
+        String hashedPassword = null;
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = messageDigest.digest(password.getBytes());
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (byte b : hashBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+
+            hashedPassword = stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return hashedPassword;
+    }
+
+//Methode zum Erstellen des Registrierungsformulars.
     public void createAccountForm() {
         try {
 

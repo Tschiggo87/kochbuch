@@ -1,5 +1,6 @@
 package com.example.kochbuch.controller;
 
+import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,9 +16,11 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class RegisterController implements Initializable {
 
@@ -42,31 +45,77 @@ public class RegisterController implements Initializable {
     @FXML
     private Label confirmPasswordLabel;
 
+    //Bild wird der Scene eingebunden
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File shieldFile = new File("images/registerLogo.png");
         Image shieldImage = new Image(shieldFile.toURI().toString());
         shieldImageView.setImage(shieldImage);
     }
 
-    public void registerButtonOnAction(ActionEvent event){
-        if (setPasswordField.getText().equals(confirmPasswordField.getText())) {
-            registerUser();
-            // confirmPasswordLabel.setText("Passwörter stimmen überein!");
-            registrationMessageLabel.setText("Anmeldung Erfolgreich!");
+    //Afnahe der Passwörter und Überprüfung ob diese übereinstimmen. Usename wird überprüft ob dieser bereits vorhanden ist.
+    public void registerButtonOnAction(ActionEvent event) {
+        String firstName = firstnameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String userName = usernameTextField.getText();
+        String password = setPasswordField.getText();
+
+        if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || password.isEmpty()) {
+            registrationMessageLabel.setText("Bitte füllen Sie alle Felder aus.");
+        } else if (checkUsernameExists(userName)) {
+            registrationMessageLabel.setText("Der Benutzername ist bereits vorhanden.");
+        } else if (!setPasswordField.getText().equals(confirmPasswordField.getText())) {
+            registrationMessageLabel.setText("Die Passwörter stimmen nicht überein.");
         } else {
-            confirmPasswordLabel.setText("Passwörter stimmen nicht überein!");
+            registerUser();
+            registrationMessageLabel.setText("Anmeldung erfolgreich!");
+        }
+    }
+
+    //Methode zum Usernamen überprüfen
+    private boolean checkUsernameExists(String username) {
+            boolean usernameExists = false;
+            DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
+            Connection connection = null;
+            String checkUsernameQuery = "SELECT COUNT(1) FROM Login WHERE username = ?";
+
+            try {
+                connection = dbhandler.connect();
+                PreparedStatement preparedStatement = connection.prepareStatement(checkUsernameQuery);
+                preparedStatement.setString(1, username);
+                ResultSet queryResult = preparedStatement.executeQuery();
+
+                if (queryResult.next()) {
+                    int count = queryResult.getInt(1);
+                    if (count == 1) {
+                        usernameExists = true;
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            return usernameExists;
         }
 
 
-    }
+
     public void closeButtonOnAction(ActionEvent event){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
         Platform.exit();
     }
 
-    public void registerUser() {
 
+    //Methode zum registrieren des Users
+    public void registerUser() {
         DatabaseHandler handler = new DatabaseHandler();
         Connection connection = handler.getConnection();
 
@@ -75,20 +124,52 @@ public class RegisterController implements Initializable {
         String userName = usernameTextField.getText();
         String password = setPasswordField.getText();
 
-        String insertFields = "INSERT INTO Login (firstname, lastname, username, password) VALUES ('";
-        String insertValues = firstName + "','" + lastName + "','" + userName + "','" + password + "')";
-        String insertToRegister = insertFields + insertValues;
+        // Hashen Sie das Passwort
+        String hashedPassword = hashPassword(password);
 
-        try{
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(insertToRegister);
-            registrationMessageLabel.setText("Anmeldung Erfolgreich!");
+        String insertQuery = "INSERT INTO Login (firstname, lastname, username, password) VALUES (?, ?, ?, ?)";
 
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, userName);
+            preparedStatement.setString(4, hashedPassword);
 
-        } catch (Exception e){
+            int result = preparedStatement.executeUpdate();
+
+            if (result > 0) {
+                registrationMessageLabel.setText("Anmeldung Erfolgreich!");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
     }
-    //SELECT lastname, firstname, username, password FROM users;
-}
+
+    //Methode zum Hashen des Passworts
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            // Konvertieren Sie das Byte-Array in eine Hexadezimal-Zeichenkette
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    }
+
+
