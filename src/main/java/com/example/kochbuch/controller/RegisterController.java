@@ -1,5 +1,7 @@
 package com.example.kochbuch.controller;
 
+import com.example.kochbuch.Main;
+import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.application.Platform;
@@ -47,12 +49,12 @@ public class RegisterController implements Initializable {
 
     //Bild wird der Scene eingebunden
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File shieldFile = new File("images/registerLogo.png");
+        File shieldFile = new File("src/main/resources/images/LoginResources/registerLogo.png");
         Image shieldImage = new Image(shieldFile.toURI().toString());
         shieldImageView.setImage(shieldImage);
     }
 
-    //Afnahe der Passwörter und Überprüfung ob diese übereinstimmen. Usename wird überprüft ob dieser bereits vorhanden ist.
+    //Aufnahme der Passwörter und Überprüfung, ob diese übereinstimmen. Username wird überprüft ob dieser bereits vorhanden ist.
     public void registerButtonOnAction(ActionEvent event) {
         String firstName = firstnameTextField.getText();
         String lastName = lastNameTextField.getText();
@@ -68,6 +70,7 @@ public class RegisterController implements Initializable {
         } else {
             registerUser();
             registrationMessageLabel.setText("Anmeldung erfolgreich!");
+            Main.switchToView(StaticViews.LoginView);
         }
     }
 
@@ -107,10 +110,9 @@ public class RegisterController implements Initializable {
 
 
 
-    public void closeButtonOnAction(ActionEvent event){
+    public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
-        Platform.exit();
     }
 
 

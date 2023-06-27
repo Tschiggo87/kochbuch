@@ -35,22 +35,27 @@
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Label>
-            <Button id="loginbtn" fx:id="loginButton" layoutX="111.0" layoutY="290.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="136.0" styleClass="button-style" stylesheets="@styles.css" text="Login" textFill="WHITE">
+            <Button id="loginbtn" fx:id="loginButton" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>
             </Button>
-            <Button id="loginbtn" fx:id="cancelButton" layoutX="111.0" layoutY="326.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="17.0" prefWidth="136.0" styleClass="button-style" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
+            <Button id="loginbtn" fx:id="SignUpButton" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Sing Up!" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>
             </Button>
-            <Label fx:id="loginMessageLabel" layoutX="34.0" layoutY="168.0" prefHeight="15.0" prefWidth="211.0" textFill="RED">
+            <Label fx:id="loginMessageLabel" layoutX="15.0" layoutY="168.0" prefHeight="15.0" prefWidth="230.0" textFill="GREEN">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Label>
             <PasswordField fx:id="enterPasswordField" layoutX="111.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Passwort" />
+            <Button id="loginbtn" fx:id="cancelButton" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="13.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </right>
 </BorderPane>

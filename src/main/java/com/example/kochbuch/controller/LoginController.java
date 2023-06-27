@@ -1,5 +1,7 @@
 package com.example.kochbuch.controller;
 
+import com.example.kochbuch.Main;
+import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +53,9 @@ public class LoginController implements Initializable
     @FXML
     private TextField enterPasswordField;
 
+    @FXML
+    private Button SignUpButton;
+
 
     //Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
@@ -82,12 +87,18 @@ public class LoginController implements Initializable
     }
 
 
+    @FXML
+    protected void onActionSingUpButton()  {
+        Main.switchToView(StaticViews.RegisterView);
+    }
+
+
     //Methode zum Überprüfen des Logins. Passwort wird gehasht und mit dem gehashten Passwort in der Datenbank verglichen.
-    private void validateLogin() {
+    private String validateLogin() {
         DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
         Connection connection = null;
         String hashedPassword = getHashedPassword(enterPasswordField.getText());
-        String verifyLogin = "SELECT count(1) FROM Login WHERE username = ? AND password = ?";
+        String verifyLogin = "SELECT count(1), role FROM Login WHERE username = ? AND password = ?";
 
         try {
             connection = dbhandler.connect(); // Verbindung zur Datenbank herstellen
@@ -99,9 +110,23 @@ public class LoginController implements Initializable
             ResultSet queryResult = preparedStatement.executeQuery();
 
             while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
-                    loginMessageLabel.setText("Congrats!");
-                    createAccountForm();
+                int count = queryResult.getInt(1);
+                String role = queryResult.getString("role");
+
+                if (count == 1) {
+                    loginMessageLabel.setText("Willkommen " + role + "!");
+
+
+                    if (role.equals("admin")) {
+                        System.out.println("Hallo, Admin");
+                        Main.switchToView(StaticViews.RecipesView);
+                        return "admin";
+
+                    } else {
+                        System.out.println("Hallo, User");
+                        Main.switchToView(StaticViews.RecipesView);
+                        return "user";
+                    }
                 } else {
                     loginMessageLabel.setText("Falsches Passwort, bitte wiederholen!");
                 }
@@ -109,9 +134,12 @@ public class LoginController implements Initializable
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return "invalid";
     }
 
-//Methode zum Hashen des Passworts.
+
+    //Methode zum Hashen des Passworts.
     private String getHashedPassword(String password) {
         String hashedPassword = null;
         try {
@@ -128,21 +156,6 @@ public class LoginController implements Initializable
             e.printStackTrace();
         }
         return hashedPassword;
-    }
-
-//Methode zum Erstellen des Registrierungsformulars.
-    public void createAccountForm() {
-        try {
-
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/kochbuch/register-view.fxml"));
-            Stage registerStage = new Stage();
-            //registerStage.initStyle(StageStyle.UNDECORATED);
-            registerStage.setScene(new Scene(root, 520, 540));
-            registerStage.show();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }
