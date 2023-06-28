@@ -9,9 +9,9 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesController">
    <children>
-      <Label layoutX="367.0" layoutY="300.0" text="WELCOME">
+      <Label layoutX="280.0" layoutY="281.0" text="WELCOME">
          <font>
-            <Font name="Arial Rounded MT Bold" size="63.0" />
+            <Font name="Arial Rounded MT Bold" size="96.0" />
          </font>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">

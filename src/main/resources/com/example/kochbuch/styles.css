@@ -68,6 +68,16 @@
 
 }
 
+.button-style-reverse{
+
+    -fx-text-fill: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: black;
+    /* Transition */
+
+}
+
 .button-style:hover {
     -fx-background-color: black;
     -fx-text-fill: #ffffff;
