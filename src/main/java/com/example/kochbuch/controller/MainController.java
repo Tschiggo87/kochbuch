@@ -95,7 +95,6 @@ public class MainController {
         loginImage.setFitHeight(ORIGINAL_HEIGHT);
     }
 
-
     private static void updateLoggedInUserLabel() {
         if (controllerInstance != null && controllerInstance.loggedInUserLabel != null) {
             String loggedInUser = getLoggedInUser();
