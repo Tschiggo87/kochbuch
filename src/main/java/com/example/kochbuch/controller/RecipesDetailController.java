@@ -14,12 +14,16 @@ public class RecipesDetailController {
 
     @FXML
     private Label recipeName;
-
     @FXML
     private Label recipeDescription;
-
     @FXML
     private Label recipeInstruction;
+    @FXML
+    private Label recipeTime;
+    @FXML
+    private Label recipeDifficulty;
+    @FXML
+    private Label recipePortion;
 
     private final DataBaseRecipesHandler databaseHandler;
 
@@ -39,12 +43,12 @@ public class RecipesDetailController {
     }
 
     private String[] getRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        String[] recipeInfo = new String[3];
+        String[] recipeInfo = new String[6];
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
         try {
-            String query = "SELECT Name, Beschreibung, Anweisungen FROM Rezepte WHERE RezeptId = ?";
+            String query = "SELECT Name, Beschreibung, Anweisungen, Gesamtzeit, Portionen, Schwierigkeit FROM Rezepte WHERE RezeptId = ?";
             statement = connection.prepareStatement(query);
             statement.setInt(1, 1); //
             resultSet = statement.executeQuery();
@@ -53,6 +57,9 @@ public class RecipesDetailController {
                 recipeInfo[0] = resultSet.getString("Name");
                 recipeInfo[1] = resultSet.getString("Beschreibung");
                 recipeInfo[2] = resultSet.getString("Anweisungen");
+                recipeInfo[3] = resultSet.getString("Gesamtzeit");
+                recipeInfo[4] = resultSet.getString("Portionen");
+                recipeInfo[5] = resultSet.getString("Schwierigkeit");
             }
         } finally {
             if (resultSet != null) resultSet.close();
@@ -66,5 +73,9 @@ public class RecipesDetailController {
         recipeName.setText(recipeInfo[0]);
         recipeDescription.setText(recipeInfo[1]);
         recipeInstruction.setText(recipeInfo[2]);
+        recipeTime.setText(recipeInfo[3]);
+        recipePortion.setText(recipeInfo[4]);
+        recipeDifficulty.setText(recipeInfo[5]);
+
     }
 }
