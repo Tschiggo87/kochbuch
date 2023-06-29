@@ -124,7 +124,8 @@ public class LoginController implements Initializable {
 
                     MainController.getControllerInstance().initialize(); // Manueller Aufruf der initialize-Methode
 
-                    if (role.equals("admin")) {
+                    if (role.equals("admin"))
+                    {
                         System.out.println("Hallo, Admin");
                         Main.switchToView(StaticViews.WelcomeView);
                     } else {
