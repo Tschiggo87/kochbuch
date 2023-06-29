@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Stash test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/StaticViews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/StaticViews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,13 +18,6 @@
       </list>
     </option>
   </component>
-  <component name="Git.Pull.Settings">
-    <option name="OPTIONS">
-      <set>
-        <option value="REBASE" />
-      </set>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -42,6 +25,19 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9c11d8a0-51b7-4ce9-a4ca-338961d2110d" />
+        <option name="url" value="https://github.com/Tschiggo87/kochbuch.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="2RFuQZI5JE2IXDxt0hSqubbfmHL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -67,7 +63,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -76,7 +72,6 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/kochbuch" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Developments\Java\kochbuch\src\main\resources\images" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -94,8 +89,6 @@
       <workItem from="1687764415250" duration="5905000" />
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
-      <workItem from="1688032911468" duration="12828000" />
-      <workItem from="1688047759666" duration="5052000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -169,7 +162,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687769711083</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add jdbc">
+      <created>1687804442636</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1687804442636</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.">
+      <created>1687978018443</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687978018443</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +199,9 @@
     <MESSAGE value="Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController." />
     <MESSAGE value="Add Interaction with views" />
     <MESSAGE value="Stash test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stash test" />
+    <MESSAGE value="Add jdbc" />
+    <MESSAGE value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

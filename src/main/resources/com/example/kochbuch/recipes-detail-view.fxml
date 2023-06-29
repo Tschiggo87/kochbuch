@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -15,26 +16,6 @@
 <AnchorPane prefHeight="675.0" prefWidth="1064.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesDetailController">
    <children>
       <BorderPane layoutX="28.0" layoutY="10.0" prefHeight="634.0" prefWidth="995.0" styleClass="frame" stylesheets="@styles.css">
-         <right>
-            <VBox prefHeight="478.0" prefWidth="241.0" BorderPane.alignment="TOP_CENTER">
-               <children>
-                  <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/RezeptBilder/spaghetti.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="Zutaten">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="17.0" prefWidth="318.0" text="Zutaten">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin></Label>
-               </children>
-            </VBox>
-         </right>
          <bottom>
             <ButtonBar prefHeight="40.0" prefWidth="995.0" BorderPane.alignment="CENTER">
               <buttons>
@@ -62,59 +43,129 @@
                         <Font name="Arial Rounded MT Bold" size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recipeDescription" alignment="TOP_LEFT" prefHeight="45.0" prefWidth="669.0" text="Beschreibung" />
+                  <Label fx:id="recipeDescription" alignment="TOP_LEFT" prefHeight="45.0" prefWidth="669.0" text="Beschreibung" textFill="#5b5b5b" />
                </children>
             </VBox>
          </top>
+         <center>
+            <VBox prefHeight="506.0" prefWidth="570.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="recipeMeasure" alignment="TOP_LEFT" prefHeight="38.0" prefWidth="562.0" text="Zubereitung">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="486.0" prefWidth="604.0" text="Anweisung" textFill="#5b5b5b" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="12.0" />
+                     </VBox.margin></Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
          <left>
+            <VBox prefHeight="489.0" prefWidth="162.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Zutaten">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Menge">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Einheit">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="17.0" prefWidth="97.0" text="Zutat">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label fx:id="recipeQuantity" prefHeight="17.0" prefWidth="97.0" text="Menge" textFill="#5b5b5b">
+                           <font>
+                              <Font name="System Font" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="recipeMeasure" prefHeight="17.0" prefWidth="97.0" text="Einheit" textFill="#5b5b5b">
+                           <font>
+                              <Font name="System Font" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="ingredientsLabel" prefHeight="17.0" prefWidth="97.0" text="Einheit" textFill="#5b5b5b">
+                           <font>
+                              <Font name="System Font" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+         <right>
             <VBox prefHeight="506.0" prefWidth="184.0" BorderPane.alignment="CENTER">
                <children>
+                  <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/RezeptBilder/spaghetti.png" />
+                     </image>
+                  </ImageView>
                   <Label text="Schwierigkeit">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Label">
+                  <Label fx:id="recipeDifficulty" text="Label">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                  </Label>
                   <Region prefHeight="31.0" prefWidth="249.0" />
                   <Label text="Portionen">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Portionen">
+                  <Label fx:id="recipePortion" text="Portionen">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                  </Label>
                   <Region prefHeight="31.0" prefWidth="249.0" />
                   <Label text="Dauer">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Label">
+                  <Label fx:id="recipeTime" text="Label">
                      <VBox.margin>
                         <Insets top="10.0" />
-                     </VBox.margin></Label>
-               </children></VBox>
-         </left>
-         <center>
-            <VBox prefHeight="506.0" prefWidth="570.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label alignment="TOP_LEFT" prefHeight="38.0" prefWidth="562.0" text="Zubereitung">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="18.0" />
-                     </font>
+                     </VBox.margin>
                   </Label>
-                  <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="551.0" prefWidth="562.0" text="Anweisung" wrapText="true">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin></Label>
                </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
             </VBox>
-         </center>
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
