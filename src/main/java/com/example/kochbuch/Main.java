@@ -16,6 +16,7 @@ public class Main extends Application {
 
 
     private static MainController mainController;
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(StaticViews.StartView));
@@ -28,7 +29,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void switchToView(String viewName){
+    public static void switchToView(String viewName) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewName));
         try {
             mainController.switchContent(fxmlLoader.load());
@@ -36,19 +37,12 @@ public class Main extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    public static MainController getMainController() {
+        return mainController;
     }
 
 
-
-    public static void main(String[] args) {
-        DataBaseRecipesHandler dbHandler = new DataBaseRecipesHandler();
-        try {
-            dbHandler.connect();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        launch();
-    }
 }

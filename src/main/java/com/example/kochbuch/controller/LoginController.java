@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import  javafx.scene.control.Button;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -30,8 +31,7 @@ import java.security.MessageDigest;
 
 
 //LoginController ist für die Anmeldung zuständig
-public class LoginController implements Initializable
-{
+public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
 
@@ -56,8 +56,7 @@ public class LoginController implements Initializable
     @FXML
     private Button SignUpButton;
 
-
-    //Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
+    // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("src/main/resources/images/LoginResources/background1.jpg");
@@ -69,36 +68,33 @@ public class LoginController implements Initializable
         lockImageView.setImage(lockImage);
     }
 
-    //Login Felder werden überprüft, ob sie leer sind. Wenn nicht, wird die Methode validateLogin() aufgerufen.
+    // Login Felder werden überprüft, ob sie leer sind. Wenn nicht, wird die Methode validateLogin() aufgerufen.
     @FXML
-    private void loginButtonOnAction(ActionEvent event)
-    {
-        if(usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false){
+    private void loginButtonOnAction(ActionEvent event) {
+        if (!usernameTextField.getText().isBlank() && !enterPasswordField.getText().isBlank()) {
             validateLogin();
         } else {
             loginMessageLabel.setText("Bitte Passwort eingeben!");
         }
     }
 
-    //der Cancel Button schließt das Login Fenster.
+    // Der Cancel Button schließt das Login Fenster.
     public void cancelButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     protected void onActionSingUpButton()  {
         Main.switchToView(StaticViews.RegisterView);
     }
 
-
-    //Methode zum Überprüfen des Logins. Passwort wird gehasht und mit dem gehashten Passwort in der Datenbank verglichen.
-    private String validateLogin() {
+    @FXML
+    private void validateLogin() {
         DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
         Connection connection = null;
         String hashedPassword = getHashedPassword(enterPasswordField.getText());
-        String verifyLogin = "SELECT count(1), role FROM Login WHERE username = ? AND password = ?";
+        String verifyLogin = "SELECT count(1), role, profile_image_path FROM Login WHERE username = ? AND password = ?";
 
         try {
             connection = dbhandler.connect(); // Verbindung zur Datenbank herstellen
@@ -112,20 +108,28 @@ public class LoginController implements Initializable
             while (queryResult.next()) {
                 int count = queryResult.getInt(1);
                 String role = queryResult.getString("role");
+                String profileImagePath = queryResult.getString("profile_image_path"); // Bildpfad aus der Datenbank abrufen
 
                 if (count == 1) {
+                    MainController.setLoggedInUser(usernameTextField.getText());
                     loginMessageLabel.setText("Willkommen " + role + "!");
 
+                    String resourcePath = "/" + profileImagePath;
+                    InputStream imageStream = getClass().getResourceAsStream(resourcePath);
+                    if(imageStream == null) {
+                        throw new IllegalArgumentException("Resource not found: " + resourcePath);
+                    }
+                    Image profileImage = new Image(imageStream); // Das geladene Bild als Image-Objekt erstellen
+                    MainController.getControllerInstance().setProfileImage(profileImage);
+
+                    MainController.getControllerInstance().initialize(); // Manueller Aufruf der initialize-Methode
 
                     if (role.equals("admin")) {
                         System.out.println("Hallo, Admin");
-                        Main.switchToView(StaticViews.RecipesView);
-                        return "admin";
-
+                        Main.switchToView(StaticViews.WelcomeView);
                     } else {
                         System.out.println("Hallo, User");
-                        Main.switchToView(StaticViews.RecipesView);
-                        return "user";
+                        Main.switchToView(StaticViews.WelcomeView);
                     }
                 } else {
                     loginMessageLabel.setText("Falsches Passwort, bitte wiederholen!");
@@ -134,12 +138,12 @@ public class LoginController implements Initializable
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return "invalid";
     }
 
 
-    //Methode zum Hashen des Passworts.
+
+
+    // Methode zum Hashen des Passworts.
     private String getHashedPassword(String password) {
         String hashedPassword = null;
         try {

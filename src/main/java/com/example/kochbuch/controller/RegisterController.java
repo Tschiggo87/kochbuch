@@ -24,6 +24,10 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class RegisterController implements Initializable {
 
     @FXML
@@ -52,6 +56,29 @@ public class RegisterController implements Initializable {
         File shieldFile = new File("src/main/resources/images/LoginResources/registerLogo.png");
         Image shieldImage = new Image(shieldFile.toURI().toString());
         shieldImageView.setImage(shieldImage);
+    }
+
+    //Hier werden die Bilder für die Profile zufällig ausgewählt
+    private static final List<String> PROFILE_IMAGES = new ArrayList<>();
+
+    static {
+        PROFILE_IMAGES.add("images/profile_images/profile1.png");
+        PROFILE_IMAGES.add("images/profile_images/profile2.png");
+        PROFILE_IMAGES.add("images/profile_images/profile3.png");
+        PROFILE_IMAGES.add("images/profile_images/profile4.png");
+        PROFILE_IMAGES.add("images/profile_images/profile5.png");
+        PROFILE_IMAGES.add("images/profile_images/profile6.png");
+        PROFILE_IMAGES.add("images/profile_images/profile7.png");
+        PROFILE_IMAGES.add("images/profile_images/profile8.png");
+        PROFILE_IMAGES.add("images/profile_images/profile9.png");
+        PROFILE_IMAGES.add("images/profile_images/profile10.png");
+    }
+
+    //Eine Methode um ein zufälliges Bild auszuwählen
+    private String getRandomProfileImage() {
+        Random random = new Random();
+        int index = random.nextInt(PROFILE_IMAGES.size());
+        return PROFILE_IMAGES.get(index);
     }
 
     //Aufnahme der Passwörter und Überprüfung, ob diese übereinstimmen. Username wird überprüft ob dieser bereits vorhanden ist.
@@ -125,11 +152,12 @@ public class RegisterController implements Initializable {
         String lastName = lastNameTextField.getText();
         String userName = usernameTextField.getText();
         String password = setPasswordField.getText();
+        String profileImage = getRandomProfileImage();
 
         // Hashen Sie das Passwort
         String hashedPassword = hashPassword(password);
 
-        String insertQuery = "INSERT INTO Login (firstname, lastname, username, password) VALUES (?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO Login (firstname, lastname, username, password, profile_image_path) VALUES (?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
@@ -137,6 +165,7 @@ public class RegisterController implements Initializable {
             preparedStatement.setString(2, lastName);
             preparedStatement.setString(3, userName);
             preparedStatement.setString(4, hashedPassword);
+            preparedStatement.setString(5, profileImage);
 
             int result = preparedStatement.executeUpdate();
 
