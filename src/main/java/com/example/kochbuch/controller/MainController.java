@@ -22,6 +22,7 @@ public class MainController {
     @FXML
     private Label loggedInUserLabel;
 
+
     private static MainController controllerInstance;
 
     public static MainController getControllerInstance() {
@@ -48,9 +49,13 @@ public class MainController {
         }
     }
 
+
+    //
     public void switchContent(Pane root) {
-        content.setCenter(root);
+                content.setCenter(root);
     }
+
+
 
     private static String loggedInUser;
     @FXML
@@ -62,9 +67,11 @@ public class MainController {
         updateAccountButtonText();
     }
 
+    // Methode zum aktualisieren des Labels, welches den eingeloggten Benutzer anzeigt
     public static String getLoggedInUser() {
         return loggedInUser;
     }
+
 
     public void initialize() {
         controllerInstance = this;
@@ -72,10 +79,14 @@ public class MainController {
         updateAccountButtonText();
     }
 
-    private static final double ORIGINAL_WIDTH = 30.0; // Ersetzen Sie durch die ursprüngliche Breite
-    private static final double ORIGINAL_HEIGHT = 30.0; // Ersetzen Sie durch die ursprüngliche Höhe
-    private static final double ENLARGED_WIDTH = 60.0; // Ersetzen Sie durch die gewünschte vergrößerte Breite
-    private static final double ENLARGED_HEIGHT = 60.0; // Ersetzen Sie durch die gewünschte vergrößerte Höhe
+
+    //Variablen zum veränder der grösse des Profilbildes, da ich ein grösseres Bild für die Anzeige des Profilbildes möchte
+    private static final double ORIGINAL_WIDTH = 30.0;
+    private static final double ORIGINAL_HEIGHT = 30.0;
+    private static final double ENLARGED_WIDTH = 60.0;
+    private static final double ENLARGED_HEIGHT = 60.0;
+
+
 
     public void setProfileImage(Image profileImage) {
         loginImage.setImage(profileImage); // Das übergebene Bild dem ImageView zuweisen
@@ -83,18 +94,22 @@ public class MainController {
         loginImage.setFitHeight(ENLARGED_HEIGHT);
     }
 
+
+    //Methode zum zurücksetzen des Profilbildes
     public void resetProfileImage() {
         String resourcePath = "/images/icons/user-solid.png";
         InputStream imageStream = getClass().getResourceAsStream(resourcePath);
         if(imageStream == null) {
-            throw new IllegalArgumentException("Resource not found: " + resourcePath);
+            throw new IllegalArgumentException("Resource nicht gefunden " + resourcePath);
         }
-        Image defaultImage = new Image(imageStream); // Das Standardbild als Image-Objekt erstellen
+        Image defaultImage = new Image(imageStream);
         setProfileImage(defaultImage);
         loginImage.setFitWidth(ORIGINAL_WIDTH);
         loginImage.setFitHeight(ORIGINAL_HEIGHT);
     }
 
+
+    //Methode zum aktualisieren des Profilbildes, beziehungsweise wird das profilicon durch das Profilbild ersetzt
     private static void updateLoggedInUserLabel() {
         if (controllerInstance != null && controllerInstance.loggedInUserLabel != null) {
             String loggedInUser = getLoggedInUser();
@@ -106,6 +121,8 @@ public class MainController {
         }
     }
 
+
+    //Methode zum aktualisieren des Textes des Accountbuttons, beziehungsweise wird der Text des Accountbuttons durch "Logout" ersetzt
     private static void updateAccountButtonText() {
         if (controllerInstance != null && controllerInstance.accountBtn != null) {
             String loggedInUser = getLoggedInUser();
@@ -117,7 +134,6 @@ public class MainController {
                 if (Main.getMainController() != null) {
                     Main.switchToView(StaticViews.LoginView);
                 } else {
-                    // Führen Sie hier geeignete Aktionen durch, wie zum Beispiel die Erzeugung eines Fehlerprotokolls oder das Auslösen einer Ausnahme.
                     System.out.println("Main.mainController is null");
                 }
             }
