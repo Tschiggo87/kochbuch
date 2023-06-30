@@ -12,6 +12,8 @@ import javafx.scene.layout.Pane;
 
 import java.io.InputStream;
 
+
+// MainController ist für die Navigation zuständig
 public class MainController {
     @FXML
     private BorderPane content;
@@ -22,6 +24,9 @@ public class MainController {
     @FXML
     private Label loggedInUserLabel;
 
+    @FXML
+    private ImageView loginImage;
+    private static String loggedInUser;
 
     private static MainController controllerInstance;
 
@@ -38,6 +43,8 @@ public class MainController {
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
+
+    //Button aktion überprüft, ob jemand eingeloggt ist, wenn ja wird der Benutzer ausgeloggt, wenn nein wird das Login Fenster geöffnet
     @FXML
     protected void onAccountButtonClick() {
         String loggedInUser = getLoggedInUser();
@@ -50,17 +57,13 @@ public class MainController {
     }
 
 
-    //
+    // Wechselt den Content des BorderPanes in die ausgewählte View
     public void switchContent(Pane root) {
                 content.setCenter(root);
     }
 
 
-
-    private static String loggedInUser;
-    @FXML
-    private ImageView loginImage;
-
+    // Diese Methode wird aufgerufen, wenn der Benutzer sich einloggt, es wird der Benutzername des eingeloggten Benutzers angezeigt mit seinem Profilbild
     public static void setLoggedInUser(String username) {
         loggedInUser = username;
         updateLoggedInUserLabel();
@@ -73,6 +76,7 @@ public class MainController {
     }
 
 
+    // Methode zum intialisieren des Labels und Username, welches den eingeloggten Benutzer anzeigt
     public void initialize() {
         controllerInstance = this;
         updateLoggedInUserLabel();
@@ -83,11 +87,14 @@ public class MainController {
     //Variablen zum veränder der grösse des Profilbildes, da ich ein grösseres Bild für die Anzeige des Profilbildes möchte
     private static final double ORIGINAL_WIDTH = 30.0;
     private static final double ORIGINAL_HEIGHT = 30.0;
-    private static final double ENLARGED_WIDTH = 60.0;
-    private static final double ENLARGED_HEIGHT = 60.0;
+    private static final double ENLARGED_WIDTH = 45.0;
+    private static final double ENLARGED_HEIGHT = 45.0;
 
 
 
+
+
+    //Methode zum Aktualisieren des Profilbildes, beziehungsweise wird das profilicon durch das Profilbild ersetzt und die gewünschte Grösse wird angepasst
     public void setProfileImage(Image profileImage) {
         loginImage.setImage(profileImage); // Das übergebene Bild dem ImageView zuweisen
         loginImage.setFitWidth(ENLARGED_WIDTH);
@@ -114,7 +121,7 @@ public class MainController {
         if (controllerInstance != null && controllerInstance.loggedInUserLabel != null) {
             String loggedInUser = getLoggedInUser();
             if (loggedInUser != null) {
-                controllerInstance.loggedInUserLabel.setText( "                       " + loggedInUser);
+                controllerInstance.loggedInUserLabel.setText( "                    " + loggedInUser);
             } else {
                 controllerInstance.loggedInUserLabel.setText("");
             }
