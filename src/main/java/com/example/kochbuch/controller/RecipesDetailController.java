@@ -1,7 +1,6 @@
 package com.example.kochbuch.controller;
 
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
-import com.example.kochbuch.model.Rezept;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
