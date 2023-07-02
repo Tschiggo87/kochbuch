@@ -29,6 +29,10 @@ public class MainController {
 
     private static MainController controllerInstance;
 
+    private static String loggedInUser;
+    @FXML
+    private ImageView loginImage;
+
     public static MainController getControllerInstance() {
         return controllerInstance;
     }
@@ -38,9 +42,7 @@ public class MainController {
         Main.switchToView(StaticViews.RecipesView);
     }
 
-    protected void onRecipesDetailButtonClick() {
-        Main.switchToView(StaticViews.RecipesDetailView);
-    }
+
 
     @FXML
     protected void onAccountButtonClick() {
@@ -57,9 +59,6 @@ public class MainController {
         content.setCenter(root);
     }
 
-    private static String loggedInUser;
-    @FXML
-    private ImageView loginImage;
 
     public static void setLoggedInUser(String username) {
         loggedInUser = username;
