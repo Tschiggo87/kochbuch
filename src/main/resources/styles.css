@@ -81,5 +81,7 @@
 }
 
 
-
+#register{
+    -fx-background-color: linear-gradient(to right, #FCDBFA, #E7EDFF);
+}
 
