@@ -49,7 +49,7 @@ public class LoginController implements Initializable {
     private TextField enterPasswordField;
 
 
-    private LoginModel loginModel = new LoginModel();
+    private LoginModel loginModel = new LoginModel ();
 
     // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
@@ -114,6 +114,7 @@ public class LoginController implements Initializable {
                     MainController.setLoggedInUser(loginModel.getUsernameTextField());
                     loginMessageLabel.setText("Willkommen " + role + "!");
                     Main.switchToView(StaticViews.WelcomeView);
+                    System.out.println("willkommen " + role + "!");
 
                     String resourcePath = "/" + profileImagePath;
                     InputStream imageStream = getClass().getResourceAsStream(resourcePath);
@@ -122,6 +123,7 @@ public class LoginController implements Initializable {
                     }
                     Image profileImage = new Image(imageStream); // Das geladene Bild als Image-Objekt erstellen
                     MainController.getControllerInstance().setProfileImage(profileImage);
+
                 } else {
                     loginMessageLabel.setText("Falsches Passwort, bitte wiederholen!");
                 }
