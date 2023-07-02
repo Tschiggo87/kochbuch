@@ -79,7 +79,11 @@ public class EditController {
         anweisungen.clear();
         zutaten.clear();
         bild.clear();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
+        alert.showAndWait();
     }
+
 
 
 
