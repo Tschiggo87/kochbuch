@@ -7,7 +7,7 @@ public class Rezept {
     private String kochzeit;
     private String vorbereitungszeit;
     private String gesamtzeit;
-    private int anzahlDerPortionen;
+    private int portion;
     private String schwierigkeitsgrad;
     private String anweisungen;
 
@@ -67,12 +67,12 @@ public class Rezept {
     }
 
     // Anzahl der Portionen
-    public int getAnzahlDerPortionen() {
-        return anzahlDerPortionen;
+    public int getportion() {
+        return portion;
     }
 
-    public void setAnzahlDerPortionen(int anzahlDerPortionen) {
-        this.anzahlDerPortionen = anzahlDerPortionen;
+    public void setportion(int portion) {
+        this.portion = portion;
     }
 
     // Schwierigkeitsgrad

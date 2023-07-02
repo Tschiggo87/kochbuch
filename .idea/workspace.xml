@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="@edit-view" />
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="@edit-view @ editcontroller" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688289682607</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="@edit-view @ editcontroller">
+      <option name="closed" value="true" />
+      <created>1688290419657</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1688290419658</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +224,8 @@
     <MESSAGE value="Add jdbc" />
     <MESSAGE value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
     <MESSAGE value="@edit-view" />
-    <option name="LAST_COMMIT_MESSAGE" value="@edit-view" />
+    <MESSAGE value="@edit-view @ editcontroller" />
+    <option name="LAST_COMMIT_MESSAGE" value="@edit-view @ editcontroller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
