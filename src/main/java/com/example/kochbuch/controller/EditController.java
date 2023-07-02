@@ -1,5 +1,8 @@
 package com.example.kochbuch.controller;
 
+import com.example.kochbuch.Main;
+import com.example.kochbuch.StaticViews;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -60,5 +63,48 @@ public class EditController {
         //Durch das Setzen auf 0 geben Sie an, dass die Dauer und die Anzahl der Portionen auf ihren Standardwert zurückgesetzt werden sollen (bei Integer).
 
     }
+
+    public void onBackToRecipesDetailBtnClick() {
+        Main.switchToView(StaticViews.RecipesDetailView);
+    }
+
+
+    @FXML
+    public void onResetBtnClick() {
+        name.clear();
+        beschreibung.clear();
+        dauer.clear();
+        portion.clear();
+        schwierigkeitsgrad.clear();
+        anweisungen.clear();
+        zutaten.clear();
+        bild.clear();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
+        alert.showAndWait();
+    }
+
+
+
+
+    @FXML
+    public void onSaveBtnClick() {
+        // Speichern der Werte aus dem Textfield.
+        model.setName(name.getText());
+        model.setBeschreibung(beschreibung.getText());
+        model.setDauer(Integer.parseInt(dauer.getText()));
+        model.setPortion(Integer.parseInt(portion.getText()));
+        model.setSchwierigkeitsgrad(schwierigkeitsgrad.getText());
+        model.setAnweisungen(anweisungen.getText());
+        model.setZutaten(zutaten.getText());
+        model.setBild(bild.getText());
+
+        // Hier den Code zum Speichern der Daten oder zum Aktualisieren der Anzeige einfügen
+
+        // Optional: Zeige eine Bestätigungsmeldung an
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
+        alert.showAndWait();
+    }
+
 
 }
