@@ -37,8 +37,9 @@ public class Main extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+
 
     public static MainController getMainController() {
         return mainController;

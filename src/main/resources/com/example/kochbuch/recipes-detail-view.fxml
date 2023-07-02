@@ -27,7 +27,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="button-style-reverse" stylesheets="@styles.css" text="Zurück">
+                  <Button mnemonicParsing="false" onAction="#onBackToRecipesBtnClick" styleClass="button-style-reverse" stylesheets="@styles.css" text="Zurück">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="14.0" />
                      </font>
@@ -55,13 +55,14 @@
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="486.0" prefWidth="604.0" text="Anweisung" textFill="#5b5b5b" wrapText="true">
+                  <Label fx:id="recipeDifficulty" alignment="TOP_LEFT" prefHeight="457.0" prefWidth="537.0" text="Zubereitung">
                      <VBox.margin>
-                        <Insets top="12.0" />
-                     </VBox.margin></Label>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
                </children>
                <BorderPane.margin>
-                  <Insets left="20.0" right="20.0" />
+                  <Insets left="20.0" right="40.0" />
                </BorderPane.margin>
             </VBox>
          </center>
@@ -78,10 +79,13 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <Label fx:id="recipeIngredients" alignment="TOP_LEFT" prefHeight="492.0" prefWidth="200.0" text="Zutat" textFill="#5b5b5b">
+                        <Label fx:id="recipeIngredients" alignment="TOP_LEFT" prefHeight="729.0" prefWidth="379.0" text="Zutat" textFill="#5b5b5b">
                            <font>
                               <Font name="System Font" size="13.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -106,11 +110,10 @@
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recipeDifficulty" text="Label">
+                  <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="0.0" prefWidth="251.0" text="Schwieirgkeit" textFill="#5b5b5b" wrapText="true">
                      <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
+                        <Insets top="12.0" />
+                     </VBox.margin></Label>
                   <Region prefHeight="31.0" prefWidth="249.0" />
                   <Label text="Portionen">
                      <font>

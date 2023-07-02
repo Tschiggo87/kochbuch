@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class RezeptModel {
+
+    private IntegerProperty rezeptID;
     private StringProperty name;
     private StringProperty beschreibung;
     private IntegerProperty dauer;
@@ -16,6 +18,7 @@ public class RezeptModel {
     private StringProperty bild;
 
     public RezeptModel(){
+        rezeptID = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
         beschreibung = new SimpleStringProperty();
         dauer = new SimpleIntegerProperty();
@@ -28,7 +31,17 @@ public class RezeptModel {
 
     // Getter and Setter methods
     // RezeptID
+    public int getRezeptID() {
+        return rezeptID.get();
+    }
 
+    public IntegerProperty rezeptIDProperty() {
+        return rezeptID;
+    }
+
+    public void setRezeptID(int rezeptID) {
+        this.rezeptID.set(rezeptID);
+    }
     public String getName() {
         return name.get();
     }
@@ -127,7 +140,16 @@ public class RezeptModel {
 
     @Override
     public String toString() {
-        return "RezeptModel{" + "name=" + name.get() + ", beschreibung=" + beschreibung.get() + ", dauer=" + dauer.get() + ", portion=" + portion.get() + ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() + ", anweisungen=" + anweisungen.get() + ", bild=" + bild.get() + '}';
+        return "RezeptModel{" +
+                "  rezeptID=" + rezeptID.get() +
+                ", name=" + name.get() +
+                ", beschreibung=" + beschreibung.get() +
+                ", dauer=" + dauer.get() +
+                ", portion=" + portion.get() +
+                ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() +
+                ", anweisungen=" + anweisungen.get() +
+                ", zutaten=" + zutaten.get() +
+                ", bild=" + bild.get() + '}';
     }
 
 
