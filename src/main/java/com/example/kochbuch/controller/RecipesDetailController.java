@@ -66,7 +66,7 @@ public class RecipesDetailController {
             recipeModel.setAnweisungen(resultSet.getString("anweisungen"));
             recipeModel.setSchwierigkeitsgrad(resultSet.getString("schwierigkeitsgrad"));
             recipeModel.setZutaten(resultSet.getString("zutaten"));
-            //recipeModel.setBild(resultSet.getString("bild"));
+            recipeModel.setBild(resultSet.getString("bild"));
         }
 
         resultSet.close();

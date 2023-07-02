@@ -177,6 +177,7 @@ public class RecipesController {
         recipeDescription1.setText(rezepte.get(0).getBeschreibung());
         recipeDifficulty1.setText(rezepte.get(0).getSchwierigkeitsgrad());
 
+
         recipeImage2.setImage(new Image("file:" + imageDirectory + rezepte.get(1).getBild()));
         recipeName2.setText(rezepte.get(1).getName());
         recipeDescription2.setText(rezepte.get(1).getBeschreibung());
