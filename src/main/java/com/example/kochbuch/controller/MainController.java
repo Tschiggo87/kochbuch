@@ -74,8 +74,8 @@ public class MainController {
 
     private static final double ORIGINAL_WIDTH = 30.0; // Ersetzen Sie durch die ursprüngliche Breite
     private static final double ORIGINAL_HEIGHT = 30.0; // Ersetzen Sie durch die ursprüngliche Höhe
-    private static final double ENLARGED_WIDTH = 60.0; // Ersetzen Sie durch die gewünschte vergrößerte Breite
-    private static final double ENLARGED_HEIGHT = 60.0; // Ersetzen Sie durch die gewünschte vergrößerte Höhe
+    private static final double ENLARGED_WIDTH = 30.0; // Ersetzen Sie durch die gewünschte vergrößerte Breite
+    private static final double ENLARGED_HEIGHT = 30.0; // Ersetzen Sie durch die gewünschte vergrößerte Höhe
 
     public void setProfileImage(Image profileImage) {
         loginImage.setImage(profileImage); // Das übergebene Bild dem ImageView zuweisen
