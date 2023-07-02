@@ -12,6 +12,7 @@ public class RezeptModel {
     private IntegerProperty portion;
     private StringProperty schwierigkeitsgrad;
     private StringProperty anweisungen;
+    private StringProperty zutaten;
     private StringProperty bild;
 
     public RezeptModel(){
@@ -21,6 +22,7 @@ public class RezeptModel {
         portion = new SimpleIntegerProperty();
         schwierigkeitsgrad = new SimpleStringProperty();
         anweisungen = new SimpleStringProperty();
+        zutaten = new SimpleStringProperty();
         bild = new SimpleStringProperty();
     }
 
@@ -99,6 +101,18 @@ public class RezeptModel {
         this.anweisungen.set(anweisungen);
     }
 
+    public String getZutaten() {
+        return zutaten.get();
+    }
+
+    public StringProperty zutatenProperty() {
+        return zutaten;
+    }
+
+    public void setZutaten(String zutaten) {
+        this.zutaten.set(zutaten);
+    }
+
     public String getBild() {
         return bild.get();
     }
@@ -115,4 +129,6 @@ public class RezeptModel {
     public String toString() {
         return "RezeptModel{" + "name=" + name.get() + ", beschreibung=" + beschreibung.get() + ", dauer=" + dauer.get() + ", portion=" + portion.get() + ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() + ", anweisungen=" + anweisungen.get() + ", bild=" + bild.get() + '}';
     }
+
+
 }

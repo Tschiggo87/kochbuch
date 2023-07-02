@@ -27,6 +27,8 @@ public class RecipesDetailController {
     @FXML
     private Label recipePortion;
     @FXML
+    private Label recipeIngredients;
+    @FXML
     private ImageView recipeImage;
 
     private final DataBaseRecipesHandler databaseHandler;
@@ -53,12 +55,12 @@ public class RecipesDetailController {
     }
 
     private String[] getRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        String[] recipeInfo = new String[6];
+        String[] recipeInfo = new String[7];
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
         try {
-            String query = "SELECT name, beschreibung, dauer, portion, schwierigkeitsgrad, anweisungen FROM Rezepte WHERE RezeptId = ?";
+            String query = "SELECT name, beschreibung, dauer, portion, schwierigkeitsgrad, anweisungen, zutaten FROM Rezepte WHERE RezeptId = ?";
             statement = connection.prepareStatement(query);
             statement.setInt(1, 1); //
             resultSet = statement.executeQuery();
@@ -70,6 +72,7 @@ public class RecipesDetailController {
                 recipeInfo[3] = resultSet.getString("portion");
                 recipeInfo[4] = resultSet.getString("schwierigkeitsgrad");
                 recipeInfo[5] = resultSet.getString("anweisungen");
+                recipeInfo[6] = resultSet.getString("zutaten");
             }
         } finally {
             if (resultSet != null) resultSet.close();
@@ -86,6 +89,7 @@ public class RecipesDetailController {
         recipePortion.setText(recipeInfo[3]);
         recipeDifficulty.setText(recipeInfo[5]);
         recipeInstruction.setText(recipeInfo[4]);
+        recipeIngredients.setText(recipeInfo[6]);
 
     }
 }
