@@ -2,6 +2,7 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
+import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -27,65 +28,71 @@ public class RecipesDetailController {
     @FXML
     private Label recipePortion;
     @FXML
+    private Label recipeIngredients;
+    @FXML
     private ImageView recipeImage;
 
     private final DataBaseRecipesHandler databaseHandler;
-
-    /*Button Interaktion*/
-
-    public void onEditBtnClick() {
-        Main.switchToView(StaticViews.RecipeEditView);
-    }
+    private final RezeptModel recipeModel;
 
     public RecipesDetailController() {
         databaseHandler = new DataBaseRecipesHandler();
+        recipeModel = new RezeptModel();
     }
 
     public void initialize() {
         try {
             Connection connection = databaseHandler.connect();
-            String[] recipeInfo = getRecipeInfoFromDatabase(connection);
-            showRecipeInfo(recipeInfo);
+            loadRecipeInfoFromDatabase(connection);
+            showRecipeInfo();
         } catch (SQLException e) {
             e.printStackTrace();
             // Fehlerbehandlung
         }
     }
 
-    private String[] getRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        String[] recipeInfo = new String[6];
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+    private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
+        String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, 5); // Setze die gewünschte RezeptId
 
-        try {
-            String query = "SELECT name, beschreibung, dauer, portion, schwierigkeitsgrad, anweisungen FROM Rezepte WHERE RezeptId = ?";
-            statement = connection.prepareStatement(query);
-            statement.setInt(1, 1); //
-            resultSet = statement.executeQuery();
+        ResultSet resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
-                recipeInfo[0] = resultSet.getString("name");
-                recipeInfo[1] = resultSet.getString("beschreibung");
-                recipeInfo[2] = resultSet.getString("dauer");
-                recipeInfo[3] = resultSet.getString("portion");
-                recipeInfo[4] = resultSet.getString("schwierigkeitsgrad");
-                recipeInfo[5] = resultSet.getString("anweisungen");
-            }
-        } finally {
-            if (resultSet != null) resultSet.close();
-            if (statement != null) statement.close();
+        if (resultSet.next()) {
+            recipeModel.setName(resultSet.getString("name"));
+            recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
+            recipeModel.setDauer(resultSet.getInt("dauer"));
+            recipeModel.setPortion(resultSet.getInt("portion"));
+            recipeModel.setAnweisungen(resultSet.getString("anweisungen"));
+            recipeModel.setSchwierigkeitsgrad(resultSet.getString("schwierigkeitsgrad"));
+            recipeModel.setZutaten(resultSet.getString("zutaten"));
+            //recipeModel.setBild(resultSet.getString("bild"));
         }
 
-        return recipeInfo;
+        resultSet.close();
+        statement.close();
     }
 
-    private void showRecipeInfo(String[] recipeInfo) {
-        recipeName.setText(recipeInfo[0]);
-        recipeDescription.setText(recipeInfo[1]);
-        recipeTime.setText(recipeInfo[2]);
-        recipePortion.setText(recipeInfo[3]);
-        recipeDifficulty.setText(recipeInfo[5]);
-        recipeInstruction.setText(recipeInfo[4]);
-
+    private void showRecipeInfo() {
+        recipeName.setText(recipeModel.getName());
+        recipeDescription.setText(recipeModel.getBeschreibung());
+        recipeTime.setText(Integer.toString(recipeModel.getDauer()));
+        recipePortion.setText(Integer.toString(recipeModel.getPortion()));
+        recipeInstruction.setText(recipeModel.getAnweisungen());
+        recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
+        recipeIngredients.setText(recipeModel.getZutaten());
     }
+
+
+    /* Weitere Methoden für die Interaktion mit der Benutzeroberfläche */
+
+
+    public void onEditBtnClick() {
+        Main.switchToView(StaticViews.RecipeEditView);
+    }
+
+    public void onBackToRecipesBtnClick() {
+        Main.switchToView(StaticViews.RecipesView);
+    }
+
 }

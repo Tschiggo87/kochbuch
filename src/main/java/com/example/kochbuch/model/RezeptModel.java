@@ -6,27 +6,42 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class RezeptModel {
+
+    private IntegerProperty rezeptID;
     private StringProperty name;
     private StringProperty beschreibung;
     private IntegerProperty dauer;
     private IntegerProperty portion;
     private StringProperty schwierigkeitsgrad;
     private StringProperty anweisungen;
+    private StringProperty zutaten;
     private StringProperty bild;
 
     public RezeptModel(){
+        rezeptID = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
         beschreibung = new SimpleStringProperty();
         dauer = new SimpleIntegerProperty();
         portion = new SimpleIntegerProperty();
         schwierigkeitsgrad = new SimpleStringProperty();
         anweisungen = new SimpleStringProperty();
+        zutaten = new SimpleStringProperty();
         bild = new SimpleStringProperty();
     }
 
     // Getter and Setter methods
     // RezeptID
+    public int getRezeptID() {
+        return rezeptID.get();
+    }
 
+    public IntegerProperty rezeptIDProperty() {
+        return rezeptID;
+    }
+
+    public void setRezeptID(int rezeptID) {
+        this.rezeptID.set(rezeptID);
+    }
     public String getName() {
         return name.get();
     }
@@ -99,6 +114,18 @@ public class RezeptModel {
         this.anweisungen.set(anweisungen);
     }
 
+    public String getZutaten() {
+        return zutaten.get();
+    }
+
+    public StringProperty zutatenProperty() {
+        return zutaten;
+    }
+
+    public void setZutaten(String zutaten) {
+        this.zutaten.set(zutaten);
+    }
+
     public String getBild() {
         return bild.get();
     }
@@ -113,6 +140,17 @@ public class RezeptModel {
 
     @Override
     public String toString() {
-        return "RezeptModel{" + "name=" + name.get() + ", beschreibung=" + beschreibung.get() + ", dauer=" + dauer.get() + ", portion=" + portion.get() + ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() + ", anweisungen=" + anweisungen.get() + ", bild=" + bild.get() + '}';
+        return "RezeptModel{" +
+                "  rezeptID=" + rezeptID.get() +
+                ", name=" + name.get() +
+                ", beschreibung=" + beschreibung.get() +
+                ", dauer=" + dauer.get() +
+                ", portion=" + portion.get() +
+                ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() +
+                ", anweisungen=" + anweisungen.get() +
+                ", zutaten=" + zutaten.get() +
+                ", bild=" + bild.get() + '}';
     }
+
+
 }

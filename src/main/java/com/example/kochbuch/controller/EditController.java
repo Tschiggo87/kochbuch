@@ -16,18 +16,12 @@ public class EditController {
     public TextField portion;
     public TextField schwierigkeitsgrad;
     public TextField anweisungen;
+    public TextField zutaten;
     public TextField bild;
     private RezeptModel model;
 
     @FXML
     private void initialize(){
-
-        /* Passt die grösse des Textfeldes an den Inhalt */
-        anweisungen.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Passen Sie die Größe des Textfelds an den Inhalt an
-            anweisungen.setPrefColumnCount(newValue.length() + 1);
-        });
-
 
         model = new RezeptModel();
         onShowValues();
@@ -43,6 +37,7 @@ public class EditController {
         portion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
         schwierigkeitsgrad.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
         anweisungen.textProperty().bindBidirectional(model.anweisungenProperty());
+        zutaten.textProperty().bindBidirectional(model.zutatenProperty());
         bild.textProperty().bindBidirectional(model.bildProperty());
     }
 
@@ -60,6 +55,7 @@ public class EditController {
         model.setPortion(0); // Setzen Sie den Standardwert für die portion auf 0
         model.setSchwierigkeitsgrad(null);
         model.setAnweisungen(null);
+        model.setZutaten(null);
         model.setBild(null);
         //Durch das Setzen auf 0 geben Sie an, dass die Dauer und die Anzahl der Portionen auf ihren Standardwert zurückgesetzt werden sollen (bei Integer).
 

@@ -30,31 +30,28 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox prefHeight="112.0" prefWidth="485.0" styleClass="frame" stylesheets="@styles.css">
+                  <HBox prefHeight="112.0" prefWidth="485.0" stylesheets="@styles.css">
                      <children>
-                        <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/RezeptBilder/spaghetti.png" />
-                           </image>
+                        <ImageView fx:id="recipeImage1" fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>
                         </ImageView>
                         <VBox prefHeight="136.0" prefWidth="236.0">
                            <children>
-                              <Label text="Titel">
+                              <Label fx:id="recipeName1" text="Titel" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung" textFill="#5b5b5b">
+                              <Label fx:id="recipeDescription1" text="Beschreibung" textFill="#5b5b5b" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit" textFill="#5b5b5b">
+                              <Label fx:id="recipeDifficulty1" text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -78,9 +75,9 @@
                         <Insets />
                      </GridPane.margin>
                   </HBox>
-                  <HBox prefHeight="112.0" prefWidth="485.0" styleClass="frame" GridPane.rowIndex="1">
+                  <HBox prefHeight="112.0" prefWidth="485.0" GridPane.rowIndex="1">
                      <children>
-                        <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="recipeImage3" fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/RezeptBilder/spaghetti.png" />
                            </image>
@@ -90,19 +87,19 @@
                         </ImageView>
                         <VBox prefHeight="136.0" prefWidth="236.0">
                            <children>
-                              <Label text="Titel">
+                              <Label fx:id="recipeName3" text="Titel" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung" textFill="#5b5b5b">
+                              <Label fx:id="recipeDescription3" text="Beschreibung" textFill="#5b5b5b" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit" textFill="#5b5b5b">
+                              <Label fx:id="recipeDifficulty3" text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -123,9 +120,9 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="112.0" prefWidth="485.0" styleClass="frame" GridPane.rowIndex="2">
+                  <HBox prefHeight="112.0" prefWidth="485.0" GridPane.rowIndex="2">
                      <children>
-                        <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="recipeImage5" fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/RezeptBilder/spaghetti.png" />
                            </image>
@@ -135,19 +132,19 @@
                         </ImageView>
                         <VBox prefHeight="136.0" prefWidth="236.0">
                            <children>
-                              <Label text="Titel">
+                              <Label fx:id="recipeName5" text="Titel" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung" textFill="#5b5b5b">
+                              <Label fx:id="recipeDescription5" text="Beschreibung" textFill="#5b5b5b" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit" textFill="#5b5b5b">
+                              <Label fx:id="recipeDifficulty5" text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -168,9 +165,9 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="112.0" prefWidth="485.0" styleClass="frame" GridPane.columnIndex="1">
+                  <HBox prefHeight="112.0" prefWidth="485.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="recipeImage2" fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/RezeptBilder/spaghetti.png" />
                            </image>
@@ -180,19 +177,19 @@
                         </ImageView>
                         <VBox prefHeight="136.0" prefWidth="236.0">
                            <children>
-                              <Label text="Titel">
+                              <Label fx:id="recipeName2" text="Titel" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung" textFill="#5b5b5b">
+                              <Label fx:id="recipeDescription2" text="Beschreibung" textFill="#5b5b5b" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit" textFill="#5b5b5b">
+                              <Label fx:id="recipeDifficulty2" text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -213,9 +210,9 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="112.0" prefWidth="485.0" styleClass="frame" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox prefHeight="112.0" prefWidth="485.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="recipeImage4" fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/RezeptBilder/spaghetti.png" />
                            </image>
@@ -225,19 +222,19 @@
                         </ImageView>
                         <VBox prefHeight="136.0" prefWidth="236.0">
                            <children>
-                              <Label text="Titel">
+                              <Label fx:id="recipeName4" text="Titel" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Berschreibung" textFill="#5b5b5b">
+                              <Label fx:id="recipeDescription4" text="Berschreibung" textFill="#5b5b5b" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit" textFill="#5b5b5b">
+                              <Label fx:id="recipeDifficulty4" text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -258,9 +255,9 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="112.0" prefWidth="485.0" styleClass="frame" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <HBox prefHeight="112.0" prefWidth="485.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <ImageView fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="recipeImage6" fitHeight="158.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/RezeptBilder/spaghetti.png" />
                            </image>
@@ -270,19 +267,19 @@
                         </ImageView>
                         <VBox prefHeight="136.0" prefWidth="236.0">
                            <children>
-                              <Label text="Titel">
+                              <Label fx:id="recipeName6" text="Titel" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung" textFill="#5b5b5b">
+                              <Label fx:id="recipeDescription6" text="Beschreibung" textFill="#5b5b5b" wrapText="true">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit" textFill="#5b5b5b">
+                              <Label fx:id="recipeDifficulty6" text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -313,5 +310,10 @@
          </font>
       </Label>
       <Label fx:id="loggedInUserLabel" layoutX="540.0" layoutY="37.0" prefHeight="17.0" prefWidth="265.0" />
+      <Button layoutX="943.0" layoutY="616.0" mnemonicParsing="false" onAction="#onRecipesBackBtnClick" prefHeight="26.0" prefWidth="84.0" styleClass="button-style-reverse" text="Zurück">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
