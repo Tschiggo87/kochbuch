@@ -22,7 +22,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(StaticViews.StartView));
         fxmlLoader.load();
         mainController = fxmlLoader.getController();
-        Scene scene = new Scene(fxmlLoader.getRoot(), 1200, 700);
+        Scene scene = new Scene(fxmlLoader.getRoot(), 1300, 700);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm()); // CSS zur Scene hinzufügen
         stage.setTitle("Cookz - Kochbuch");
         stage.setScene(scene);
