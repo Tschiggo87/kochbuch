@@ -3,6 +3,7 @@ package com.example.kochbuch.controller;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -102,8 +103,9 @@ public class MainController {
     private static void updateLoggedInUserLabel() {
         if (controllerInstance != null && controllerInstance.loggedInUserLabel != null) {
             String loggedInUser = getLoggedInUser();
+
             if (loggedInUser != null) {
-                controllerInstance.loggedInUserLabel.setText( "                       " + loggedInUser);
+                controllerInstance.loggedInUserLabel.setText( loggedInUser);
             } else {
                 controllerInstance.loggedInUserLabel.setText("");
             }
