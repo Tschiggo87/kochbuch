@@ -10,7 +10,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.sql.*;
 
 public class MainController {
     @FXML
@@ -125,3 +129,47 @@ public class MainController {
     }
 
 }
+
+
+  /*  public static void saveImage(String imageName, String imagePath) {
+        String sql = "INSERT INTO imagetable (imagename, image) VALUES (?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            File imageFile = new File(imagePath);
+            try (FileInputStream fis = new FileInputStream(imageFile)) {
+                preparedStatement.setString(1, imageName);
+                preparedStatement.setBinaryStream(2, fis, (int) imageFile.length());
+                preparedStatement.executeUpdate();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Hier wird die Methode zum Abrufen der Bilder erstellt
+    public static byte[] retrieveImageData(String imageName) {
+        String sql = "SELECT image FROM imagetable WHERE imagename = ?";
+        byte[] imageData = null;
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, imageName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Blob imageBlob = resultSet.getBlob("image");
+                imageData = imageBlob.getBytes(1, (int) imageBlob.length());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return imageData;
+    }
+
+   */
