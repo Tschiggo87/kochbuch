@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <BorderPane fx:id="content" prefHeight="673.0" prefWidth="843.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <center>
+            <Label text="WELCOME" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="96.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9843137264251709" green="0.800000011920929" blue="0.9725490212440491" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.9843137264251709" green="0.800000011920929" blue="0.9725490212440491" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.8588235378265381" green="0.9058823585510254" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </center></BorderPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="658.0" prefWidth="138.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="5.0" layoutY="1.0" prefHeight="664.0" prefWidth="176.0" styleClass="sideBarMenu" stylesheets="@../../../styles.css">
+               <children>
+                  <Label prefHeight="36.0" prefWidth="144.0" text="Cookz">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Region prefHeight="77.0" prefWidth="138.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/icons/utensils-solid.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="11.0" prefWidth="133.0" />
+                  <Button mnemonicParsing="false" onAction="#onRecipesButtonClick" prefHeight="27.0" prefWidth="207.0" styleClass="button-style" stylesheets="@styles.css" text="Rezepte">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Region prefHeight="37.0" prefWidth="138.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="recipeImage" fitHeight="20.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/icons/utensils-solid.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="11.0" prefWidth="133.0" />
+                  <Button mnemonicParsing="false" onAction="#onRecipesButtonClick" prefHeight="27.0" prefWidth="174.0" styleClass="button-style" stylesheets="@styles.css" text="Rezepte">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <AnchorPane />
+                  <ImageView fitHeight="150.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
+                  <Region prefHeight="105.0" prefWidth="176.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="loginImage" fitHeight="34.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
+                           <image>
+                              <Image url="@../../../images/icons/user-solid.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="-15.0" right="35.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="loggedInUserLabel" prefHeight="17.0" prefWidth="154.0" textAlignment="CENTER" textFill="#6b0a8f">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="accountBtn" mnemonicParsing="false" onAction="#onAccountButtonClick" prefHeight="28.0" prefWidth="154.0" styleClass="button-style" stylesheets="@styles.css" text="Account">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </left>
+</BorderPane>

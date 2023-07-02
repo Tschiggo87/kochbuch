@@ -1,0 +1,240 @@
+Index: src/main/java/com/example/kochbuch/controller/LoginController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kochbuch.controller;\r\n\r\nimport com.example.kochbuch.Main;\r\nimport com.example.kochbuch.StaticViews;\r\nimport com.example.kochbuch.databasehandler.DataBaseRecipesHandler;\r\nimport com.example.kochbuch.model.LoginModel;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.stage.Stage;\r\nimport javafx.event.ActionEvent;\r\n\r\nimport java.io.File;\r\nimport java.io.InputStream;\r\nimport java.security.MessageDigest;\r\nimport java.security.NoSuchAlgorithmException;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\n\r\n\r\n//LoginController ist für die Anmeldung zuständig\r\npublic class LoginController implements Initializable {\r\n\r\n    @FXML\r\n    private Button cancelButton;\r\n\r\n\r\n    @FXML\r\n    private Label loginMessageLabel;\r\n\r\n    @FXML\r\n    private ImageView brandingImageView;\r\n\r\n    @FXML\r\n    private ImageView lockImageView;\r\n\r\n    @FXML\r\n    private TextField usernameTextField;\r\n\r\n    @FXML\r\n    private TextField enterPasswordField;\r\n\r\n\r\n    private LoginModel loginModel = new LoginModel();\r\n\r\n    // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.\r\n    @Override\r\n    public void initialize(URL url, ResourceBundle resourceBundle) {\r\n        File brandingFile = new File(\"src/main/resources/images/LoginResources/background1.jpg\");\r\n        Image brandingImage = new Image(brandingFile.toURI().toString());\r\n        brandingImageView.setImage(brandingImage);\r\n\r\n        File lockFile = new File(\"src/main/resources/images/LoginResources/LockLogo1.png\");\r\n        Image lockImage = new Image(lockFile.toURI().toString());\r\n        lockImageView.setImage(lockImage);\r\n\r\n        usernameTextField.textProperty().bindBidirectional(loginModel.usernameTextFieldProperty());\r\n        enterPasswordField.textProperty().bindBidirectional(loginModel.enterPasswordFieldProperty());\r\n    }\r\n\r\n    // Login Felder werden überprüft, ob sie leer sind. Wenn nicht, wird die Methode validateLogin() aufgerufen.\r\n    @FXML\r\n    private void loginButtonOnAction(ActionEvent event) {\r\n        String username = usernameTextField.getText();\r\n        String password = enterPasswordField.getText();\r\n        if (username != null && !username.isBlank() && password != null && !password.isBlank()) {\r\n            validateLogin();\r\n        } else {\r\n            loginMessageLabel.setText(\"Benutzername und Passwort eingeben!\");\r\n        }\r\n    }\r\n\r\n\r\n    // Der Cancel Button schließt das Login Fenster.\r\n    public void cancelButtonOnAction() {\r\n        Main.switchToView(StaticViews.WelcomeView);\r\n    }\r\n\r\n    @FXML\r\n    protected void onActionSingUpButton()  {\r\n        Main.switchToView(StaticViews.RegisterView);\r\n    }\r\n\r\n    @FXML\r\n    private void validateLogin() {\r\n        DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();\r\n        Connection connection = null;\r\n        String hashedPassword = getHashedPassword(loginModel.getEnterPasswordField());\r\n        String verifyLogin = \"SELECT count(1), role, profile_image_path FROM Login WHERE username = ? AND password = ?\";\r\n\r\n        try {\r\n            connection = dbhandler.connect(); // Verbindung zur Datenbank herstellen\r\n\r\n            PreparedStatement preparedStatement = connection.prepareStatement(verifyLogin);\r\n            preparedStatement.setString(1, loginModel.getUsernameTextField());\r\n            preparedStatement.setString(2, hashedPassword);\r\n\r\n            ResultSet queryResult = preparedStatement.executeQuery();\r\n\r\n            while (queryResult.next()) {\r\n                int count = queryResult.getInt(1);\r\n                String role = queryResult.getString(\"role\");\r\n                String profileImagePath = queryResult.getString(\"profile_image_path\"); // Bildpfad aus der Datenbank abrufen\r\n\r\n                if (count == 1) {\r\n                    MainController.setLoggedInUser(loginModel.getUsernameTextField());\r\n                    loginMessageLabel.setText(\"Willkommen \" + role + \"!\");\r\n                    Main.switchToView(StaticViews.WelcomeView);\r\n\r\n                    String resourcePath = \"/\" + profileImagePath;\r\n                    InputStream imageStream = getClass().getResourceAsStream(resourcePath);\r\n                    if(imageStream == null) {\r\n                        throw new IllegalArgumentException(\"Resource not found: \" + resourcePath);\r\n                    }\r\n                    Image profileImage = new Image(imageStream); // Das geladene Bild als Image-Objekt erstellen\r\n                    MainController.getControllerInstance().setProfileImage(profileImage);\r\n                } else {\r\n                    loginMessageLabel.setText(\"Falsches Passwort, bitte wiederholen!\");\r\n                }\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    // Methode zum Hashen des Passworts.\r\n    private String getHashedPassword(String password) {\r\n        String hashedPassword = null;\r\n        try {\r\n            MessageDigest messageDigest = MessageDigest.getInstance(\"SHA-256\");\r\n            byte[] hashBytes = messageDigest.digest(password.getBytes());\r\n            StringBuilder stringBuilder = new StringBuilder();\r\n\r\n            for (byte b : hashBytes) {\r\n                stringBuilder.append(String.format(\"%02x\", b));\r\n            }\r\n\r\n            hashedPassword = stringBuilder.toString();\r\n        } catch (NoSuchAlgorithmException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return hashedPassword;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/kochbuch/controller/LoginController.java b/src/main/java/com/example/kochbuch/controller/LoginController.java
+--- a/src/main/java/com/example/kochbuch/controller/LoginController.java	(revision 1bac3d4cab9a9ba47f0c3c33397774b9c57d122d)
++++ b/src/main/java/com/example/kochbuch/controller/LoginController.java	(date 1688200900301)
+@@ -114,6 +114,7 @@
+                     MainController.setLoggedInUser(loginModel.getUsernameTextField());
+                     loginMessageLabel.setText("Willkommen " + role + "!");
+                     Main.switchToView(StaticViews.WelcomeView);
++                    System.out.println("willkommen " + role + "!");
+ 
+                     String resourcePath = "/" + profileImagePath;
+                     InputStream imageStream = getClass().getResourceAsStream(resourcePath);
+@@ -122,6 +123,7 @@
+                     }
+                     Image profileImage = new Image(imageStream); // Das geladene Bild als Image-Objekt erstellen
+                     MainController.getControllerInstance().setProfileImage(profileImage);
++
+                 } else {
+                     loginMessageLabel.setText("Falsches Passwort, bitte wiederholen!");
+                 }
+Index: src/main/java/com/example/kochbuch/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kochbuch;\r\n\r\nimport com.example.kochbuch.controller.LoginController;\r\nimport com.example.kochbuch.controller.MainController;\r\nimport com.example.kochbuch.databasehandler.DataBaseRecipesHandler;\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.sql.SQLException;\r\n\r\n\r\npublic class Main extends Application {\r\n\r\n\r\n    private static MainController mainController;\r\n\r\n    @Override\r\n    public void start(Stage stage) throws IOException {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(StaticViews.StartView));\r\n        fxmlLoader.load();\r\n        mainController = fxmlLoader.getController();\r\n        Scene scene = new Scene(fxmlLoader.getRoot(), 1200, 700);\r\n        scene.getStylesheets().add(getClass().getResource(\"styles.css\").toExternalForm()); // CSS zur Scene hinzufügen\r\n        stage.setTitle(\"Cookz - Kochbuch\");\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    public static void switchToView(String viewName) {\r\n        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewName));\r\n        try {\r\n            mainController.switchContent(fxmlLoader.load());\r\n\r\n        } catch (IOException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n\r\n    }\r\n\r\n    public static MainController getMainController() {\r\n        return mainController;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/kochbuch/Main.java b/src/main/java/com/example/kochbuch/Main.java
+--- a/src/main/java/com/example/kochbuch/Main.java	(revision 1bac3d4cab9a9ba47f0c3c33397774b9c57d122d)
++++ b/src/main/java/com/example/kochbuch/Main.java	(date 1688192830994)
+@@ -44,5 +44,4 @@
+         return mainController;
+     }
+ 
+-
+ }
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_22_06_2023_19_28__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_06_2023_19_28__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_06_2023_19_28__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_06_2023_19_28__Changes_.xml	(revision 1bac3d4cab9a9ba47f0c3c33397774b9c57d122d)
++++ /dev/null	(revision 1bac3d4cab9a9ba47f0c3c33397774b9c57d122d)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_22_06_2023_19_28_[Changes]" date="1687454886880" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_06_2023_19_28_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 22.06.2023 19:28 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/cssdialects.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/cssdialects.xml b/.idea/cssdialects.xml
+new file mode 100644
+--- /dev/null	(date 1688157793030)
++++ b/.idea/cssdialects.xml	(date 1688157793030)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CssDialectMappings">
++    <file url="file://$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" dialect="CLASSIC" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/resources/com/example/kochbuch/styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* Start View */\r\n\r\n.menuBtn {\r\n  -fx-background-color: transparent;\r\n   -fx-background-radius: 10px;\r\n   -fx-border-radius: 10px;\r\n   -fx-cursor: hand;\r\n}\r\n\r\n.menuBtn:hover {\r\n  -fx-background-color: black;\r\n  -fx-background-radius: 10px;\r\n  -fx-border-radius: 10px;\r\n  -fx-cursor: hand;\r\n  -fx-text-fill: linear-gradient(to right, #DBE7FF, #FBCCF8);\r\n}\r\n\r\n.sideBarMenu{\r\n    -fx-background-color: linear-gradient(to right, rgba(219,231,255,0.7), rgba(251,204,248,0.7));\r\n    -fx-margin: 20px;\r\n    -fx-background-radius: 15px;\r\n}\r\n\r\n/* Recipes View */\r\n.recipesBox {\r\n  -fx-background-color: linear-gradient(to right, rgba(255,255,255,0.7), rgba(219,231,255,0.4), rgba(251,204,248,0.4));\r\n  -fx-background-radius: 10px;\r\n  -fx-border-radius: 10px;\r\n}\r\n\r\n.recipes-detail-btn {\r\n   -fx-background-color: white;\r\n   -fx-background-radius: 10px;\r\n   -fx-border-radius: 10px;\r\n   -fx-cursor: hand;\r\n}\r\n\r\n.recipes-detail-btn:hover {\r\n  -fx-background-color: black;\r\n  -fx-background-radius: 10px;\r\n  -fx-border-radius: 10px;\r\n  -fx-cursor: hand;\r\n  -fx-text-fill: linear-gradient(to right, #DBE7FF, #FBCCF8);\r\n}\r\n\r\n.scroll-pane {\r\n    -fx-border-style: none;\r\n    -fx-background-color: transparent;\r\n}\r\n\r\n\r\n/* Recipes Detail View */\r\n\r\n.recipes-detail-bg {\r\n  -fx-background-color: linear-gradient(to right, #ffffff, #DBE7FF, #FBCCF8);\r\n  -fx-background-radius: 10px;\r\n  -fx-border-radius: 10px;\r\n}\r\n\r\n/* Login View */\r\n.button-style {\r\n\r\n    -fx-text-fill: black;\r\n    -fx-border-radius: 50px;\r\n    -fx-background-radius: 50px;\r\n    -fx-background-color: transparent;\r\n    /* Transition */\r\n\r\n}\r\n\r\n.button-style-reverse{\r\n\r\n    -fx-text-fill: white;\r\n    -fx-border-radius: 50px;\r\n    -fx-background-radius: 50px;\r\n    -fx-background-color: black;\r\n    /* Transition */\r\n\r\n}\r\n\r\n.button-style:hover {\r\n    -fx-background-color: black;\r\n    -fx-text-fill: #ffffff;\r\n\r\n}\r\n\r\n.frame {\r\n\r\n    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);\r\n\r\n}\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/kochbuch/styles.css b/src/main/resources/com/example/kochbuch/styles.css
+--- a/src/main/resources/com/example/kochbuch/styles.css	(revision 1bac3d4cab9a9ba47f0c3c33397774b9c57d122d)
++++ b/src/main/resources/com/example/kochbuch/styles.css	(date 1688157792525)
+@@ -90,6 +90,12 @@
+ 
+ }
+ 
++#background-vbox {
++    -fx-background-image: url('/images/bg.jpeg');
++    -fx-background-repeat: no-repeat;
++    -fx-background-size: cover;
++}
++
+ 
+ 
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f2aa812e-3531-43b7-988b-8f6d530a1bb6\" name=\"Changes\" comment=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"FxmlFile\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"9c11d8a0-51b7-4ce9-a4ca-338961d2110d\" />\r\n        <option name=\"url\" value=\"https://github.com/Tschiggo87/kochbuch.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2RFuQZI5JE2IXDxt0hSqubbfmHL\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,\r\n    &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/kochbuch\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example.kochbuch\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f2aa812e-3531-43b7-988b-8f6d530a1bb6\" name=\"Changes\" comment=\"\" />\r\n      <created>1686858134356</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1686858134356</updated>\r\n      <workItem from=\"1687764415250\" duration=\"5905000\" />\r\n      <workItem from=\"1687777332418\" duration=\"11862000\" />\r\n      <workItem from=\"1687799275199\" duration=\"4227000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Inital commit\">\r\n      <created>1686890738717</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1686890738718</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Inital commit\">\r\n      <created>1686891931242</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1686891931242</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Inital commit\">\r\n      <created>1686892033545</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1686892033545</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Inital commit\">\r\n      <created>1687454409109</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687454409109</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Add databasehandler\">\r\n      <created>1687454632658</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687454632658</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Add databasehandler\">\r\n      <created>1687455453296</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687455453296</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController.\">\r\n      <created>1687498116758</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687498116758</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Add Interaction with views\">\r\n      <created>1687675024214</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687675024214</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Stash test\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1687769669384</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687769669384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Stash test\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1687769711083</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687769711083</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Add jdbc\">\r\n      <created>1687804442636</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687804442636</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\">\r\n      <created>1687978018443</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1687978018443</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Inital commit\" />\r\n    <MESSAGE value=\"Add databasehandler\" />\r\n    <MESSAGE value=\"Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController.\" />\r\n    <MESSAGE value=\"Add Interaction with views\" />\r\n    <MESSAGE value=\"Stash test\" />\r\n    <MESSAGE value=\"Add jdbc\" />\r\n    <MESSAGE value=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n  <component name=\"com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent\">\r\n    <option name=\"sizePresets\">\r\n      <list>\r\n        <SizePreset>\r\n          <option name=\"caption\" value=\"Phone\" />\r\n          <option name=\"height\" value=\"568\" />\r\n          <option name=\"width\" value=\"320\" />\r\n        </SizePreset>\r\n        <SizePreset>\r\n          <option name=\"caption\" value=\"Tablet\" />\r\n          <option name=\"height\" value=\"1024\" />\r\n          <option name=\"width\" value=\"768\" />\r\n        </SizePreset>\r\n        <SizePreset>\r\n          <option name=\"caption\" value=\"Desktop\" />\r\n          <option name=\"height\" value=\"900\" />\r\n          <option name=\"width\" value=\"1440\" />\r\n        </SizePreset>\r\n      </list>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1bac3d4cab9a9ba47f0c3c33397774b9c57d122d)
++++ b/.idea/workspace.xml	(date 1688204100498)
+@@ -4,7 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
++    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Login Bug-Fixes">
++      <change afterPath="$PROJECT_DIR$/.idea/cssdialects.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_22_06_2023_19_28__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -13,9 +20,16 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
++        <option value="FxmlFile" />
+         <option value="Class" />
+-        <option value="FxmlFile" />
+       </list>
++    </option>
++  </component>
++  <component name="Git.Pull.Settings">
++    <option name="OPTIONS">
++      <set>
++        <option value="REBASE" />
++      </set>
+     </option>
+   </component>
+   <component name="Git.Settings">
+@@ -26,19 +40,6 @@
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {
+-    &quot;state&quot;: &quot;OPEN&quot;
+-  }
+-}</component>
+-  <component name="GithubPullRequestsUISettings">
+-    <option name="selectedUrlAndAccountId">
+-      <UrlAndAccount>
+-        <option name="accountId" value="9c11d8a0-51b7-4ce9-a4ca-338961d2110d" />
+-        <option name="url" value="https://github.com/Tschiggo87/kochbuch.git" />
+-      </UrlAndAccount>
+-    </option>
+-  </component>
+   <component name="ProjectId" id="2RFuQZI5JE2IXDxt0hSqubbfmHL" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+@@ -54,7 +55,7 @@
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+     &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/RutLa/OneDrive/Desktop/TestRepoApplication&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+@@ -63,7 +64,7 @@
+     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+@@ -72,6 +73,7 @@
+       <recent name="$PROJECT_DIR$/src/main/resources/com/example/kochbuch" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Developments\Java\kochbuch\src\main\resources\images" />
+       <recent name="$PROJECT_DIR$" />
+     </key>
+     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+@@ -89,6 +91,12 @@
+       <workItem from="1687764415250" duration="5905000" />
+       <workItem from="1687777332418" duration="11862000" />
+       <workItem from="1687799275199" duration="4227000" />
++      <workItem from="1688032911468" duration="12828000" />
++      <workItem from="1688047759666" duration="5052000" />
++      <workItem from="1688095418223" duration="29729000" />
++      <workItem from="1688157665456" duration="943000" />
++      <workItem from="1688191936408" duration="1033000" />
++      <workItem from="1688200798529" duration="2662000" />
+     </task>
+     <task id="LOCAL-00001" summary="Inital commit">
+       <created>1686890738717</created>
+@@ -162,19 +170,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1687769711083</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="Add jdbc">
+-      <created>1687804442636</created>
++    <task id="LOCAL-00011" summary="Login- + RegisterModels erstellt. &quot;Code-Ubau :/&quot;">
++      <option name="closed" value="true" />
++      <created>1688152267776</created>
+       <option name="number" value="00011" />
+       <option name="presentableId" value="LOCAL-00011" />
+       <option name="project" value="LOCAL" />
+-      <updated>1687804442636</updated>
++      <updated>1688152267777</updated>
+     </task>
+-    <task id="LOCAL-00012" summary="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.">
+-      <created>1687978018443</created>
++    <task id="LOCAL-00012" summary="Login Bug-Fixes">
++      <option name="closed" value="true" />
++      <created>1688158591817</created>
+       <option name="number" value="00012" />
+       <option name="presentableId" value="LOCAL-00012" />
+       <option name="project" value="LOCAL" />
+-      <updated>1687978018443</updated>
++      <updated>1688158591817</updated>
+     </task>
+     <option name="localTasksCounter" value="13" />
+     <servers />
+@@ -199,9 +209,11 @@
+     <MESSAGE value="Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController." />
+     <MESSAGE value="Add Interaction with views" />
+     <MESSAGE value="Stash test" />
+-    <MESSAGE value="Add jdbc" />
+-    <MESSAGE value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
++    <MESSAGE value="login fertig1" />
++    <MESSAGE value="login fertig1." />
++    <MESSAGE value="Login- + RegisterModels erstellt. &quot;Code-Ubau :/&quot;" />
++    <MESSAGE value="Login Bug-Fixes" />
++    <option name="LAST_COMMIT_MESSAGE" value="Login Bug-Fixes" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>

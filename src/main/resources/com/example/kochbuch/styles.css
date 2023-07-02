@@ -1,0 +1,95 @@
+/* Start View */
+
+.menuBtn {
+  -fx-background-color: transparent;
+   -fx-background-radius: 10px;
+   -fx-border-radius: 10px;
+   -fx-cursor: hand;
+}
+
+.menuBtn:hover {
+  -fx-background-color: black;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-cursor: hand;
+  -fx-text-fill: linear-gradient(to right, #DBE7FF, #FBCCF8);
+}
+
+.sideBarMenu{
+    -fx-background-color: linear-gradient(to right, rgba(219,231,255,0.7), rgba(251,204,248,0.7));
+    -fx-margin: 20px;
+    -fx-background-radius: 15px;
+}
+
+/* Recipes View */
+.recipesBox {
+  -fx-background-color: linear-gradient(to right, rgba(255,255,255,0.7), rgba(219,231,255,0.4), rgba(251,204,248,0.4));
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+}
+
+.recipes-detail-btn {
+   -fx-background-color: white;
+   -fx-background-radius: 10px;
+   -fx-border-radius: 10px;
+   -fx-cursor: hand;
+}
+
+.recipes-detail-btn:hover {
+  -fx-background-color: black;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-cursor: hand;
+  -fx-text-fill: linear-gradient(to right, #DBE7FF, #FBCCF8);
+}
+
+.scroll-pane {
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+
+
+/* Recipes Detail View */
+
+.recipes-detail-bg {
+  -fx-background-color: linear-gradient(to right, #ffffff, #DBE7FF, #FBCCF8);
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+}
+
+/* Login View */
+.button-style {
+
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+    /* Transition */
+
+}
+
+.button-style-reverse{
+
+    -fx-text-fill: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: black;
+    /* Transition */
+
+}
+
+.button-style:hover {
+    -fx-background-color: black;
+    -fx-text-fill: #ffffff;
+
+}
+
+.frame {
+
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
+
+}
+
+
+
+
