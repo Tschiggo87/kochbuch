@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import com.example.kochbuch.model.RezeptModel;
+import javafx.util.converter.NumberStringConverter;
 
 public class EditController {
 
@@ -15,6 +16,7 @@ public class EditController {
     public TextField portion;
     public TextField schwierigkeitsgrad;
     public TextField anweisungen;
+    public TextField zutaten;
     public TextField bild;
     private RezeptModel model;
 
@@ -27,15 +29,19 @@ public class EditController {
         bindModel();
     }
 
-    private void bindModel(){
+
+    private void bindModel() {
         name.textProperty().bindBidirectional(model.nameProperty());
         beschreibung.textProperty().bindBidirectional(model.beschreibungProperty());
-        dauer.textProperty().bindBidirectional(dauer.textProperty());
-        portion.textProperty().bindBidirectional(portion.textProperty());
-        schwierigkeitsgrad.textProperty().bindBidirectional(schwierigkeitsgrad.textProperty());
-        anweisungen.textProperty().bindBidirectional(anweisungen.textProperty());
-        bild.textProperty().bindBidirectional(bild.textProperty());
+        dauer.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
+        portion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+        schwierigkeitsgrad.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+        anweisungen.textProperty().bindBidirectional(model.anweisungenProperty());
+        zutaten.textProperty().bindBidirectional(model.zutatenProperty());
+        bild.textProperty().bindBidirectional(model.bildProperty());
     }
+
+
 
     public void onShowValues() {
         System.out.println(model.toString());
@@ -49,6 +55,7 @@ public class EditController {
         model.setPortion(0); // Setzen Sie den Standardwert für die portion auf 0
         model.setSchwierigkeitsgrad(null);
         model.setAnweisungen(null);
+        model.setZutaten(null);
         model.setBild(null);
         //Durch das Setzen auf 0 geben Sie an, dass die Dauer und die Anzahl der Portionen auf ihren Standardwert zurückgesetzt werden sollen (bei Integer).
 
