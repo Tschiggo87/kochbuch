@@ -19,7 +19,7 @@
          <bottom>
             <ButtonBar prefHeight="40.0" prefWidth="995.0" BorderPane.alignment="CENTER">
               <buttons>
-                <Button mnemonicParsing="false" styleClass="button-style-reverse" text="Bearbeiten">
+                <Button mnemonicParsing="false" onAction="#onEditBtnClick" styleClass="button-style-reverse" text="Bearbeiten">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="14.0" />
                      </font>

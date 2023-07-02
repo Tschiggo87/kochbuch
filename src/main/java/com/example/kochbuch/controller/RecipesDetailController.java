@@ -1,7 +1,10 @@
 package com.example.kochbuch.controller;
 
+import com.example.kochbuch.Main;
+import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import com.example.kochbuch.model.Rezept;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -24,8 +27,12 @@ public class RecipesDetailController {
     private Label recipeDifficulty;
     @FXML
     private Label recipePortion;
-
+    private static MainController controllerInstance;
     private final DataBaseRecipesHandler databaseHandler;
+
+    public void onEditBtnClick() {
+        Main.switchToView(StaticViews.RecipeEditView);
+    }
 
     public RecipesDetailController() {
         databaseHandler = new DataBaseRecipesHandler();
