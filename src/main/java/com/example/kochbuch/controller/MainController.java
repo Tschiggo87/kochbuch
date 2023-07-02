@@ -3,7 +3,6 @@ package com.example.kochbuch.controller;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -11,11 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.sql.*;
 
 public class MainController {
     @FXML
@@ -30,8 +25,13 @@ public class MainController {
     private static MainController controllerInstance;
 
     private static String loggedInUser;
+
+    @FXML
+    private Button adminEdit;
+
     @FXML
     private ImageView loginImage;
+
 
     public static MainController getControllerInstance() {
         return controllerInstance;
@@ -42,6 +42,10 @@ public class MainController {
         Main.switchToView(StaticViews.RecipesView);
     }
 
+    @FXML
+    protected void onEditClick() {
+        Main.switchToView(StaticViews.RecipeEditView);
+    }
 
 
     @FXML
@@ -90,7 +94,7 @@ public class MainController {
     public void resetProfileImage() {
         String resourcePath = "/images/icons/user-solid.png";
         InputStream imageStream = getClass().getResourceAsStream(resourcePath);
-        if(imageStream == null) {
+        if (imageStream == null) {
             throw new IllegalArgumentException("Resource not found: " + resourcePath);
         }
         Image defaultImage = new Image(imageStream); // Das Standardbild als Image-Objekt erstellen
@@ -104,7 +108,7 @@ public class MainController {
             String loggedInUser = getLoggedInUser();
 
             if (loggedInUser != null) {
-                controllerInstance.loggedInUserLabel.setText( loggedInUser);
+                controllerInstance.loggedInUserLabel.setText(loggedInUser);
             } else {
                 controllerInstance.loggedInUserLabel.setText("");
             }
@@ -116,20 +120,23 @@ public class MainController {
             String loggedInUser = getLoggedInUser();
             if (loggedInUser != null) {
                 controllerInstance.accountBtn.setText("Logout");
+                controllerInstance.adminEdit.setVisible(loggedInUser.equals("admin")); // Setzen Sie die Sichtbarkeit des adminEdit-Buttons basierend auf dem Benutzernamen
             } else {
                 controllerInstance.accountBtn.setText("Login");
                 MainController.getControllerInstance().resetProfileImage();
                 if (Main.getMainController() != null) {
                     Main.switchToView(StaticViews.LoginView);
                 } else {
-                    // Führen Sie hier geeignete Aktionen durch, wie zum Beispiel die Erzeugung eines Fehlerprotokolls oder das Auslösen einer Ausnahme.
                     System.out.println("Main.mainController is null");
                 }
+                // Setzen Sie die Sichtbarkeit des adminEdit-Buttons auf false, wenn der Benutzer nicht eingeloggt ist
+                controllerInstance.adminEdit.setVisible(false);
             }
         }
     }
 
 }
+
 
 
   /*  public static void saveImage(String imageName, String imagePath) {
