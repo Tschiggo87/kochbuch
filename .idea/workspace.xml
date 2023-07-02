@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_07_2023_11_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_07_2023_11_37__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_06_2023_20_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_06_2023_20_12__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="@edit-view" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687978018443</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="@edit-view">
+      <option name="closed" value="true" />
+      <created>1688289682607</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1688289682607</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +215,8 @@
     <MESSAGE value="Stash test" />
     <MESSAGE value="Add jdbc" />
     <MESSAGE value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController." />
+    <MESSAGE value="@edit-view" />
+    <option name="LAST_COMMIT_MESSAGE" value="@edit-view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
