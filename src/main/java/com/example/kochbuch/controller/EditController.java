@@ -6,19 +6,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import com.example.kochbuch.model.RezeptModel;
+import javafx.util.converter.NumberStringConverter;
 
 public class EditController {
 
     public TextField name;
     public TextField beschreibung;
     public TextField dauer;
-    public TextField anzahlDerPortionen;
+    public TextField portion;
     public TextField schwierigkeitsgrad;
     public TextField anweisungen;
+    public TextField bild;
     private RezeptModel model;
 
     @FXML
     private void initialize(){
+
+        /* Passt die grösse des Textfeldes an den Inhalt */
+        anweisungen.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Passen Sie die Größe des Textfelds an den Inhalt an
+            anweisungen.setPrefColumnCount(newValue.length() + 1);
+        });
+
 
         model = new RezeptModel();
         onShowValues();
@@ -26,14 +35,18 @@ public class EditController {
         bindModel();
     }
 
-    private void bindModel(){
+
+    private void bindModel() {
         name.textProperty().bindBidirectional(model.nameProperty());
         beschreibung.textProperty().bindBidirectional(model.beschreibungProperty());
-        dauer.textProperty().bindBidirectional(dauer.textProperty());
-        anzahlDerPortionen.textProperty().bindBidirectional(anzahlDerPortionen.textProperty());
-        schwierigkeitsgrad.textProperty().bindBidirectional(schwierigkeitsgrad.textProperty());
-        anweisungen.textProperty().bindBidirectional(anweisungen.textProperty());
+        dauer.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
+        portion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+        schwierigkeitsgrad.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+        anweisungen.textProperty().bindBidirectional(model.anweisungenProperty());
+        bild.textProperty().bindBidirectional(model.bildProperty());
     }
+
+
 
     public void onShowValues() {
         System.out.println(model.toString());
@@ -44,9 +57,10 @@ public class EditController {
         model.setName(null);
         model.setBeschreibung(null);
         model.setDauer(0); // Setzen Sie den Standardwert für die Dauer auf 0
-        model.setAnzahlDerPortionen(0); // Setzen Sie den Standardwert für die AnzahlDerPortionen auf 0
+        model.setPortion(0); // Setzen Sie den Standardwert für die portion auf 0
         model.setSchwierigkeitsgrad(null);
         model.setAnweisungen(null);
+        model.setBild(null);
         //Durch das Setzen auf 0 geben Sie an, dass die Dauer und die Anzahl der Portionen auf ihren Standardwert zurückgesetzt werden sollen (bei Integer).
 
     }

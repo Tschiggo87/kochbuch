@@ -9,17 +9,19 @@ public class RezeptModel {
     private StringProperty name;
     private StringProperty beschreibung;
     private IntegerProperty dauer;
-    private IntegerProperty anzahlDerPortionen;
+    private IntegerProperty portion;
     private StringProperty schwierigkeitsgrad;
     private StringProperty anweisungen;
+    private StringProperty bild;
 
     public RezeptModel(){
         name = new SimpleStringProperty();
         beschreibung = new SimpleStringProperty();
         dauer = new SimpleIntegerProperty();
-        anzahlDerPortionen = new SimpleIntegerProperty();
+        portion = new SimpleIntegerProperty();
         schwierigkeitsgrad = new SimpleStringProperty();
         anweisungen = new SimpleStringProperty();
+        bild = new SimpleStringProperty();
     }
 
     // Getter and Setter methods
@@ -61,16 +63,16 @@ public class RezeptModel {
         this.dauer.set(dauer);
     }
 
-    public int getAnzahlDerPortionen() {
-        return anzahlDerPortionen.get();
+    public int getPortion() {
+        return portion.get();
     }
 
-    public IntegerProperty anzahlDerPortionenProperty() {
-        return anzahlDerPortionen;
+    public IntegerProperty portionProperty() {
+        return portion;
     }
 
-    public void setAnzahlDerPortionen(int anzahlDerPortionen) {
-        this.anzahlDerPortionen.set(anzahlDerPortionen);
+    public void setPortion(int portion) {
+        this.portion.set(portion);
     }
 
     public String getSchwierigkeitsgrad() {
@@ -97,8 +99,20 @@ public class RezeptModel {
         this.anweisungen.set(anweisungen);
     }
 
+    public String getBild() {
+        return bild.get();
+    }
+
+    public StringProperty bildProperty() {
+        return bild;
+    }
+
+    public void setBild(String bild) {
+        this.bild.set(bild);
+    }
+
     @Override
     public String toString() {
-        return "RezeptModel{" + "name=" + name.get() + ", beschreibung=" + beschreibung.get() + ", dauer=" + dauer.get() + ", anzahlDerPortionen=" + anzahlDerPortionen.get() + ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() + ", anweisungen=" + anweisungen.get() + '}';
+        return "RezeptModel{" + "name=" + name.get() + ", beschreibung=" + beschreibung.get() + ", dauer=" + dauer.get() + ", portion=" + portion.get() + ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() + ", anweisungen=" + anweisungen.get() + ", bild=" + bild.get() + '}';
     }
 }
