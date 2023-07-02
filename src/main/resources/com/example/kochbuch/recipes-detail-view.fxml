@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1064.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesDetailController">
    <children>
-      <BorderPane layoutX="28.0" layoutY="10.0" prefHeight="634.0" prefWidth="995.0" styleClass="frame" stylesheets="@styles.css">
+      <BorderPane layoutX="28.0" layoutY="10.0" prefHeight="634.0" prefWidth="995.0" stylesheets="@styles.css">
          <bottom>
             <ButtonBar prefHeight="40.0" prefWidth="995.0" BorderPane.alignment="CENTER">
               <buttons>
@@ -55,7 +55,7 @@
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="457.0" prefWidth="537.0" text="Zubereitung ">
+                  <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="457.0" prefWidth="537.0" text="Zubereitung " wrapText="true">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -79,7 +79,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <Label fx:id="recipeIngredients" alignment="TOP_LEFT" prefHeight="729.0" prefWidth="379.0" text="Zutat" textFill="#5b5b5b">
+                        <Label fx:id="recipeIngredients" alignment="TOP_LEFT" prefHeight="729.0" prefWidth="379.0" text="Zutat" textFill="#5b5b5b" wrapText="true">
                            <font>
                               <Font name="System Font" size="13.0" />
                            </font>

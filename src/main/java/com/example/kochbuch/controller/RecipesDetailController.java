@@ -54,7 +54,7 @@ public class RecipesDetailController {
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
         String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1, 2); // Setze die gewünschte RezeptId
+        statement.setInt(1, 5); // Setze die gewünschte RezeptId
 
         ResultSet resultSet = statement.executeQuery();
 
