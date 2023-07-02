@@ -1,43 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
    </top>
    <center>
@@ -74,7 +63,7 @@
    <left>
       <AnchorPane prefHeight="658.0" prefWidth="138.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="5.0" layoutY="6.0" prefHeight="659.0" prefWidth="133.0" styleClass="sideBarMenu">
+            <VBox layoutX="5.0" layoutY="1.0" prefHeight="664.0" prefWidth="176.0" styleClass="sideBarMenu" stylesheets="@../../../styles.css">
                <children>
                   <Label prefHeight="36.0" prefWidth="144.0" text="Cookz">
                      <font>
@@ -85,12 +74,8 @@
                      </VBox.margin>
                   </Label>
                   <Region prefHeight="77.0" prefWidth="138.0" />
-                  <HBox>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
+                  <HBox alignment="CENTER">
                      <children>
-                        <Region prefHeight="20.0" prefWidth="57.0" />
                         <ImageView fitHeight="20.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icons/utensils-solid.png" />
@@ -108,10 +93,9 @@
                      </VBox.margin>
                   </Button>
                   <Region prefHeight="37.0" prefWidth="138.0" />
-                  <HBox>
+                  <HBox alignment="CENTER">
                      <children>
-                        <Region prefHeight="20.0" prefWidth="57.0" />
-                        <ImageView fitHeight="20.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="recipeImage" fitHeight="20.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/icons/utensils-solid.png" />
                            </image>
@@ -130,15 +114,14 @@
                   <AnchorPane />
                   <ImageView fitHeight="150.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
                   <Region prefHeight="105.0" prefWidth="176.0" />
-                  <HBox>
+                  <HBox alignment="CENTER">
                      <children>
-                        <Region prefHeight="20.0" prefWidth="57.0" />
                         <ImageView fx:id="loginImage" fitHeight="34.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
                            <image>
                               <Image url="@../../../images/icons/user-solid.png" />
                            </image>
                            <HBox.margin>
-                              <Insets bottom="-15.0" />
+                              <Insets bottom="-15.0" right="35.0" />
                            </HBox.margin>
                         </ImageView>
                      </children>
@@ -146,14 +129,15 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label fx:id="loggedInUserLabel" prefHeight="17.0" prefWidth="173.0" textAlignment="CENTER" textFill="#6b0a8f">
+                  <Label fx:id="loggedInUserLabel" prefHeight="17.0" prefWidth="154.0" textAlignment="CENTER" textFill="#6b0a8f">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
-                     </font></Label>
-                  <Button fx:id="accountBtn" mnemonicParsing="false" onAction="#onAccountButtonClick" prefHeight="21.0" prefWidth="151.0" styleClass="button-style" stylesheets="@styles.css" text="Account">
+                     </font>
+                  </Label>
+                  <Button fx:id="accountBtn" mnemonicParsing="false" onAction="#onAccountButtonClick" prefHeight="28.0" prefWidth="154.0" styleClass="button-style" stylesheets="@styles.css" text="Account">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
