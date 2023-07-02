@@ -1,0 +1,320 @@
+Index: src/main/java/com/example/kochbuch/model/LoginModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kochbuch.model;\n\npublic class LoginModel {\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/kochbuch/model/LoginModel.java b/src/main/java/com/example/kochbuch/model/LoginModel.java
+--- a/src/main/java/com/example/kochbuch/model/LoginModel.java	
++++ b/src/main/java/com/example/kochbuch/model/LoginModel.java	
+@@ -1,4 +1,45 @@
+ package com.example.kochbuch.model;
+ 
++import javafx.beans.property.SimpleStringProperty;
++import javafx.beans.property.StringProperty;
++
+ public class LoginModel {
++    private StringProperty usernameTextField;
++    private StringProperty enterPasswordField;
++
++    public LoginModel() {
++        this.usernameTextField = new SimpleStringProperty();
++        this.enterPasswordField = new SimpleStringProperty();
++    }
++
++    public String getUsernameTextField() {
++        return usernameTextField.get();
++    }
++
++    public StringProperty usernameTextFieldProperty() {
++        return usernameTextField;
++    }
++
++    public void setUsernameTextField(String usernameTextField) {
++        this.usernameTextField.set(usernameTextField);
++    }
++
++    public String getEnterPasswordField() {
++        return enterPasswordField.get();
++    }
++
++    public StringProperty enterPasswordFieldProperty() {
++        return enterPasswordField;
++    }
++
++    public void setEnterPasswordField(String enterPasswordField) {
++        this.enterPasswordField.set(enterPasswordField);
++    }
++
++    @Override
++    public String toString(){
++        return "LoginModel{" +
++                "Benutzername=" + usernameTextField.get() +
++                ", Passwort=" + enterPasswordField.get() + "}";
++    }
+ }
+Index: src/main/resources/com/example/kochbuch/login-view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.*?>\n<?import javafx.scene.image.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.text.*?>\n\n<BorderPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"400.0\" prefWidth=\"520.0\" styleClass=\"frame\" stylesheets=\"@styles.css\" xmlns=\"http://javafx.com/javafx/17.0.2-ea\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.kochbuch.controller.LoginController\">\n   <left>\n      <AnchorPane prefHeight=\"407.0\" prefWidth=\"228.0\" BorderPane.alignment=\"CENTER\">\n         <children>\n            <ImageView fx:id=\"brandingImageView\" fitHeight=\"400.0\" fitWidth=\"245.0\" pickOnBounds=\"true\" preserveRatio=\"true\" styleClass=\"frame\">\n               <image>\n                  <Image url=\"@../../../images/LoginResources/background1.jpg\" />\n               </image></ImageView>\n         </children>\n      </AnchorPane>\n   </left>\n   <right>\n      <AnchorPane prefHeight=\"423.0\" prefWidth=\"295.0\" style=\"-fx-background-color: #FFFFFF;\" BorderPane.alignment=\"CENTER\">\n         <children>\n            <ImageView fx:id=\"lockImageView\" fitHeight=\"70.0\" fitWidth=\"65.0\" layoutX=\"103.0\" layoutY=\"49.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\n               <image>\n                  <Image url=\"@../../../images/LoginResources/LockLogo1.png\" />\n               </image>\n            </ImageView>\n            <Label layoutX=\"14.0\" layoutY=\"205.0\" text=\"Benutzername\">\n               <font>\n                  <Font name=\"Arial Rounded MT Bold\" size=\"12.0\" />\n               </font>\n            </Label>\n            <TextField fx:id=\"usernameTextField\" layoutX=\"110.0\" layoutY=\"200.0\" prefHeight=\"25.0\" prefWidth=\"137.0\" promptText=\"Benutzername\" />\n            <Label layoutX=\"14.0\" layoutY=\"240.0\" text=\"Passwort\">\n               <font>\n                  <Font name=\"Arial Rounded MT Bold\" size=\"12.0\" />\n               </font>\n            </Label>\n            <Button id=\"loginbtn\" fx:id=\"loginButton\" layoutX=\"82.0\" layoutY=\"289.0\" mnemonicParsing=\"false\" onAction=\"#loginButtonOnAction\" prefHeight=\"25.0\" prefWidth=\"75.0\" styleClass=\"button-style\" stylesheets=\"@styles.css\" text=\"Login\" textFill=\"WHITE\">\n               <font>\n                  <Font name=\"Arial Rounded MT Bold\" size=\"13.0\" />\n               </font>\n            </Button>\n            <Button id=\"loginbtn\" fx:id=\"SignUpButton\" layoutX=\"168.0\" layoutY=\"290.0\" mnemonicParsing=\"false\" onAction=\"#onActionSingUpButton\" prefHeight=\"17.0\" prefWidth=\"75.0\" styleClass=\"button-style\" stylesheets=\"@styles.css\" text=\"Sing Up!\" textFill=\"WHITE\">\n               <font>\n                  <Font name=\"Arial Rounded MT Bold\" size=\"13.0\" />\n               </font>\n            </Button>\n            <Label fx:id=\"loginMessageLabel\" layoutX=\"15.0\" layoutY=\"168.0\" prefHeight=\"15.0\" prefWidth=\"230.0\" textFill=\"GREEN\">\n               <font>\n                  <Font name=\"Arial Rounded MT Bold\" size=\"12.0\" />\n               </font>\n            </Label>\n            <PasswordField fx:id=\"enterPasswordField\" layoutX=\"111.0\" layoutY=\"235.0\" prefHeight=\"25.0\" prefWidth=\"135.0\" promptText=\"Passwort\" />\n            <Button id=\"loginbtn\" fx:id=\"cancelButton\" layoutX=\"76.0\" layoutY=\"346.0\" mnemonicParsing=\"false\" onAction=\"#cancelButtonOnAction\" prefHeight=\"24.0\" prefWidth=\"167.0\" styleClass=\"button-style\" stylesheets=\"@styles.css\" text=\"Schliessen\" textFill=\"WHITE\">\n               <font>\n                  <Font name=\"Arial Rounded MT Bold\" size=\"13.0\" />\n               </font>\n            </Button>\n         </children></AnchorPane>\n   </right>\n</BorderPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/kochbuch/login-view.fxml b/src/main/resources/com/example/kochbuch/login-view.fxml
+--- a/src/main/resources/com/example/kochbuch/login-view.fxml	
++++ b/src/main/resources/com/example/kochbuch/login-view.fxml	
+@@ -9,7 +9,7 @@
+    <left>
+       <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+          <children>
+-            <ImageView fx:id="brandingImageView" fitHeight="400.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true" styleClass="frame">
++            <ImageView fx:id="brandingImageView" fitHeight="400.0" fitWidth="245.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" styleClass="frame">
+                <image>
+                   <Image url="@../../../images/LoginResources/background1.jpg" />
+                </image></ImageView>
+@@ -19,39 +19,39 @@
+    <right>
+       <AnchorPane prefHeight="423.0" prefWidth="295.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+          <children>
+-            <ImageView fx:id="lockImageView" fitHeight="70.0" fitWidth="65.0" layoutX="103.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
++            <ImageView fx:id="lockImageView" fitHeight="81.0" fitWidth="83.0" focusTraversable="false" layoutX="98.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                   <Image url="@../../../images/LoginResources/LockLogo1.png" />
+                </image>
+             </ImageView>
+-            <Label layoutX="14.0" layoutY="205.0" text="Benutzername">
++            <Label focusTraversable="false" layoutX="14.0" layoutY="205.0" text="Benutzername">
+                <font>
+                   <Font name="Arial Rounded MT Bold" size="12.0" />
+                </font>
+             </Label>
+-            <TextField fx:id="usernameTextField" layoutX="110.0" layoutY="200.0" prefHeight="25.0" prefWidth="137.0" promptText="Benutzername" />
+-            <Label layoutX="14.0" layoutY="240.0" text="Passwort">
++            <TextField fx:id="usernameTextField" focusTraversable="true" layoutX="110.0" layoutY="200.0" prefHeight="25.0" prefWidth="137.0" promptText="Benutzername" />
++            <Label focusTraversable="false" layoutX="14.0" layoutY="240.0" text="Passwort">
+                <font>
+                   <Font name="Arial Rounded MT Bold" size="12.0" />
+                </font>
+             </Label>
+-            <Button id="loginbtn" fx:id="loginButton" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Login" textFill="WHITE">
++            <Button id="loginbtn" fx:id="loginButton" focusTraversable="false" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Login" textFill="WHITE">
+                <font>
+                   <Font name="Arial Rounded MT Bold" size="13.0" />
+                </font>
+             </Button>
+-            <Button id="loginbtn" fx:id="SignUpButton" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Sing Up!" textFill="WHITE">
++            <Button id="loginbtn" fx:id="SignUpButton" focusTraversable="false" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Sign Up!" textFill="WHITE">
+                <font>
+                   <Font name="Arial Rounded MT Bold" size="13.0" />
+                </font>
+             </Button>
+-            <Label fx:id="loginMessageLabel" layoutX="15.0" layoutY="168.0" prefHeight="15.0" prefWidth="230.0" textFill="GREEN">
++            <Label fx:id="loginMessageLabel" focusTraversable="false" layoutX="15.0" layoutY="168.0" prefHeight="15.0" prefWidth="230.0" textFill="RED">
+                <font>
+                   <Font name="Arial Rounded MT Bold" size="12.0" />
+                </font>
+             </Label>
+-            <PasswordField fx:id="enterPasswordField" layoutX="111.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Passwort" />
+-            <Button id="loginbtn" fx:id="cancelButton" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
++            <PasswordField fx:id="enterPasswordField" focusTraversable="true" layoutX="111.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Passwort" />
++            <Button id="loginbtn" fx:id="cancelButton" focusTraversable="false" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
+                <font>
+                   <Font name="Arial Rounded MT Bold" size="13.0" />
+                </font>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"f2aa812e-3531-43b7-988b-8f6d530a1bb6\" name=\"Changes\" comment=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\">\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ceasar-salad.png\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n        <option value=\"FxmlFile\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Rebase.Settings\">\n    <option name=\"NEW_BASE\" value=\"dev\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">\n    <option name=\"selectedUrlAndAccountId\">\n      <UrlAndAccount>\n        <option name=\"accountId\" value=\"9c11d8a0-51b7-4ce9-a4ca-338961d2110d\" />\n        <option name=\"url\" value=\"https://github.com/Tschiggo87/kochbuch.git\" />\n      </UrlAndAccount>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2RFuQZI5JE2IXDxt0hSqubbfmHL\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,\n    &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,\n    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/kochbuch\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.example.kochbuch\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"f2aa812e-3531-43b7-988b-8f6d530a1bb6\" name=\"Changes\" comment=\"\" />\n      <created>1686858134356</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1686858134356</updated>\n      <workItem from=\"1687764415250\" duration=\"5905000\" />\n      <workItem from=\"1687777332418\" duration=\"11862000\" />\n      <workItem from=\"1687799275199\" duration=\"4227000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Inital commit\">\n      <created>1686890738717</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1686890738718</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Inital commit\">\n      <created>1686891931242</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1686891931242</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Inital commit\">\n      <created>1686892033545</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1686892033545</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Inital commit\">\n      <created>1687454409109</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687454409109</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Add databasehandler\">\n      <created>1687454632658</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687454632658</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Add databasehandler\">\n      <created>1687455453296</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687455453296</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController.\">\n      <created>1687498116758</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687498116758</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Add Interaction with views\">\n      <created>1687675024214</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687675024214</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Stash test\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1687769669384</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687769669384</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"Stash test\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1687769711083</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687769711083</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"Add jdbc\">\n      <created>1687804442636</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687804442636</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\">\n      <created>1687978018443</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1687978018443</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"13\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Inital commit\" />\n    <MESSAGE value=\"Add databasehandler\" />\n    <MESSAGE value=\"Change the name of the files &quot;Hello&quot; and HelloController to Main and MainController.\" />\n    <MESSAGE value=\"Add Interaction with views\" />\n    <MESSAGE value=\"Stash test\" />\n    <MESSAGE value=\"Add jdbc\" />\n    <MESSAGE value=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n  <component name=\"com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent\">\n    <option name=\"sizePresets\">\n      <list>\n        <SizePreset>\n          <option name=\"caption\" value=\"Phone\" />\n          <option name=\"height\" value=\"568\" />\n          <option name=\"width\" value=\"320\" />\n        </SizePreset>\n        <SizePreset>\n          <option name=\"caption\" value=\"Tablet\" />\n          <option name=\"height\" value=\"1024\" />\n          <option name=\"width\" value=\"768\" />\n        </SizePreset>\n        <SizePreset>\n          <option name=\"caption\" value=\"Desktop\" />\n          <option name=\"height\" value=\"900\" />\n          <option name=\"width\" value=\"1440\" />\n        </SizePreset>\n      </list>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,12 +5,12 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.">
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ceasar-salad.png" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/ListModel.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/LoginModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/Rezept.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/login-view.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -186,11 +186,29 @@
+       <option name="project" value="LOCAL" />
+       <updated>1687978018443</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="Update recipes-detail-view.fxml add some interaction with the database in the RecipesDetailController.">
++      <created>1688229564706</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1688229564706</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.History.Properties">
++    <option name="COLUMN_ID_ORDER">
++      <list>
++        <option value="Default.Root" />
++        <option value="Default.Author" />
++        <option value="Default.Date" />
++        <option value="Default.Subject" />
++        <option value="Space.CommitStatus" />
++      </list>
++    </option>
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+Index: src/main/java/com/example/kochbuch/model/ListModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/kochbuch/model/ListModel.java b/src/main/java/com/example/kochbuch/model/ListModel.java
+deleted file mode 100644
+--- a/src/main/java/com/example/kochbuch/model/ListModel.java	
++++ /dev/null	
+@@ -1,5 +0,0 @@
+-package com.example.kochbuch.model;
+-
+-public class ListModel {
+-
+-}
+Index: src/main/java/com/example/kochbuch/model/Rezept.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/kochbuch/model/Rezept.java b/src/main/java/com/example/kochbuch/model/Rezept.java
+deleted file mode 100644
+--- a/src/main/java/com/example/kochbuch/model/Rezept.java	
++++ /dev/null	
+@@ -1,95 +0,0 @@
+-package com.example.kochbuch.model;
+-
+-public class Rezept {
+-    private int rezeptId;
+-    private String name;
+-    private String beschreibung;
+-    private String kochzeit;
+-    private String vorbereitungszeit;
+-    private String gesamtzeit;
+-    private int anzahlDerPortionen;
+-    private String schwierigkeitsgrad;
+-    private String anweisungen;
+-
+-    // Getter and Setter methods
+-    // RezeptID
+-    public int getRezeptId() {
+-        return rezeptId;
+-    }
+-
+-    public void setRezeptId(int rezeptId) {
+-        this.rezeptId = rezeptId;
+-    }
+-
+-    // Name
+-    public String getName() {
+-        return name;
+-    }
+-
+-    public void setName(String name) {
+-        this.name = name;
+-    }
+-
+-    // Beschreibung
+-    public String getBeschreibung() {
+-        return beschreibung;
+-    }
+-
+-    public void setBeschreibung(String beschreibung) {
+-        this.beschreibung = beschreibung;
+-    }
+-
+-    // Kochzeit
+-    public String getKochzeit() {
+-        return kochzeit;
+-    }
+-
+-    public void setKochzeit(String kochzeit) {
+-        this.kochzeit = kochzeit;
+-    }
+-
+-    // Vorbereitungszeit
+-    public String getVorbereitungszeit() {
+-        return vorbereitungszeit;
+-    }
+-
+-    public void setVorbereitungszeit(String vorbereitungszeit) {
+-        this.vorbereitungszeit = vorbereitungszeit;
+-    }
+-
+-    // Gesamtzeit
+-    public String getGesamtzeit() {
+-        return gesamtzeit;
+-    }
+-
+-    public void setGesamtzeit(String gesamtzeit) {
+-        this.gesamtzeit = gesamtzeit;
+-    }
+-
+-    // Anzahl der Portionen
+-    public int getAnzahlDerPortionen() {
+-        return anzahlDerPortionen;
+-    }
+-
+-    public void setAnzahlDerPortionen(int anzahlDerPortionen) {
+-        this.anzahlDerPortionen = anzahlDerPortionen;
+-    }
+-
+-    // Schwierigkeitsgrad
+-    public String getSchwierigkeitsgrad() {
+-        return schwierigkeitsgrad;
+-    }
+-
+-    public void setSchwierigkeitsgrad(String schwierigkeitsgrad) {
+-        this.schwierigkeitsgrad = schwierigkeitsgrad;
+-    }
+-
+-    // Anweisungen
+-    public String getAnweisungen() {
+-        return anweisungen;
+-    }
+-
+-    public void setAnweisungen(String anweisungen) {
+-        this.anweisungen = anweisungen;
+-    }
+-}
+Index: src/main/java/com/example/kochbuch/controller/RecipesDetailController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kochbuch.controller;\n\nimport com.example.kochbuch.databasehandler.DataBaseRecipesHandler;\nimport com.example.kochbuch.model.Rezept;\nimport javafx.fxml.FXML;\nimport javafx.scene.control.Label;\n\nimport java.sql.Connection;\nimport java.sql.PreparedStatement;\nimport java.sql.ResultSet;\nimport java.sql.SQLException;\n\npublic class RecipesDetailController {\n\n    @FXML\n    private Label recipeName;\n    @FXML\n    private Label recipeDescription;\n    @FXML\n    private Label recipeInstruction;\n    @FXML\n    private Label recipeTime;\n    @FXML\n    private Label recipeDifficulty;\n    @FXML\n    private Label recipePortion;\n\n    private final DataBaseRecipesHandler databaseHandler;\n\n    public RecipesDetailController() {\n        databaseHandler = new DataBaseRecipesHandler();\n    }\n\n    public void initialize() {\n        try {\n            Connection connection = databaseHandler.connect();\n            String[] recipeInfo = getRecipeInfoFromDatabase(connection);\n            showRecipeInfo(recipeInfo);\n        } catch (SQLException e) {\n            e.printStackTrace();\n            // Fehlerbehandlung\n        }\n    }\n\n    private String[] getRecipeInfoFromDatabase(Connection connection) throws SQLException {\n        String[] recipeInfo = new String[6];\n        PreparedStatement statement = null;\n        ResultSet resultSet = null;\n\n        try {\n            String query = \"SELECT Name, Beschreibung, Anweisungen, Gesamtzeit, Portionen, Schwierigkeit FROM Rezepte WHERE RezeptId = ?\";\n            statement = connection.prepareStatement(query);\n            statement.setInt(1, 1); //\n            resultSet = statement.executeQuery();\n\n            if (resultSet.next()) {\n                recipeInfo[0] = resultSet.getString(\"Name\");\n                recipeInfo[1] = resultSet.getString(\"Beschreibung\");\n                recipeInfo[2] = resultSet.getString(\"Anweisungen\");\n                recipeInfo[3] = resultSet.getString(\"Gesamtzeit\");\n                recipeInfo[4] = resultSet.getString(\"Portionen\");\n                recipeInfo[5] = resultSet.getString(\"Schwierigkeit\");\n            }\n        } finally {\n            if (resultSet != null) resultSet.close();\n            if (statement != null) statement.close();\n        }\n\n        return recipeInfo;\n    }\n\n    private void showRecipeInfo(String[] recipeInfo) {\n        recipeName.setText(recipeInfo[0]);\n        recipeDescription.setText(recipeInfo[1]);\n        recipeInstruction.setText(recipeInfo[2]);\n        recipeTime.setText(recipeInfo[3]);\n        recipePortion.setText(recipeInfo[4]);\n        recipeDifficulty.setText(recipeInfo[5]);\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java b/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java
+--- a/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java	
++++ b/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java	
+@@ -1,7 +1,6 @@
+ package com.example.kochbuch.controller;
+ 
+ import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
+-import com.example.kochbuch.model.Rezept;
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Label;
+ 

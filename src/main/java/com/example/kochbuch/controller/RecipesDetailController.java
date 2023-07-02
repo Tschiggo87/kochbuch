@@ -3,10 +3,9 @@ package com.example.kochbuch.controller;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
-import com.example.kochbuch.model.Rezept;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,8 +26,12 @@ public class RecipesDetailController {
     private Label recipeDifficulty;
     @FXML
     private Label recipePortion;
-    private static MainController controllerInstance;
+    @FXML
+    private ImageView recipeImage;
+
     private final DataBaseRecipesHandler databaseHandler;
+
+    /*Button Interaktion*/
 
     public void onEditBtnClick() {
         Main.switchToView(StaticViews.RecipeEditView);
@@ -55,18 +58,18 @@ public class RecipesDetailController {
         ResultSet resultSet = null;
 
         try {
-            String query = "SELECT Name, Beschreibung, Anweisungen, Gesamtzeit, Portionen, Schwierigkeit FROM Rezepte WHERE RezeptId = ?";
+            String query = "SELECT name, beschreibung, dauer, portion, schwierigkeitsgrad, anweisungen FROM Rezepte WHERE RezeptId = ?";
             statement = connection.prepareStatement(query);
             statement.setInt(1, 1); //
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                recipeInfo[0] = resultSet.getString("Name");
-                recipeInfo[1] = resultSet.getString("Beschreibung");
-                recipeInfo[2] = resultSet.getString("Anweisungen");
-                recipeInfo[3] = resultSet.getString("Gesamtzeit");
-                recipeInfo[4] = resultSet.getString("Portionen");
-                recipeInfo[5] = resultSet.getString("Schwierigkeit");
+                recipeInfo[0] = resultSet.getString("name");
+                recipeInfo[1] = resultSet.getString("beschreibung");
+                recipeInfo[2] = resultSet.getString("dauer");
+                recipeInfo[3] = resultSet.getString("portion");
+                recipeInfo[4] = resultSet.getString("schwierigkeitsgrad");
+                recipeInfo[5] = resultSet.getString("anweisungen");
             }
         } finally {
             if (resultSet != null) resultSet.close();
@@ -79,10 +82,10 @@ public class RecipesDetailController {
     private void showRecipeInfo(String[] recipeInfo) {
         recipeName.setText(recipeInfo[0]);
         recipeDescription.setText(recipeInfo[1]);
-        recipeInstruction.setText(recipeInfo[2]);
-        recipeTime.setText(recipeInfo[3]);
-        recipePortion.setText(recipeInfo[4]);
+        recipeTime.setText(recipeInfo[2]);
+        recipePortion.setText(recipeInfo[3]);
         recipeDifficulty.setText(recipeInfo[5]);
+        recipeInstruction.setText(recipeInfo[4]);
 
     }
 }

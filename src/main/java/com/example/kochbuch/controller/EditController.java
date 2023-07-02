@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import com.example.kochbuch.model.RezeptModel;
+import javafx.util.converter.NumberStringConverter;
 
 public class EditController {
 
@@ -21,21 +22,31 @@ public class EditController {
     @FXML
     private void initialize(){
 
+        /* Passt die grösse des Textfeldes an den Inhalt */
+        anweisungen.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Passen Sie die Größe des Textfelds an den Inhalt an
+            anweisungen.setPrefColumnCount(newValue.length() + 1);
+        });
+
+
         model = new RezeptModel();
         onShowValues();
 
         bindModel();
     }
 
-    private void bindModel(){
+
+    private void bindModel() {
         name.textProperty().bindBidirectional(model.nameProperty());
         beschreibung.textProperty().bindBidirectional(model.beschreibungProperty());
-        dauer.textProperty().bindBidirectional(dauer.textProperty());
-        portion.textProperty().bindBidirectional(portion.textProperty());
-        schwierigkeitsgrad.textProperty().bindBidirectional(schwierigkeitsgrad.textProperty());
-        anweisungen.textProperty().bindBidirectional(anweisungen.textProperty());
-        bild.textProperty().bindBidirectional(bild.textProperty());
+        dauer.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
+        portion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+        schwierigkeitsgrad.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+        anweisungen.textProperty().bindBidirectional(model.anweisungenProperty());
+        bild.textProperty().bindBidirectional(model.bildProperty());
     }
+
+
 
     public void onShowValues() {
         System.out.println(model.toString());

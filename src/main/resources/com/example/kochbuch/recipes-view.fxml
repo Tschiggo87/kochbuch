@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesController">
+<AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesController">
    <children>
       <ScrollPane layoutX="30.0" layoutY="91.0">
          <content>
@@ -39,15 +48,15 @@
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung">
+                              <Label text="Beschreibung" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit">
+                              <Label text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
@@ -87,15 +96,15 @@
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung">
+                              <Label text="Beschreibung" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit">
+                              <Label text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
@@ -132,15 +141,15 @@
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung">
+                              <Label text="Beschreibung" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit">
+                              <Label text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
@@ -177,15 +186,15 @@
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung">
+                              <Label text="Beschreibung" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit">
+                              <Label text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
@@ -222,15 +231,15 @@
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Berschreibung">
+                              <Label text="Berschreibung" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit">
+                              <Label text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
@@ -267,15 +276,15 @@
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Beschreibung">
+                              <Label text="Beschreibung" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
-                              <Label text="Schwierigkeit">
+                              <Label text="Schwierigkeit" textFill="#5b5b5b">
                                  <font>
-                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
                               </Label>
                               <Region prefHeight="12.0" prefWidth="232.0" />
@@ -298,7 +307,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Label layoutX="30.0" layoutY="27.0" text="Rezepte">
+      <Label layoutX="30.0" layoutY="27.0" text="Rezept Übersicht">
          <font>
             <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
