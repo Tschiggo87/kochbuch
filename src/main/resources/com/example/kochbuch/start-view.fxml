@@ -58,7 +58,8 @@
                   </LinearGradient>
                </textFill>
             </Label>
-         </center></BorderPane>
+         </center>
+      </BorderPane>
    </center>
    <left>
       <AnchorPane prefHeight="658.0" prefWidth="138.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
@@ -93,17 +94,9 @@
                      </VBox.margin>
                   </Button>
                   <Region prefHeight="37.0" prefWidth="138.0" />
-                  <HBox alignment="CENTER">
-                     <children>
-                        <ImageView fx:id="recipeImage" fitHeight="20.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/icons/utensils-solid.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                  <HBox alignment="CENTER" />
                   <Region prefHeight="11.0" prefWidth="133.0" />
-                  <Button mnemonicParsing="false" onAction="#onRecipesButtonClick" prefHeight="27.0" prefWidth="174.0" styleClass="button-style" stylesheets="@styles.css" text="Rezepte">
+                  <Button fx:id="adminEdit" mnemonicParsing="false" onAction="#onEditClick" prefHeight="27.0" prefWidth="174.0" styleClass="button-style" stylesheets="@styles.css" text="Bearbeiten">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
