@@ -23,7 +23,6 @@
 
 /* Recipes View */
 .recipesBox {
-  -fx-background-color: linear-gradient(to right, rgba(255,255,255,0.7), rgba(219,231,255,0.4), rgba(251,204,248,0.4));
   -fx-background-radius: 10px;
   -fx-border-radius: 10px;
 }
@@ -59,23 +58,32 @@
 
 /* Login View */
 .button-style {
-
     -fx-text-fill: black;
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
     -fx-background-color: transparent;
-    /* Transition */
-
 }
 
 .button-style-reverse{
-
     -fx-text-fill: white;
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
     -fx-background-color: black;
     /* Transition */
 
+}
+
+.button-style-border{
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+}
+
+.button-style-border:hover{
+    -fx-background-color: black;
+    -fx-text-fill: #ffffff;
 }
 
 .button-style:hover {
@@ -85,10 +93,13 @@
 }
 
 .frame {
-
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
-
 }
+
+.shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
+}
+
 
 #text{
     -fx-text-alignment: center;
