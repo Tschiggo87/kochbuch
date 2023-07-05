@@ -14,67 +14,16 @@ import javafx.scene.image.ImageView;
 import java.util.List;
 
 public class RecipesController {
+    private static final int NUM_RECIPES = 6;
 
     @FXML
-    private Label recipeName1;
+    private Label recipeName1, recipeName2, recipeName3, recipeName4, recipeName5, recipeName6;
     @FXML
-    private Label recipeName2;
+    private ImageView recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6;
     @FXML
-    private Label recipeName3;
+    private Label recipeDescription1, recipeDescription2, recipeDescription3, recipeDescription4, recipeDescription5, recipeDescription6;
     @FXML
-    private Label recipeName4;
-    @FXML
-    private Label recipeName5;
-    @FXML
-    private Label recipeName6;
-
-    @FXML
-    private ImageView recipeImage1;
-    @FXML
-    private ImageView recipeImage2;
-    @FXML
-    private ImageView recipeImage3;
-    @FXML
-    private ImageView recipeImage4;
-    @FXML
-    private ImageView recipeImage5;
-    @FXML
-    private ImageView recipeImage6;
-    @FXML
-    private Label recipeDescription1;
-
-    @FXML
-    private Label recipeDescription2;
-
-    @FXML
-    private Label recipeDescription3;
-
-    @FXML
-    private Label recipeDescription4;
-
-    @FXML
-    private Label recipeDescription5;
-
-    @FXML
-    private Label recipeDescription6;
-
-    @FXML
-    private Label recipeDifficulty1;
-
-    @FXML
-    private Label recipeDifficulty2;
-
-    @FXML
-    private Label recipeDifficulty3;
-
-    @FXML
-    private Label recipeDifficulty4;
-
-    @FXML
-    private Label recipeDifficulty5;
-
-    @FXML
-    private Label recipeDifficulty6;
+    private Label recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6;
 
     private DatabaseHelper databaseHelper;
 
@@ -86,45 +35,17 @@ public class RecipesController {
 
     public void populateLabels(List<RezeptModel> rezepte) {
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
-
-        // Rezept 1
-        recipeImage1.setImage(new Image("file:" + imageDirectory + rezepte.get(0).getBild()));
-        recipeName1.setText(rezepte.get(0).getName());
-        recipeDescription1.setText(rezepte.get(0).getBeschreibung());
-        recipeDifficulty1.setText(rezepte.get(0).getSchwierigkeitsgrad());
-
-
-        // Rezept 2
-        recipeImage2.setImage(new Image("file:" + imageDirectory + rezepte.get(1).getBild()));
-        recipeName2.setText(rezepte.get(1).getName());
-        recipeDescription2.setText(rezepte.get(1).getBeschreibung());
-        recipeDifficulty2.setText(rezepte.get(1).getSchwierigkeitsgrad());
-
-        // Rezept 3
-        recipeImage3.setImage(new Image("file:" + imageDirectory + rezepte.get(2).getBild()));
-        recipeName3.setText(rezepte.get(2).getName());
-        recipeDescription3.setText(rezepte.get(2).getBeschreibung());
-        recipeDifficulty3.setText(rezepte.get(2).getSchwierigkeitsgrad());
-
-        // Rezept 4
-        recipeImage4.setImage(new Image("file:" + imageDirectory + rezepte.get(3).getBild()));
-        recipeName4.setText(rezepte.get(3).getName());
-        recipeDescription4.setText(rezepte.get(3).getBeschreibung());
-        recipeDifficulty4.setText(rezepte.get(3).getSchwierigkeitsgrad());
-
-        // Rezept 5
-        recipeImage5.setImage(new Image("file:" + imageDirectory + rezepte.get(4).getBild()));
-        recipeName5.setText(rezepte.get(4).getName());
-        recipeDescription5.setText(rezepte.get(4).getBeschreibung());
-        recipeDifficulty5.setText(rezepte.get(4).getSchwierigkeitsgrad());
-
-        // Rezept 6
-        recipeImage6.setImage(new Image("file:" + imageDirectory + rezepte.get(5).getBild()));
-        recipeName6.setText(rezepte.get(5).getName());
-        recipeDescription6.setText(rezepte.get(5).getBeschreibung());
-        recipeDifficulty6.setText(rezepte.get(5).getSchwierigkeitsgrad());
+        Label[] recipeNames = {recipeName1, recipeName2, recipeName3, recipeName4, recipeName5, recipeName6};
+        ImageView[] recipeImages = {recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6};
+        Label[] recipeDescriptions = {recipeDescription1, recipeDescription2, recipeDescription3, recipeDescription4, recipeDescription5, recipeDescription6};
+        Label[] recipeDifficulties = {recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6};
+        for (int i = 0; i < NUM_RECIPES; i++) {
+            recipeImages[i].setImage(new Image("file:" + imageDirectory + rezepte.get(i).getBild()));
+            recipeNames[i].setText(rezepte.get(i).getName());
+            recipeDescriptions[i].setText(rezepte.get(i).getBeschreibung());
+            recipeDifficulties[i].setText(rezepte.get(i).getSchwierigkeitsgrad());
+        }
     }
-
     @FXML
     public void onDetailBtnClick1() {
         DataTransmitter.getInstance().setRecipeId(1);
