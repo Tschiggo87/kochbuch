@@ -2,10 +2,12 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
+import com.example.kochbuch.databasehandler.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
-import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
+import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.sql.Connection;
@@ -32,18 +34,27 @@ public class RecipesDetailController {
     @FXML
     private ImageView recipeImage;
 
-    private final DataBaseRecipesHandler databaseHandler;
+    private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
+    private int recipeId;
 
     public RecipesDetailController() {
-        databaseHandler = new DataBaseRecipesHandler();
+        databaseHandler = new DatabaseHandler();
         recipeModel = new RezeptModel();
     }
 
     public void initialize() {
         try {
-            Connection connection = databaseHandler.connect();
+            // RezeptId aus dem DataTransmitter erhalten
+            recipeId = DataTransmitter.getInstance().getRecipeId();
+
+            // Verbindung zur Datenbank herstellen
+            Connection connection = databaseHandler.getConnection();
+
+            // Rezeptinformationen aus der Datenbank laden
             loadRecipeInfoFromDatabase(connection);
+
+            // Rezeptinformationen anzeigen
             showRecipeInfo();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,28 +63,34 @@ public class RecipesDetailController {
     }
 
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
+        // SQL-Abfrage für das Laden der Rezeptinformationen
         String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1, 5); // Setze die gewünschte RezeptId
 
-        ResultSet resultSet = statement.executeQuery();
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            // Parameter für die RezeptId setzen
+            statement.setInt(1, recipeId);
 
-        if (resultSet.next()) {
-            recipeModel.setName(resultSet.getString("name"));
-            recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
-            recipeModel.setDauer(resultSet.getInt("dauer"));
-            recipeModel.setPortion(resultSet.getInt("portion"));
-            recipeModel.setAnweisungen(resultSet.getString("anweisungen"));
-            recipeModel.setSchwierigkeitsgrad(resultSet.getString("schwierigkeitsgrad"));
-            recipeModel.setZutaten(resultSet.getString("zutaten"));
-            //recipeModel.setBild(resultSet.getString("bild"));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Rezeptinformationen aus dem ResultSet in das Rezeptmodell laden
+                    recipeModel.setName(resultSet.getString("name"));
+                    recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
+                    recipeModel.setDauer(resultSet.getInt("dauer"));
+                    recipeModel.setPortion(resultSet.getInt("portion"));
+                    recipeModel.setAnweisungen(resultSet.getString("anweisungen"));
+                    recipeModel.setSchwierigkeitsgrad(resultSet.getString("schwierigkeitsgrad"));
+                    recipeModel.setZutaten(resultSet.getString("zutaten"));
+                    recipeModel.setBild(resultSet.getString("bild"));
+                }
+            }
         }
-
-        resultSet.close();
-        statement.close();
     }
 
     private void showRecipeInfo() {
+        // Verzeichnis, in dem die Rezeptbilder gespeichert sind
+        String imageDirectory = "src/main/resources/images/RezeptBilder/";
+
+        // Rezeptinformationen auf den entsprechenden UI-Elementen anzeigen
         recipeName.setText(recipeModel.getName());
         recipeDescription.setText(recipeModel.getBeschreibung());
         recipeTime.setText(Integer.toString(recipeModel.getDauer()));
@@ -81,18 +98,24 @@ public class RecipesDetailController {
         recipeInstruction.setText(recipeModel.getAnweisungen());
         recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
         recipeIngredients.setText(recipeModel.getZutaten());
-    }
 
+        // Das Rezeptbild laden und anzeigen
+        recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
+    }
 
     /* Weitere Methoden für die Interaktion mit der Benutzeroberfläche */
 
+    public void setRecipeId(int id) {
+        this.recipeId = id;
+    }
 
     public void onEditBtnClick() {
+        // Zur Bearbeitungsansicht wechseln
         Main.switchToView(StaticViews.RecipeEditView);
     }
 
     public void onBackToRecipesBtnClick() {
+        // Zur Rezepteansicht zurückkehren
         Main.switchToView(StaticViews.RecipesView);
     }
-
 }

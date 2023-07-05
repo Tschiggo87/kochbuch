@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="bug fixes admin Edit button">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add interaction between recipes-view.fxml and recipes-detail-view.fxml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHelper.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,26 +90,6 @@
       <recent name="com.example.kochbuch" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.kochbuch.Main" />
-      <module name="kochbuch" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.kochbuch.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -118,10 +101,6 @@
       <workItem from="1687764415250" duration="5905000" />
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
-      <workItem from="1688323857599" duration="193000" />
-      <workItem from="1688328660406" duration="668000" />
-      <workItem from="1688378901265" duration="1809000" />
-      <workItem from="1688454409725" duration="1859000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -267,13 +246,12 @@
       <option name="project" value="LOCAL" />
       <updated>1688317187378</updated>
     </task>
-    <task id="LOCAL-00021" summary="bug fixes admin Edit button">
-      <option name="closed" value="true" />
-      <created>1688323574449</created>
+    <task id="LOCAL-00021" summary="Add interaction between recipes-view.fxml and recipes-detail-view.fxml">
+      <created>1688453490288</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1688323574449</updated>
+      <updated>1688453490288</updated>
     </task>
     <option name="localTasksCounter" value="22" />
     <servers />
@@ -318,8 +296,8 @@
     <MESSAGE value="Add Recipe Overview with Model/Database access" />
     <MESSAGE value="Add Recipes Images" />
     <MESSAGE value="Add changes on the recipes views" />
-    <MESSAGE value="bug fixes admin Edit button" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes admin Edit button" />
+    <MESSAGE value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
