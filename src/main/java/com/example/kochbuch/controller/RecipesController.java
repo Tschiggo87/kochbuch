@@ -3,7 +3,7 @@ package com.example.kochbuch.controller;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DataTransmitter;
-import com.example.kochbuch.databasehandler.DatabaseHelper;
+import com.example.kochbuch.databasehandler.DatabaseHandler;
 import com.example.kochbuch.model.RezeptModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,10 +25,10 @@ public class RecipesController {
     @FXML
     private Label recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6;
 
-    private DatabaseHelper databaseHelper;
+    private DatabaseHandler databaseHelper;
 
     public void initialize() {
-        databaseHelper = new DatabaseHelper();
+        databaseHelper = new DatabaseHandler();
         List<RezeptModel> rezepte = databaseHelper.getRezepteFromDatabase();
         populateLabels(rezepte);
     }

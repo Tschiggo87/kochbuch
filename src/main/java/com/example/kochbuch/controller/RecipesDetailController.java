@@ -4,7 +4,7 @@ import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
-import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
+import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -34,12 +34,12 @@ public class RecipesDetailController {
     @FXML
     private ImageView recipeImage;
 
-    private final DataBaseRecipesHandler databaseHandler;
+    private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
     private int recipeId;
 
     public RecipesDetailController() {
-        databaseHandler = new DataBaseRecipesHandler();
+        databaseHandler = new DatabaseHandler();
         recipeModel = new RezeptModel();
     }
 
@@ -49,7 +49,7 @@ public class RecipesDetailController {
             recipeId = DataTransmitter.getInstance().getRecipeId();
 
             // Verbindung zur Datenbank herstellen
-            Connection connection = databaseHandler.connect();
+            Connection connection = databaseHandler.getConnection();
 
             // Rezeptinformationen aus der Datenbank laden
             loadRecipeInfoFromDatabase(connection);
