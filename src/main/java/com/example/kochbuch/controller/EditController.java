@@ -98,10 +98,7 @@ public class EditController {
         model.setAnweisungen(anweisungen.getText());
         model.setZutaten(zutaten.getText());
         model.setBild(bild.getText());
-
-        // Hier den Code zum Speichern der Daten oder zum Aktualisieren der Anzeige einfügen
-
-        // Optional: Zeige eine Bestätigungsmeldung an
+        
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
         alert.showAndWait();
     }
