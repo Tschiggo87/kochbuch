@@ -2,7 +2,6 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
-import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import com.example.kochbuch.model.RegisterModel;
 import javafx.event.ActionEvent;
@@ -102,12 +101,12 @@ public class RegisterController implements Initializable {
     private boolean checkUsernameExists() {
         String username = registerModel.getUsernameTextField();
         boolean usernameExists = false;
-        DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
+        DatabaseHandler dbhandler = new DatabaseHandler();
         Connection connection = null;
         String checkUsernameQuery = "SELECT COUNT(1) FROM Login WHERE username = ?";
 
         try {
-            connection = dbhandler.connect();
+            connection = dbhandler.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(checkUsernameQuery);
             preparedStatement.setString(1, username);
             ResultSet queryResult = preparedStatement.executeQuery();

@@ -126,8 +126,7 @@ public class RezeptModel {
         this.zutaten.set(zutaten);
     }
 
-    public String getBild() {
-        return bild.get();
+    public String getBild() {return bild.get();
     }
 
     public StringProperty bildProperty() {

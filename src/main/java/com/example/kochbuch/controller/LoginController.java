@@ -2,7 +2,7 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
-import com.example.kochbuch.databasehandler.DataBaseRecipesHandler;
+import com.example.kochbuch.databasehandler.DatabaseHandler;
 import com.example.kochbuch.model.LoginModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,6 +50,7 @@ public class LoginController implements Initializable {
 
 
     private LoginModel loginModel = new LoginModel ();
+    private LoginModel adminEdit = new LoginModel ();
 
     // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
@@ -91,13 +92,13 @@ public class LoginController implements Initializable {
 
     @FXML
     private void validateLogin() {
-        DataBaseRecipesHandler dbhandler = new DataBaseRecipesHandler();
+        DatabaseHandler dbhandler = new DatabaseHandler();
         Connection connection = null;
         String hashedPassword = getHashedPassword(loginModel.getEnterPasswordField());
         String verifyLogin = "SELECT count(1), role, profile_image_path FROM Login WHERE username = ? AND password = ?";
 
         try {
-            connection = dbhandler.connect(); // Verbindung zur Datenbank herstellen
+            connection = dbhandler.getConnection(); // Verbindung zur Datenbank herstellen
 
             PreparedStatement preparedStatement = connection.prepareStatement(verifyLogin);
             preparedStatement.setString(1, loginModel.getUsernameTextField());

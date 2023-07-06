@@ -18,7 +18,7 @@
 .sideBarMenu{
     -fx-background-color: linear-gradient(to right, rgba(219,231,255,0.7), rgba(251,204,248,0.7));
     -fx-margin: 20px;
-    -fx-background-radius: 15px;
+
 }
 
 /* Recipes View */
