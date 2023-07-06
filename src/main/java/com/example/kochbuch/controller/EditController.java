@@ -85,8 +85,6 @@ public class EditController {
     }
 
 
-
-
     @FXML
     public void onSaveBtnClick() {
         // Speichern der Werte aus dem Textfield.
@@ -98,7 +96,7 @@ public class EditController {
         model.setAnweisungen(anweisungen.getText());
         model.setZutaten(zutaten.getText());
         model.setBild(bild.getText());
-        
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
         alert.showAndWait();
     }
