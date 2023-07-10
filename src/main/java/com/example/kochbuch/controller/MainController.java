@@ -28,6 +28,8 @@ public class MainController {
 
     @FXML
     private Button adminEdit;
+    @FXML
+    private Button adminAdd;
 
     @FXML
     private ImageView loginImage;
@@ -45,6 +47,11 @@ public class MainController {
     @FXML
     protected void onEditClick() {
         Main.switchToView(StaticViews.RecipeEditView);
+    }
+
+    @FXML
+    protected void onAddClick() {
+        Main.switchToView(StaticViews.AddRecipeView);
     }
 
 
@@ -121,6 +128,7 @@ public class MainController {
             if (loggedInUser != null) {
                 controllerInstance.accountBtn.setText("Logout");
                 controllerInstance.adminEdit.setVisible(loggedInUser.equals("admin")); // Setzen Sie die Sichtbarkeit des adminEdit-Buttons basierend auf dem Benutzernamen
+                controllerInstance.adminAdd.setVisible(loggedInUser.equals("admin")); // Setzen Sie die Sichtbarkeit des adminAdd-Buttons basierend auf dem Benutzernamen
             } else {
                 controllerInstance.accountBtn.setText("Login");
                 MainController.getControllerInstance().resetProfileImage();
@@ -131,6 +139,7 @@ public class MainController {
                 }
                 // Setzen Sie die Sichtbarkeit des adminEdit-Buttons auf false, wenn der Benutzer nicht eingeloggt ist
                 controllerInstance.adminEdit.setVisible(false);
+                controllerInstance.adminAdd.setVisible(false);
             }
         }
     }

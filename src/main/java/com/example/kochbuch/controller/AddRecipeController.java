@@ -1,10 +1,10 @@
+
 package com.example.kochbuch.controller;
 
-import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
-import com.example.kochbuch.databasehandler.DataTransmitter;
+import com.example.kochbuch.model.RezeptModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -12,10 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 
-import java.util.List;
-
-public class EditController {
-
+public class AddRecipeController {
     public TextField recipeName;
     public TextField recipeDescription;
     public TextField recipeTime;
@@ -25,30 +22,12 @@ public class EditController {
     public TextArea recipeIngredients;
     public TextField recipeImage;
     private RezeptModel model;
-    private List<RezeptModel> recipeList;
-    private int currentIndex;
 
     @FXML
-    private void initialize(){
-
+    private void initialize() {
         model = new RezeptModel();
-
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        recipeList = databaseHandler.getRezepteFromDatabase();
-        currentIndex = 5;
-
-        if (!recipeList.isEmpty()) {
-            loadRecipeDetails(recipeList.get(currentIndex));
-        }
-
         bindModel();
     }
-
-    public void loadRecipeDetails(RezeptModel recipeModel) {
-        model = recipeModel;
-    }
-
-
 
     private void bindModel() {
         recipeName.textProperty().bindBidirectional(model.nameProperty());
@@ -63,26 +42,7 @@ public class EditController {
 
     public void onShowValues() {
         System.out.println(model.toString());
-
     }
-
-    public void onReset() {
-        model.setName(null);
-        model.setBeschreibung(null);
-        model.setDauer(0); // Setzen Sie den Standardwert für die Dauer auf 0
-        model.setPortion(0); // Setzen Sie den Standardwert für die portion auf 0
-        model.setSchwierigkeitsgrad(null);
-        model.setAnweisungen(null);
-        model.setZutaten(null);
-        model.setBild(null);
-        //Durch das Setzen auf 0 geben Sie an, dass die Dauer und die Anzahl der Portionen auf ihren Standardwert zurückgesetzt werden sollen (bei Integer).
-
-    }
-
-    public void onBackToRecipesDetailBtnClick() {
-        Main.switchToView(StaticViews.RecipesDetailView);
-    }
-
 
     @FXML
     public void onResetBtnClick() {
@@ -99,7 +59,7 @@ public class EditController {
             recipeIngredients.clear();
             recipeImage.clear();
 
-            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gelöscht.", ButtonType.OK);
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden Gelöscht.", ButtonType.OK);
             infoAlert.showAndWait();
         }
         else {
@@ -107,33 +67,28 @@ public class EditController {
         }
     }
 
-
+    public void onBackToRecipesDetailBtnClick() {
+        Main.switchToView(StaticViews.WelcomeView);
+    }
 
     @FXML
-    public void onSaveBtnClick() {
-        // Speichern der Werte aus dem Textfield.
-        model.setName(recipeName.getText());
-        model.setBeschreibung(recipeDescription.getText());
-        model.setDauer(Integer.parseInt(recipeTime.getText()));
-        model.setPortion(Integer.parseInt(recipePortion.getText()));
-        model.setSchwierigkeitsgrad(recipeDifficulty.getText());
-        model.setAnweisungen(recipeInstruction.getText());
-        model.setZutaten(recipeIngredients.getText());
-        model.setBild(recipeImage.getText());
-
-        // Aktualisieren der Daten in der Datenbank
+    public void onSaveNewRecipeBtnClick() {
+        // Speichern des Rezepts in der Datenbank
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        boolean success = databaseHandler.updateRezeptInDatabase(model);
+        boolean success = databaseHandler.addRezeptToDatabase(model);
 
         if (success) {
-            // Daten wurden erfolgreich gespeichert
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Rezept wurde erfolgreich hinzugefügt.", ButtonType.OK);
             alert.showAndWait();
+            // Zurück zur Rezeptübersicht wechseln
+            Main.switchToView(StaticViews.RecipesDetailView);
         } else {
-            // Fehler beim Speichern der Daten
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Speichern der Daten.", ButtonType.OK);
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Hinzufügen des Rezepts.", ButtonType.OK);
             alert.showAndWait();
         }
+
+        Main.switchToView(StaticViews.AddRecipeView);
+
     }
 
 
