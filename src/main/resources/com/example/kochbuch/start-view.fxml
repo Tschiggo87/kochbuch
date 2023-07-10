@@ -107,7 +107,7 @@
                   <Region prefHeight="37.0" prefWidth="138.0" />
                   <HBox alignment="CENTER" />
                   <Region prefHeight="11.0" prefWidth="133.0" />
-                  <Button fx:id="adminEdit" mnemonicParsing="false" onAction="#onEditClick" prefHeight="27.0" prefWidth="174.0" styleClass="button-style" stylesheets="@styles.css" text="Bearbeiten">
+                  <Button fx:id="adminEdit" mnemonicParsing="false" onAction="#onEditClick" prefHeight="27.0" prefWidth="174.0" styleClass="button-style" stylesheets="@styles.css" text="Rezept bearbeiten">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
@@ -115,7 +115,13 @@
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </Button>
+                  <Region prefHeight="11.0" prefWidth="133.0" />
                   <AnchorPane />
+                  <Button fx:id="adminAdd" mnemonicParsing="false" onAction="#onAddClick" prefHeight="27.0" prefWidth="174.0" styleClass="button-style" stylesheets="@styles.css" text="Rezept hinzufügen">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                     </font>
+                  </Button>
                   <ImageView fitHeight="150.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
                   <Region prefHeight="105.0" prefWidth="176.0" />
                   <HBox alignment="CENTER" prefHeight="31.0" prefWidth="95.0" style="-fx-alignment: CENTER;">

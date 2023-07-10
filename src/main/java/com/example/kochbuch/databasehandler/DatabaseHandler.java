@@ -104,5 +104,41 @@ public class DatabaseHandler {
         return false;
     }
 
+    public boolean addRezeptToDatabase(RezeptModel rezept) {
+        try {
+            // Verbindung zur Datenbank herstellen
+            Connection connection = getConnection();
+
+            // SQL-Abfrage vorbereiten
+            String query = "INSERT INTO Rezepte (name, beschreibung, dauer, portion, schwierigkeitsgrad, anweisungen, zutaten, bild) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Werte setzen
+            statement.setString(1, rezept.getName());
+            statement.setString(2, rezept.getBeschreibung());
+            statement.setInt(3, rezept.getDauer());
+            statement.setInt(4, rezept.getPortion());
+            statement.setString(5, rezept.getSchwierigkeitsgrad());
+            statement.setString(6, rezept.getAnweisungen());
+            statement.setString(7, rezept.getZutaten());
+            statement.setString(8, rezept.getBild());
+
+            // Abfrage ausführen
+            int rowsAffected = statement.executeUpdate();
+
+            // Ressourcen freigeben
+            statement.close();
+            connection.close();
+
+            // Überprüfen, ob das Rezept erfolgreich hinzugefügt wurde
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
 
 }

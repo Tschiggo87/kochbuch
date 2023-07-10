@@ -28,6 +28,8 @@ public class MainController {
 
     @FXML
     private Button adminEdit;
+    @FXML
+    private Button adminAdd;
 
     @FXML
     private ImageView loginImage;
@@ -45,6 +47,11 @@ public class MainController {
     @FXML
     protected void onEditClick() {
         Main.switchToView(StaticViews.RecipeEditView);
+    }
+
+    @FXML
+    protected void onAddClick() {
+        Main.switchToView(StaticViews.AddRecipeView);
     }
 
 
