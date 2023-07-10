@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Design adjustment">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/AddRecipeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/add-recipe-view.fxml" afterDir="false" />
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add View to add recipes. Design adjustment.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/StaticViews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/StaticViews.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/AddRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/AddRecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/add-recipe-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/add-recipe-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -308,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688995708578</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Add View to add recipes. Design adjustment.">
+      <option name="closed" value="true" />
+      <created>1689001034283</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1689001034283</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +361,8 @@
     <MESSAGE value="Load a Recipe in to the Edit Window" />
     <MESSAGE value="Add a new function &quot;updateRezeptInDatabase&quot; to database DatabaseHandler and implement the function to the EditController" />
     <MESSAGE value="Design adjustment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Design adjustment" />
+    <MESSAGE value="Add View to add recipes. Design adjustment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add View to add recipes. Design adjustment." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

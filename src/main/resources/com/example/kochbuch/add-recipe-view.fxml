@@ -70,7 +70,7 @@
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="47.0" layoutY="608.0" mnemonicParsing="false" onAction="#onReset" styleClass="button-style-border" stylesheets="@styles.css" text="Zurücksetzen">
+      <Button layoutX="47.0" layoutY="608.0" mnemonicParsing="false" onAction="#onResetBtnClick" styleClass="button-style-border" stylesheets="@styles.css" text="Zurücksetzen">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>

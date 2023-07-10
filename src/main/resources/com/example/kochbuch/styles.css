@@ -74,7 +74,11 @@
     -fx-background-radius: 50px;
     -fx-background-color: black;
     /* Transition */
+}
 
+.button-style-reverse:hover {
+    -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+    -fx-text-fill: black;
 }
 
 .button-style-border{
@@ -86,8 +90,9 @@
 }
 
 .button-style-border:hover{
-    -fx-background-color: black;
-    -fx-text-fill: #ffffff;
+   -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+   -fx-text-fill: black;
+    -fx-border-color: none;
 }
 
 .button-style:hover {

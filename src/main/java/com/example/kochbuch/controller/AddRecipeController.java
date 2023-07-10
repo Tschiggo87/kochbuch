@@ -44,19 +44,31 @@ public class AddRecipeController {
         System.out.println(model.toString());
     }
 
-    public void onReset() {
-        model.setName(null);
-        model.setBeschreibung(null);
-        model.setDauer(0);
-        model.setPortion(0);
-        model.setSchwierigkeitsgrad(null);
-        model.setAnweisungen(null);
-        model.setZutaten(null);
-        model.setBild(null);
+    @FXML
+    public void onResetBtnClick() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Möchten Sie die Daten wirklich zurücksetzen?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            recipeName.clear();
+            recipeDescription.clear();
+            recipeTime.clear();
+            recipePortion.clear();
+            recipeDifficulty.clear();
+            recipeInstruction.clear();
+            recipeIngredients.clear();
+            recipeImage.clear();
+
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden Gelöscht.", ButtonType.OK);
+            infoAlert.showAndWait();
+        }
+        else {
+            // User clicked "No" or closed the dialog, do nothing
+        }
     }
 
     public void onBackToRecipesDetailBtnClick() {
-        Main.switchToView(StaticViews.RecipesDetailView);
+        Main.switchToView(StaticViews.WelcomeView);
     }
 
     @FXML

@@ -99,7 +99,7 @@ public class EditController {
             recipeIngredients.clear();
             recipeImage.clear();
 
-            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gelöscht.", ButtonType.OK);
             infoAlert.showAndWait();
         }
         else {
