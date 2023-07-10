@@ -86,18 +86,27 @@ public class EditController {
 
     @FXML
     public void onResetBtnClick() {
-        recipeName.clear();
-        recipeDescription.clear();
-        recipeTime.clear();
-        recipePortion.clear();
-        recipeDifficulty.clear();
-        recipeInstruction.clear();
-        recipeIngredients.clear();
-        recipeImage.clear();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Möchten Sie die Daten wirklich zurücksetzen?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            recipeName.clear();
+            recipeDescription.clear();
+            recipeTime.clear();
+            recipePortion.clear();
+            recipeDifficulty.clear();
+            recipeInstruction.clear();
+            recipeIngredients.clear();
+            recipeImage.clear();
+
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
+            infoAlert.showAndWait();
+        }
+        else {
+            // User clicked "No" or closed the dialog, do nothing
+        }
     }
+
 
 
     @FXML
@@ -112,8 +121,19 @@ public class EditController {
         model.setZutaten(recipeIngredients.getText());
         model.setBild(recipeImage.getText());
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
-        alert.showAndWait();
+        // Aktualisieren der Daten in der Datenbank
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        boolean success = databaseHandler.updateRezeptInDatabase(model);
+
+        if (success) {
+            // Daten wurden erfolgreich gespeichert
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
+            alert.showAndWait();
+        } else {
+            // Fehler beim Speichern der Daten
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Speichern der Daten.", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
 
 

@@ -69,4 +69,40 @@ public class DatabaseHandler {
         return rezepte;
     }
 
+
+    public boolean updateRezeptInDatabase(RezeptModel recipeModel) {
+        try {
+            // Verbindung zur Datenbank herstellen
+            Connection connection = getConnection();
+
+            // SQL-Abfrage vorbereiten
+            String query = "UPDATE Rezepte SET name = ?, beschreibung = ?, dauer = ?, portion = ?, schwierigkeitsgrad = ?, anweisungen = ?, zutaten = ?, bild = ? WHERE rezeptID = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, recipeModel.getName());
+            statement.setString(2, recipeModel.getBeschreibung());
+            statement.setInt(3, recipeModel.getDauer());
+            statement.setInt(4, recipeModel.getPortion());
+            statement.setString(5, recipeModel.getSchwierigkeitsgrad());
+            statement.setString(6, recipeModel.getAnweisungen());
+            statement.setString(7, recipeModel.getZutaten());
+            statement.setString(8, recipeModel.getBild());
+            statement.setInt(9, recipeModel.getRezeptID());
+
+            // Abfrage ausführen
+            int rowsUpdated = statement.executeUpdate();
+
+            // Ressourcen freigeben
+            statement.close();
+            connection.close();
+
+            // Überprüfen, ob die Aktualisierung erfolgreich war
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
 }
