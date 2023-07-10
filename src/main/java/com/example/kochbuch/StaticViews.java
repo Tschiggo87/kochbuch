@@ -12,5 +12,7 @@ public class StaticViews {
     public static final String RecipeEditView = "edit-view.fxml";
     public static final String WelcomeView = "welcome-view.fxml";
 
+    public static final String AddRecipeView = "add-recipe-view.fxml";
+
 
 }

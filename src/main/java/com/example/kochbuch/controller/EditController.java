@@ -1,50 +1,65 @@
 package com.example.kochbuch.controller;
 
+import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
-import javafx.event.ActionEvent;
+import com.example.kochbuch.databasehandler.DatabaseHandler;
+import com.example.kochbuch.databasehandler.DataTransmitter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import com.example.kochbuch.model.RezeptModel;
 import javafx.util.converter.NumberStringConverter;
+
+import java.util.List;
 
 public class EditController {
 
-    public TextField name;
-    public TextField beschreibung;
-    public TextField dauer;
-    public TextField portion;
-    public TextField schwierigkeitsgrad;
-    public TextField anweisungen;
-    public TextField zutaten;
-    public TextField bild;
+    public TextField recipeName;
+    public TextField recipeDescription;
+    public TextField recipeTime;
+    public TextField recipePortion;
+    public TextField recipeDifficulty;
+    public TextArea recipeInstruction;
+    public TextArea recipeIngredients;
+    public TextField recipeImage;
     private RezeptModel model;
+    private List<RezeptModel> recipeList;
+    private int currentIndex;
 
     @FXML
     private void initialize(){
 
         model = new RezeptModel();
-        onShowValues();
+
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        recipeList = databaseHandler.getRezepteFromDatabase();
+        currentIndex = 5;
+
+        if (!recipeList.isEmpty()) {
+            loadRecipeDetails(recipeList.get(currentIndex));
+        }
 
         bindModel();
     }
 
-
-    private void bindModel() {
-        name.textProperty().bindBidirectional(model.nameProperty());
-        beschreibung.textProperty().bindBidirectional(model.beschreibungProperty());
-        dauer.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
-        portion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
-        schwierigkeitsgrad.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
-        anweisungen.textProperty().bindBidirectional(model.anweisungenProperty());
-        zutaten.textProperty().bindBidirectional(model.zutatenProperty());
-        bild.textProperty().bindBidirectional(model.bildProperty());
+    public void loadRecipeDetails(RezeptModel recipeModel) {
+        model = recipeModel;
     }
 
 
+
+    private void bindModel() {
+        recipeName.textProperty().bindBidirectional(model.nameProperty());
+        recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
+        recipeTime.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
+        recipePortion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+        recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+        recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
+        recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
+        recipeImage.textProperty().bindBidirectional(model.bildProperty());
+    }
 
     public void onShowValues() {
         System.out.println(model.toString());
@@ -71,37 +86,32 @@ public class EditController {
 
     @FXML
     public void onResetBtnClick() {
-        name.clear();
-        beschreibung.clear();
-        dauer.clear();
-        portion.clear();
-        schwierigkeitsgrad.clear();
-        anweisungen.clear();
-        zutaten.clear();
-        bild.clear();
+        recipeName.clear();
+        recipeDescription.clear();
+        recipeTime.clear();
+        recipePortion.clear();
+        recipeDifficulty.clear();
+        recipeInstruction.clear();
+        recipeIngredients.clear();
+        recipeImage.clear();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
         alert.showAndWait();
     }
 
 
-
-
     @FXML
     public void onSaveBtnClick() {
         // Speichern der Werte aus dem Textfield.
-        model.setName(name.getText());
-        model.setBeschreibung(beschreibung.getText());
-        model.setDauer(Integer.parseInt(dauer.getText()));
-        model.setPortion(Integer.parseInt(portion.getText()));
-        model.setSchwierigkeitsgrad(schwierigkeitsgrad.getText());
-        model.setAnweisungen(anweisungen.getText());
-        model.setZutaten(zutaten.getText());
-        model.setBild(bild.getText());
+        model.setName(recipeName.getText());
+        model.setBeschreibung(recipeDescription.getText());
+        model.setDauer(Integer.parseInt(recipeTime.getText()));
+        model.setPortion(Integer.parseInt(recipePortion.getText()));
+        model.setSchwierigkeitsgrad(recipeDifficulty.getText());
+        model.setAnweisungen(recipeInstruction.getText());
+        model.setZutaten(recipeIngredients.getText());
+        model.setBild(recipeImage.getText());
 
-        // Hier den Code zum Speichern der Daten oder zum Aktualisieren der Anzeige einfügen
-
-        // Optional: Zeige eine Bestätigungsmeldung an
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
         alert.showAndWait();
     }

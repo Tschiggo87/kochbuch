@@ -16,6 +16,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.example.kochbuch.model.RezeptModel;
+import com.example.kochbuch.controller.EditController;
+
+
 public class RecipesDetailController {
 
     @FXML
@@ -41,6 +45,8 @@ public class RecipesDetailController {
 
     @FXML
     private ImageView recipeImage;
+    @FXML
+    private Button editBtn;
 
     @FXML
     private Button editButton2;
@@ -50,13 +56,14 @@ public class RecipesDetailController {
     private int recipeId;
 
     public RecipesDetailController() {
+        // Instanziierung des DatabaseHandler und RezeptModel
         databaseHandler = new DatabaseHandler();
         recipeModel = new RezeptModel();
     }
 
     public void initialize() {
         try {
-            // RezeptId aus dem DataTransmitter erhalten
+            // Rezept-ID von DataTransmitter abrufen
             recipeId = DataTransmitter.getInstance().getRecipeId();
 
             // Verbindung zur Datenbank herstellen
@@ -73,21 +80,21 @@ public class RecipesDetailController {
             editButton2.setVisible(loggedInUser != null && loggedInUser.equals("admin"));
         } catch (SQLException e) {
             e.printStackTrace();
-            // Fehlerbehandlung
+            // SQLException behandeln
         }
     }
 
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        // SQL-Abfrage für das Laden der Rezeptinformationen
+        // SQL-Abfrage zum Abrufen der Rezeptinformationen basierend auf der Rezept-ID
         String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            // Parameter für die RezeptId setzen
+            // Die Rezept-ID als Parameter in der SQL-Abfrage setzen
             statement.setInt(1, recipeId);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    // Rezeptinformationen aus dem ResultSet in das Rezeptmodell laden
+                    // Rezeptinformationen aus dem ResultSet abrufen und im recipeModel speichern
                     recipeModel.setName(resultSet.getString("name"));
                     recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
                     recipeModel.setDauer(resultSet.getInt("dauer"));
@@ -102,7 +109,7 @@ public class RecipesDetailController {
     }
 
     private void showRecipeInfo() {
-        // Verzeichnis, in dem die Rezeptbilder gespeichert sind
+        // Verzeichnis, in dem Rezeptbilder gespeichert sind
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
 
         // Rezeptinformationen auf den entsprechenden UI-Elementen anzeigen
@@ -114,7 +121,7 @@ public class RecipesDetailController {
         recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
         recipeIngredients.setText(recipeModel.getZutaten());
 
-        // Das Rezeptbild laden und anzeigen
+        // Rezeptbild laden und anzeigen
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
@@ -125,12 +132,19 @@ public class RecipesDetailController {
     }
 
     public void onEditBtnClick() {
-        // Zur Bearbeitungsansicht wechseln
+        // Erstellen Sie eine Instanz des EditControllers
+        EditController editController = new EditController();
+
+        // Übergeben Sie das ausgewählte Rezept an den EditController
+        editController.loadRecipeDetails(recipeModel);
+
+        // Wechseln Sie zur Bearbeitungsansicht
         Main.switchToView(StaticViews.RecipeEditView);
     }
 
+
     public void onBackToRecipesBtnClick() {
-        // Zur Rezepteansicht zurückkehren
+        // Zurück zur Rezeptansicht wechseln
         Main.switchToView(StaticViews.RecipesView);
     }
 }
