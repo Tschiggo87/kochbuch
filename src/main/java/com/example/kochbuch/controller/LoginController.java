@@ -44,7 +44,7 @@ public class LoginController implements Initializable {
 
 
     private LoginModel loginModel = new LoginModel ();
-    private LoginModel adminEdit = new LoginModel ();
+    private LoginModel editBtn = new LoginModel ();
 
     // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
