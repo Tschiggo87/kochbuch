@@ -294,5 +294,19 @@
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Button>
+      <AnchorPane id="register" prefHeight="117.0" prefWidth="1162.0" stylesheets="@../../../styles.css">
+         <children>
+            <Label fx:id="recipeName" layoutX="33.0" layoutY="42.0" styleClass="frame" stylesheets="@styles.css" text="Rezepte" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="recipeDescription" layoutX="563.0" layoutY="57.0" styleClass="frame" stylesheets="@styles.css" text="Beschreibung" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
