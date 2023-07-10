@@ -6,32 +6,23 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.*;
+
 
 
 public class Main extends Application {
 
 
     private static MainController mainController;
-    private static FXMLLoader currentFxmlLoader; // Fügt eine Variable hinzu, um die aktuelle FXMLLoader-Instanz zu speichern
 
-
-    public static Object getController() {
-        return currentFxmlLoader.getController();
-    }
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(StaticViews.StartView));
         fxmlLoader.load();
         mainController = fxmlLoader.getController();
-        currentFxmlLoader = fxmlLoader; // Speichert die FXMLLoader-Instanz, die zum Start der Anwendung verwendet wurde
         Scene scene = new Scene(fxmlLoader.getRoot(), 1300, 700);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm()); // CSS zur Scene hinzufügen
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Cookz - Kochbuch");
         stage.setScene(scene);
         stage.show();

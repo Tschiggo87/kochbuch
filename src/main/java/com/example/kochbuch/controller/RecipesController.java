@@ -28,11 +28,14 @@ public class RecipesController {
     private DatabaseHandler databaseHelper;
 
     public void initialize() {
+        // Instanziierung des DatabaseHandler
         databaseHelper = new DatabaseHandler();
         List<RezeptModel> rezepte = databaseHelper.getRezepteFromDatabase();
         populateLabels(rezepte);
     }
 
+
+    // Methode zum Befüllen der Labels mit den Rezeptinformationen
     public void populateLabels(List<RezeptModel> rezepte) {
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
         Label[] recipeNames = {recipeName1, recipeName2, recipeName3, recipeName4, recipeName5, recipeName6};
@@ -46,43 +49,52 @@ public class RecipesController {
             recipeDifficulties[i].setText(rezepte.get(i).getSchwierigkeitsgrad());
         }
     }
+
     @FXML
     public void onDetailBtnClick1() {
+        // Rezept-ID setzen und zur Detailansicht wechseln
         DataTransmitter.getInstance().setRecipeId(1);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
     @FXML
     public void onDetailBtnClick2() {
+        // Rezept-ID setzen und zur Detailansicht wechseln
         DataTransmitter.getInstance().setRecipeId(2);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
     @FXML
     public void onDetailBtnClick3() {
+        // Rezept-ID setzen und zur Detailansicht wechseln
         DataTransmitter.getInstance().setRecipeId(3);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
     @FXML
     public void onDetailBtnClick4() {
+        // Rezept-ID setzen und zur Detailansicht wechseln
         DataTransmitter.getInstance().setRecipeId(4);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
     @FXML
     public void onDetailBtnClick5() {
+        // Rezept-ID setzen und zur Detailansicht wechseln
         DataTransmitter.getInstance().setRecipeId(5);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
-    public void onDetailBtnClick6(){
+    @FXML
+    public void onDetailBtnClick6() {
+        // Rezept-ID setzen und zur Detailansicht wechseln
         DataTransmitter.getInstance().setRecipeId(6);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
     @FXML
     public void onRecipesBackBtnClick() {
+        // Zurück zur Willkommensansicht wechseln
         Main.switchToView(StaticViews.WelcomeView);
     }
 }
