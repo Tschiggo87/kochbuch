@@ -86,5 +86,10 @@ public class AddRecipeController {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Hinzufügen des Rezepts.", ButtonType.OK);
             alert.showAndWait();
         }
+
+        Main.switchToView(StaticViews.AddRecipeView);
+
     }
+
+
 }
