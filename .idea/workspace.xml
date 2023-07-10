@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add interaction between recipes-view.fxml and recipes-detail-view.fxml">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHelper.java" beforeDir="false" />
-    </list>
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -253,7 +247,23 @@
       <option name="project" value="LOCAL" />
       <updated>1688453490288</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refactoring DatabaseHandler">
+      <option name="closed" value="true" />
+      <created>1688970090512</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1688970090512</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Refactoring DatabaseHandler">
+      <option name="closed" value="true" />
+      <created>1688970107995</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1688970107995</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +307,8 @@
     <MESSAGE value="Add Recipes Images" />
     <MESSAGE value="Add changes on the recipes views" />
     <MESSAGE value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
+    <MESSAGE value="Refactoring DatabaseHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring DatabaseHandler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
