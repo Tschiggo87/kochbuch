@@ -6,6 +6,7 @@ import com.example.kochbuch.databasehandler.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,20 +20,30 @@ public class RecipesDetailController {
 
     @FXML
     private Label recipeName;
+
     @FXML
     private Label recipeDescription;
+
     @FXML
     private Label recipeInstruction;
+
     @FXML
     private Label recipeTime;
+
     @FXML
     private Label recipeDifficulty;
+
     @FXML
     private Label recipePortion;
+
     @FXML
     private Label recipeIngredients;
+
     @FXML
     private ImageView recipeImage;
+
+    @FXML
+    private Button editButton2;
 
     private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
@@ -56,6 +67,10 @@ public class RecipesDetailController {
 
             // Rezeptinformationen anzeigen
             showRecipeInfo();
+
+            // Button "editButton2" basierend auf Benutzerrolle anzeigen oder ausblenden
+            String loggedInUser = MainController.getLoggedInUser();
+            editButton2.setVisible(loggedInUser != null && loggedInUser.equals("admin"));
         } catch (SQLException e) {
             e.printStackTrace();
             // Fehlerbehandlung
