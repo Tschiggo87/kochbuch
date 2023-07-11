@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Small visual fixes on the Sidebar">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="sichere version1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +97,8 @@
       <workItem from="1687764415250" duration="5905000" />
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
+      <workItem from="1689083215273" duration="105000" />
+      <workItem from="1689084427849" duration="2957000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -285,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689010170665</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="sichere version1">
+      <option name="closed" value="true" />
+      <created>1689016486814</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1689016486814</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +338,8 @@
     <MESSAGE value="Refactoring DatabaseHandler" />
     <MESSAGE value="Small visual fixes on the Sidebar" />
     <MESSAGE value="sichere version" />
-    <option name="LAST_COMMIT_MESSAGE" value="sichere version" />
+    <MESSAGE value="sichere version1" />
+    <option name="LAST_COMMIT_MESSAGE" value="sichere version1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
