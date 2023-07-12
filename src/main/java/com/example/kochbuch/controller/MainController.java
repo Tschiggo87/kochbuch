@@ -46,7 +46,7 @@ public class MainController {
 
     @FXML
     protected void onEditClick() {
-        Main.switchToView(StaticViews.RecipeEditView);
+        Main.switchToView(StaticViews.RecipesView);
     }
 
     @FXML
