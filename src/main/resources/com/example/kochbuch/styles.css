@@ -131,3 +131,10 @@
     -fx-margin-left: auto;
     -fx-margin-right: auto;
 }
+
+#content {
+    -fx-background-image: url('backgroundWelcome1-split7.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-color: black;
+}

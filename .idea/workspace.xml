@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Small visual fixes on the Sidebar">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="sichere version4">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/backgroundWelcome1-split_(7).jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/backgroundWelcome1-split (6).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/backgroundWelcome1-split_(6).jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/backgroundWelcome1-split (7).jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +69,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev2&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -80,9 +84,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/kochbuch" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources\com\example\kochbuch" />
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources" />
+      <recent name="C:\Developments\Java\kochbuch\src\main\java\com\example\kochbuch" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -100,6 +108,7 @@
       <workItem from="1687764415250" duration="5905000" />
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
+      <workItem from="1689189856944" duration="1081000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>

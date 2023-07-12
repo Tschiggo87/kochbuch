@@ -17,7 +17,7 @@ public class WelcomeController implements Initializable {
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File welcomeFile = new File("src/main/resources/images/backgroundWelcome1-split (7).jpg");
+        File welcomeFile = new File("src/main/resources/images/backgroundWelcome1-split_(7).jpg");
         Image welocomeImage = new Image(welcomeFile.toURI().toString());
         welcomeImageView.setImage( welocomeImage);
     }
