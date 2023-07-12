@@ -15,10 +15,10 @@
 
 <AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.EditController">
     <children>
-      <GridPane layoutX="97.0" layoutY="169.0" prefHeight="337.0" prefWidth="305.0">
+      <GridPane layoutX="97.0" layoutY="176.0" prefHeight="337.0" prefWidth="337.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="133.5" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="680.0" minWidth="10.0" prefWidth="172.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="150.5" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="680.0" minWidth="10.0" prefWidth="155.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -115,14 +115,9 @@
                   <Image url="@../../../images/RezeptBilder/spaghetti.png" />
                </image>
             </ImageView>
-            <Label fx:id="recipeName1" layoutX="292.0" layoutY="36.0" styleClass="frame" stylesheets="@styles.css" text="Rezept Bearbeiten" textFill="WHITE">
+            <Label fx:id="recipeName1" layoutX="292.0" layoutY="36.0" styleClass="frame" stylesheets="@styles.css" text="Rezept bearbeiten" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="36.0" />
-               </font>
-            </Label>
-            <Label fx:id="recipeDescription1" layoutX="294.0" layoutY="96.0" styleClass="frame" stylesheets="@styles.css" text="Beschreibung" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
          </children>
