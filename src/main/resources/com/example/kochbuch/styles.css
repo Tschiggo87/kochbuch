@@ -37,6 +37,10 @@
    -fx-cursor: hand;
 }
 
+.recipe-image{
+    -fx-border-radius: 10px;
+    }
+
 .recipes-detail-btn:hover {
   -fx-background-color: black;
   -fx-background-radius: 10px;
@@ -67,12 +71,14 @@
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
     -fx-background-color: black;
-    /* Transition */
 }
 
 .button-style-reverse:hover {
-    -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+    -fx-background-color: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
     -fx-text-fill: black;
+    -fx-border-color: black;
 }
 
 .button-style-border{
@@ -117,14 +123,6 @@
 
 }
 
-.frame {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
-}
-
-.shadow {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
-}
-
 
 #text{
     -fx-text-alignment: center;
@@ -133,26 +131,7 @@
     -fx-margin-left: auto;
     -fx-margin-right: auto;
 }
-/* Ändere das Erscheinungsbild des Scrollbalkens */
-.scroll-pane .scroll-bar {
-    -fx-background-color: transparent;
-}
 
-/* Ändere das Erscheinungsbild des Scrollbalken-Daumens */
-.scroll-pane .scroll-bar:vertical .thumb {
-    -fx-background-color: #a0a0a0;
-}
-
-/* Ändere das Erscheinungsbild des Scrollbalken-Fortschritts */
-.scroll-pane .scroll-bar:vertical .thumb:pressed,
-.scroll-pane .scroll-bar:vertical .thumb:hover {
-    -fx-background-color: #808080;
-}
-
-/* Ändere das Erscheinungsbild des Scrollbalken-Hintergrunds */
-.scroll-pane .scroll-bar:vertical .track {
-    -fx-background-color: transparent;
-}
 
 
 
