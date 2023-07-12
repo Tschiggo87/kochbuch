@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Meldung beim Zurücksetzen">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_06_2023_20_12_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_06_2023_20_12__Changes_.xml" beforeDir="false" />
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,28 +53,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev2",
-    "last_directory_selection": "/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch",
-    "last_opened_file_path": "C:/Users/Arian/IdeaProjects/Gallery",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev2&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arian/IdeaProjects/Gallery&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Arian\IdeaProjects\kochbuch\src\main\resources\com\example\kochbuch" />
@@ -105,6 +102,9 @@
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
       <workItem from="1688669894958" duration="4111000" />
+      <workItem from="1688674295600" duration="385000" />
+      <workItem from="1688798612476" duration="224000" />
+      <workItem from="1688801047141" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -257,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688453490288</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt">
+      <option name="closed" value="true" />
+      <created>1688674631478</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1688674631478</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +309,8 @@
     <MESSAGE value="Add Recipes Images" />
     <MESSAGE value="Add changes on the recipes views" />
     <MESSAGE value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
+    <MESSAGE value="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
