@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Change Button hover">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Change Recipe-View Design">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/edit-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/edit-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/bruschetta.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/bruschetta.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ceasar-salad.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ceasar-salad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/huehenchen-curry.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/huehenchen-curry.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/lasagne.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/lasagne.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ruehrei.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ruehrei.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/spaghetti.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/spaghetti.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -325,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689001813983</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Change Recipe-View Design">
+      <option name="closed" value="true" />
+      <created>1689144791401</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1689144791401</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +379,8 @@
     <MESSAGE value="Design adjustment" />
     <MESSAGE value="Add View to add recipes. Design adjustment." />
     <MESSAGE value="Change Button hover" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change Button hover" />
+    <MESSAGE value="Change Recipe-View Design" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change Recipe-View Design" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -83,6 +83,7 @@
 .button-style-reverse:hover {
     -fx-background-color: white;
     -fx-text-fill: black;
+    -fx-border-color: black;
 }
 
 .button-style-border{
