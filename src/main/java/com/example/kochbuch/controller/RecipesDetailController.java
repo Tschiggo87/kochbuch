@@ -47,10 +47,6 @@ public class RecipesDetailController {
     private ImageView recipeImage;
     @FXML
     private Button editBtn;
-
-    @FXML
-    private Button editButton2;
-
     private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
     private int recipeId;
@@ -75,9 +71,6 @@ public class RecipesDetailController {
             // Rezeptinformationen anzeigen
             showRecipeInfo();
 
-            // Button "editButton2" basierend auf Benutzerrolle anzeigen oder ausblenden
-            String loggedInUser = MainController.getLoggedInUser();
-            editButton2.setVisible(loggedInUser != null && loggedInUser.equals("admin"));
         } catch (SQLException e) {
             e.printStackTrace();
             // SQLException behandeln

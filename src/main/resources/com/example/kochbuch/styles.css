@@ -77,11 +77,12 @@
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
     -fx-background-color: black;
-    /* Transition */
 }
 
 .button-style-reverse:hover {
     -fx-background-color: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
     -fx-text-fill: black;
     -fx-border-color: black;
 }
