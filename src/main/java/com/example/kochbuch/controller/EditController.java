@@ -26,7 +26,7 @@ public class EditController {
     public TextField recipeImage;
     private RezeptModel model;
     private List<RezeptModel> recipeList;
-    private int currentIndex;
+    private int recipeId;
 
     @FXML
     private void initialize(){
@@ -35,11 +35,11 @@ public class EditController {
 
         DatabaseHandler databaseHandler = new DatabaseHandler();
         recipeList = databaseHandler.getRezepteFromDatabase();
-        currentIndex = 5;
+        recipeId = DataTransmitter.getInstance().getRecipeId();
 
-        if (!recipeList.isEmpty()) {
-            loadRecipeDetails(recipeList.get(currentIndex));
-        }
+
+        loadRecipeDetails(recipeList.get(recipeId -1));
+
 
         bindModel();
     }

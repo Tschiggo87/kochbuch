@@ -120,19 +120,13 @@ public class RecipesDetailController {
 
     /* Weitere Methoden für die Interaktion mit der Benutzeroberfläche */
 
-    public void setRecipeId(int id) {
-        this.recipeId = id;
-    }
 
     public void onEditBtnClick() {
-        // Erstellen Sie eine Instanz des EditControllers
-        EditController editController = new EditController();
-
-        // Übergeben Sie das ausgewählte Rezept an den EditController
-        editController.loadRecipeDetails(recipeModel);
 
         // Wechseln Sie zur Bearbeitungsansicht
         Main.switchToView(StaticViews.RecipeEditView);
+
+
     }
 
 
