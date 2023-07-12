@@ -60,13 +60,7 @@
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
 }
 
-/* Login View */
-.button-style {
-    -fx-text-fill: black;
-    -fx-border-radius: 50px;
-    -fx-background-radius: 50px;
-    -fx-background-color: transparent;
-}
+
 
 .button-style-reverse{
     -fx-text-fill: white;
@@ -95,9 +89,31 @@
     -fx-border-color: none;
 }
 
+/* Start View */
+.button-style {
+    -fx-text-fill: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+}
+
 .button-style:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+
+}
+
+/* Login View */
+.button-style2 {
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+}
+
+.button-style2:hover {
     -fx-background-color: black;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: white;
 
 }
 

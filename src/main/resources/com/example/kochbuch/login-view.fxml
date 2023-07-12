@@ -35,12 +35,12 @@
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </Label>
-            <Button id="loginbtn" fx:id="loginButton" focusTraversable="false" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Login" textFill="WHITE">
+            <Button id="loginbtn" fx:id="loginButton" focusTraversable="false" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style2" stylesheets="@styles.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>
             </Button>
-            <Button id="loginbtn" fx:id="SignUpButton" focusTraversable="false" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style" stylesheets="@styles.css" text="Sign Up!" textFill="WHITE">
+            <Button id="loginbtn" fx:id="SignUpButton" focusTraversable="false" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style2" stylesheets="@styles.css" text="Sign Up!" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>
@@ -51,7 +51,7 @@
                </font>
             </Label>
             <PasswordField fx:id="enterPasswordField" focusTraversable="true" layoutX="111.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Passwort" />
-            <Button id="loginbtn" fx:id="cancelButton" focusTraversable="false" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
+            <Button id="loginbtn" fx:id="cancelButton" focusTraversable="false" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style2" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>

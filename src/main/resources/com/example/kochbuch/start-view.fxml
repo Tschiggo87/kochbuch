@@ -13,12 +13,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
@@ -41,43 +38,19 @@
       </MenuBar>
    </top>
    <center>
-      <BorderPane fx:id="content" prefHeight="673.0" prefWidth="843.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-         <center>
-            <Label text="WELCOME" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="96.0" />
-               </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.9843137264251709" green="0.800000011920929" blue="0.9725490212440491" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.006711409395973154">
-                           <color>
-                              <Color red="0.9843137264251709" green="0.800000011920929" blue="0.9725490212440491" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.8588235378265381" green="0.9058823585510254" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-         </center>
-      </BorderPane>
+      <BorderPane fx:id="content" prefHeight="675.0" prefWidth="0.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
    </center>
    <left>
-      <AnchorPane prefHeight="658.0" prefWidth="138.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="677.0" prefWidth="1000.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" layoutX="-2.0" prefHeight="674.0" prefWidth="183.0" styleClass="sideBarMenu" stylesheets="@../../../styles.css">
+            <ImageView fitHeight="678.0" fitWidth="188.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/backgroundWelcome1-split%20(6).jpg" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" layoutX="6.0" layoutY="2.0" prefHeight="674.0" prefWidth="183.0" stylesheets="@../../../styles.css">
                <children>
-                  <Label text="Cookz">
+                  <Label text="Cookz" textFill="WHITE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="30.0" />
                      </font>
@@ -96,7 +69,7 @@
                      </children>
                   </HBox>
                   <Region prefHeight="11.0" prefWidth="133.0" />
-                  <Button mnemonicParsing="false" onAction="#onRecipesButtonClick" prefHeight="27.0" prefWidth="207.0" styleClass="button-style" stylesheets="@styles.css" text="Rezepte">
+                  <Button mnemonicParsing="false" onAction="#onRecipesButtonClick" prefHeight="27.0" prefWidth="207.0" styleClass="button-style" stylesheets="@styles.css" text="Rezepte" textFill="WHITE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
@@ -142,7 +115,7 @@
                         <Insets right="30.0" />
                      </padding>
                   </HBox>
-                  <Label fx:id="loggedInUserLabel" alignment="CENTER" textAlignment="CENTER" textFill="#6b0a8f">
+                  <Label fx:id="loggedInUserLabel" alignment="CENTER" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -160,6 +133,11 @@
                   </Button>
                </children>
             </VBox>
+            <Label layoutX="343.0" layoutY="316.0" text="WELCOME" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="96.0" />
+               </font>
+            </Label>
          </children>
          <opaqueInsets>
             <Insets />

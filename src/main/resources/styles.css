@@ -60,17 +60,17 @@
 /* Login View */
 .button-style {
 
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
     -fx-background-color: transparent;
-    /* Transition */
+
 
 }
 
 .button-style:hover {
-    -fx-background-color: black;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: white;
+    -fx-text-fill: #262626;
 
 }
 
