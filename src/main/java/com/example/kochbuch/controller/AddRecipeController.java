@@ -1,32 +1,26 @@
+
 package com.example.kochbuch.controller;
-
-
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
-import javafx.event.ActionEvent;
+import com.example.kochbuch.databasehandler.DatabaseHandler;
+import com.example.kochbuch.model.RezeptModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import com.example.kochbuch.model.RezeptModel;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.converter.NumberStringConverter;
-import java.io.File;
 
 public class AddRecipeController {
-
-    public TextField name;
-    public TextField beschreibung;
-    public TextField dauer;
-    public TextField portion;
-    public TextField schwierigkeitsgrad;
-    public TextField anweisungen;
-    public TextField zutaten;
-    public TextField bild;
+    public TextField recipeName;
+    public TextField recipeDescription;
+    public TextField recipeTime;
+    public TextField recipePortion;
+    public TextField recipeDifficulty;
+    public TextArea recipeInstruction;
+    public TextArea recipeIngredients;
+    public TextField recipeImage;
     private RezeptModel model;
 
     @FXML
@@ -36,67 +30,66 @@ public class AddRecipeController {
     }
 
     private void bindModel() {
-        name.textProperty().bindBidirectional(model.nameProperty());
-        beschreibung.textProperty().bindBidirectional(model.beschreibungProperty());
-        dauer.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
-        portion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
-        schwierigkeitsgrad.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
-        anweisungen.textProperty().bindBidirectional(model.anweisungenProperty());
-        zutaten.textProperty().bindBidirectional(model.zutatenProperty());
-        bild.textProperty().bindBidirectional(model.bildProperty());
+        recipeName.textProperty().bindBidirectional(model.nameProperty());
+        recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
+        recipeTime.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
+        recipePortion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+        recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+        recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
+        recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
+        recipeImage.textProperty().bindBidirectional(model.bildProperty());
     }
 
-    public void onBackToRecipesDetailBtnClick() {
-        Main.switchToView(StaticViews.RecipesDetailView);
-    }
-
-    @FXML
-    public void onAddBtnClick() {
-        // Speichern der Werte aus den Textfeldern in einer Datenbank oder einem Repository
-        // Hier ein Beispiel, wie Sie auf die Daten zugreifen und speichern können
-        String recipeName = name.getText();
-        String recipeDescription = beschreibung.getText();
-        int recipeDuration = Integer.parseInt(dauer.getText());
-        int recipePortion = Integer.parseInt(portion.getText());
-        String recipeDifficulty = schwierigkeitsgrad.getText();
-        String recipeInstructions = anweisungen.getText();
-        String recipeIngredients = zutaten.getText();
-        String recipeImage = bild.getText();
-
-        // Speichern der Daten in einer Datenbank oder einem Repository
-        // Beispiel: repository.saveRecipe(recipeName, recipeDescription, recipeDuration, recipePortion, recipeDifficulty, recipeInstructions, recipeIngredients, recipeImage);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Rezept wurde gespeichert.", ButtonType.OK);
-        alert.showAndWait();
+    public void onShowValues() {
+        System.out.println(model.toString());
     }
 
     @FXML
     public void onResetBtnClick() {
-        name.clear();
-        beschreibung.clear();
-        dauer.clear();
-        portion.clear();
-        schwierigkeitsgrad.clear();
-        anweisungen.clear();
-        zutaten.clear();
-        bild.clear();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden zurückgesetzt.", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Möchten Sie die Daten wirklich zurücksetzen?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            recipeName.clear();
+            recipeDescription.clear();
+            recipeTime.clear();
+            recipePortion.clear();
+            recipeDifficulty.clear();
+            recipeInstruction.clear();
+            recipeIngredients.clear();
+            recipeImage.clear();
+
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden Gelöscht.", ButtonType.OK);
+            infoAlert.showAndWait();
+        }
+        else {
+            // User clicked "No" or closed the dialog, do nothing
+        }
+    }
+
+    public void onBackToRecipesDetailBtnClick() {
+        Main.switchToView(StaticViews.WelcomeView);
     }
 
     @FXML
-    public void onAddPictureBtnClick(ActionEvent event) {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+    public void onSaveNewRecipeBtnClick() {
+        // Speichern des Rezepts in der Datenbank
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        boolean success = databaseHandler.addRezeptToDatabase(model);
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Bild auswählen");
-        fileChooser.getExtensionFilters().addAll(
-                new ExtensionFilter("Bilddateien", "*.png", "*.jpg", "*.gif"),
-                new ExtensionFilter("Alle Dateien", "*.*"));
-
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            bild.setText(selectedFile.getAbsolutePath());
+        if (success) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Rezept wurde erfolgreich hinzugefügt.", ButtonType.OK);
+            alert.showAndWait();
+            // Zurück zur Rezeptübersicht wechseln
+            Main.switchToView(StaticViews.RecipesDetailView);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Hinzufügen des Rezepts.", ButtonType.OK);
+            alert.showAndWait();
         }
+
+        Main.switchToView(StaticViews.AddRecipeView);
+
+    }
+
+
 }

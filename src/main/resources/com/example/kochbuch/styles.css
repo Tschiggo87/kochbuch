@@ -25,6 +25,9 @@
 .recipesBox {
   -fx-background-radius: 10px;
   -fx-border-radius: 10px;
+  -fx-border-color: #5b5b5b;
+  -fx-border-width: 0.5px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
 }
 
 .recipes-detail-btn {
@@ -33,6 +36,10 @@
    -fx-border-radius: 10px;
    -fx-cursor: hand;
 }
+
+.recipe-image{
+    -fx-border-radius: 10px;
+    }
 
 .recipes-detail-btn:hover {
   -fx-background-color: black;
@@ -54,23 +61,24 @@
   -fx-background-color: linear-gradient(to right, #ffffff, #DBE7FF, #FBCCF8);
   -fx-background-radius: 10px;
   -fx-border-radius: 10px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
 }
 
-/* Login View */
-.button-style {
-    -fx-text-fill: black;
-    -fx-border-radius: 50px;
-    -fx-background-radius: 50px;
-    -fx-background-color: transparent;
-}
+
 
 .button-style-reverse{
     -fx-text-fill: white;
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
     -fx-background-color: black;
-    /* Transition */
+}
 
+.button-style-reverse:hover {
+    -fx-background-color: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-text-fill: black;
+    -fx-border-color: black;
 }
 
 .button-style-border{
@@ -82,22 +90,37 @@
 }
 
 .button-style-border:hover{
-    -fx-background-color: black;
-    -fx-text-fill: #ffffff;
+   -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+   -fx-text-fill: black;
+    -fx-border-color: none;
+}
+
+/* Start View */
+.button-style {
+    -fx-text-fill: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
 }
 
 .button-style:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+
+}
+
+/* Login View */
+.button-style2 {
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+}
+
+.button-style2:hover {
     -fx-background-color: black;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: white;
 
-}
-
-.frame {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
-}
-
-.shadow {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
 }
 
 
@@ -108,5 +131,3 @@
     -fx-margin-left: auto;
     -fx-margin-right: auto;
 }
-
-

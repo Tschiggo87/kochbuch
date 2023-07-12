@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +63,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev2&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arian/IdeaProjects/Gallery&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -77,7 +78,6 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Arian\IdeaProjects\kochbuch\src\main\resources\com\example\kochbuch" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/kochbuch" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -85,9 +85,6 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.kochbuch" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.kochbuch.controller" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -101,10 +98,6 @@
       <workItem from="1687764415250" duration="5905000" />
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
-      <workItem from="1688669894958" duration="4111000" />
-      <workItem from="1688674295600" duration="385000" />
-      <workItem from="1688798612476" duration="224000" />
-      <workItem from="1688801047141" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -257,15 +250,47 @@
       <option name="project" value="LOCAL" />
       <updated>1688453490288</updated>
     </task>
-    <task id="LOCAL-00022" summary="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt">
+    <task id="LOCAL-00022" summary="Refactoring DatabaseHandler">
       <option name="closed" value="true" />
-      <created>1688674631478</created>
+      <created>1688970090512</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1688674631478</updated>
+      <updated>1688970090512</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Refactoring DatabaseHandler">
+      <option name="closed" value="true" />
+      <created>1688970107995</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1688970107995</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Small visual fixes on the Sidebar">
+      <option name="closed" value="true" />
+      <created>1688970699373</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1688970699374</updated>
+    </task>
+    <task id="LOCAL-00025" summary="sichere version">
+      <option name="closed" value="true" />
+      <created>1689010170665</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1689010170665</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe">
+      <option name="closed" value="true" />
+      <created>1689170088189</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1689170088189</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,8 +334,21 @@
     <MESSAGE value="Add Recipes Images" />
     <MESSAGE value="Add changes on the recipes views" />
     <MESSAGE value="Add interaction between recipes-view.fxml and recipes-detail-view.fxml" />
-    <MESSAGE value="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt" />
-    <option name="LAST_COMMIT_MESSAGE" value="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt" />
+    <MESSAGE value="Refactoring DatabaseHandler" />
+    <MESSAGE value="Small visual fixes on the Sidebar" />
+    <MESSAGE value="sichere version" />
+    <MESSAGE value="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -6,6 +6,7 @@ import com.example.kochbuch.databasehandler.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,37 +16,50 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.example.kochbuch.model.RezeptModel;
+import com.example.kochbuch.controller.EditController;
+
+
 public class RecipesDetailController {
 
     @FXML
     private Label recipeName;
+
     @FXML
     private Label recipeDescription;
+
     @FXML
     private Label recipeInstruction;
+
     @FXML
     private Label recipeTime;
+
     @FXML
     private Label recipeDifficulty;
+
     @FXML
     private Label recipePortion;
+
     @FXML
     private Label recipeIngredients;
+
     @FXML
     private ImageView recipeImage;
-
+    @FXML
+    private Button editBtn;
     private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
     private int recipeId;
 
     public RecipesDetailController() {
+        // Instanziierung des DatabaseHandler und RezeptModel
         databaseHandler = new DatabaseHandler();
         recipeModel = new RezeptModel();
     }
 
     public void initialize() {
         try {
-            // RezeptId aus dem DataTransmitter erhalten
+            // Rezept-ID von DataTransmitter abrufen
             recipeId = DataTransmitter.getInstance().getRecipeId();
 
             // Verbindung zur Datenbank herstellen
@@ -56,23 +70,24 @@ public class RecipesDetailController {
 
             // Rezeptinformationen anzeigen
             showRecipeInfo();
+
         } catch (SQLException e) {
             e.printStackTrace();
-            // Fehlerbehandlung
+            // SQLException behandeln
         }
     }
 
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        // SQL-Abfrage für das Laden der Rezeptinformationen
+        // SQL-Abfrage zum Abrufen der Rezeptinformationen basierend auf der Rezept-ID
         String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            // Parameter für die RezeptId setzen
+            // Die Rezept-ID als Parameter in der SQL-Abfrage setzen
             statement.setInt(1, recipeId);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    // Rezeptinformationen aus dem ResultSet in das Rezeptmodell laden
+                    // Rezeptinformationen aus dem ResultSet abrufen und im recipeModel speichern
                     recipeModel.setName(resultSet.getString("name"));
                     recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
                     recipeModel.setDauer(resultSet.getInt("dauer"));
@@ -87,7 +102,7 @@ public class RecipesDetailController {
     }
 
     private void showRecipeInfo() {
-        // Verzeichnis, in dem die Rezeptbilder gespeichert sind
+        // Verzeichnis, in dem Rezeptbilder gespeichert sind
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
 
         // Rezeptinformationen auf den entsprechenden UI-Elementen anzeigen
@@ -99,23 +114,24 @@ public class RecipesDetailController {
         recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
         recipeIngredients.setText(recipeModel.getZutaten());
 
-        // Das Rezeptbild laden und anzeigen
+        // Rezeptbild laden und anzeigen
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
     /* Weitere Methoden für die Interaktion mit der Benutzeroberfläche */
 
-    public void setRecipeId(int id) {
-        this.recipeId = id;
-    }
 
     public void onEditBtnClick() {
-        // Zur Bearbeitungsansicht wechseln
+
+        // Wechseln Sie zur Bearbeitungsansicht
         Main.switchToView(StaticViews.RecipeEditView);
+
+
     }
 
+
     public void onBackToRecipesBtnClick() {
-        // Zur Rezepteansicht zurückkehren
+        // Zurück zur Rezeptansicht wechseln
         Main.switchToView(StaticViews.RecipesView);
     }
 }
