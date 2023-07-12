@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
@@ -32,8 +33,15 @@ public class RecipesController {
         databaseHelper = new DatabaseHandler();
         List<RezeptModel> rezepte = databaseHelper.getRezepteFromDatabase();
         populateLabels(rezepte);
-    }
 
+    }
+    private void applyCoverScaling(ImageView imageView, double parentWidth, double parentHeight) {
+        imageView.setPreserveRatio(false);
+        imageView.setFitWidth(parentWidth);
+        imageView.setFitHeight(parentHeight);
+        imageView.setSmooth(true);
+        imageView.setClip(new Rectangle(parentWidth, parentHeight));
+    }
 
     // Methode zum Befüllen der Labels mit den Rezeptinformationen
     public void populateLabels(List<RezeptModel> rezepte) {

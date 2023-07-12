@@ -37,6 +37,10 @@
    -fx-cursor: hand;
 }
 
+.recipe-image{
+    -fx-border-radius: 10px;
+    }
+
 .recipes-detail-btn:hover {
   -fx-background-color: black;
   -fx-background-radius: 10px;
@@ -77,7 +81,7 @@
 }
 
 .button-style-reverse:hover {
-    -fx-background-color: linear-gradient(to right, #DBE7FF, #FBCCF8);
+    -fx-background-color: white;
     -fx-text-fill: black;
 }
 
