@@ -6,12 +6,10 @@ import com.example.kochbuch.databasehandler.DatabaseHandler;
 import com.example.kochbuch.model.LoginModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.File;
@@ -30,10 +28,6 @@ import java.util.ResourceBundle;
 public class LoginController implements Initializable {
 
     @FXML
-    private Button cancelButton;
-
-
-    @FXML
     private Label loginMessageLabel;
 
     @FXML
@@ -50,7 +44,7 @@ public class LoginController implements Initializable {
 
 
     private LoginModel loginModel = new LoginModel ();
-    private LoginModel adminEdit = new LoginModel ();
+    private LoginModel editBtn = new LoginModel ();
 
     // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
     @Override
@@ -134,7 +128,7 @@ public class LoginController implements Initializable {
         }
     }
 
-    // Methode zum Hashen des Passworts.
+    // Methode zum Verschlüsseln des Passworts.
     private String getHashedPassword(String password) {
         String hashedPassword = null;
         try {
