@@ -5,6 +5,7 @@ public class DataTransmitter {
 
     private int recipeId;
 
+
     private DataTransmitter() {}
 
     public static DataTransmitter getInstance() {
@@ -19,4 +20,3 @@ public class DataTransmitter {
         this.recipeId = recipeId;
     }
 }
-
