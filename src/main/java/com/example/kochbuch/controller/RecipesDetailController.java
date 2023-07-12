@@ -118,9 +118,6 @@ public class RecipesDetailController {
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
-    /* Weitere Methoden für die Interaktion mit der Benutzeroberfläche */
-
-
     public void onEditBtnClick() {
 
         // Wechseln Sie zur Bearbeitungsansicht
@@ -129,9 +126,9 @@ public class RecipesDetailController {
 
     }
 
-
     public void onBackToRecipesBtnClick() {
         // Zurück zur Rezeptansicht wechseln
         Main.switchToView(StaticViews.RecipesView);
     }
+
 }
