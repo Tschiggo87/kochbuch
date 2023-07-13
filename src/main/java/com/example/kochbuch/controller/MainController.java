@@ -34,9 +34,13 @@ public class MainController {
     private Button adminEdit;
     @FXML
     private Button adminAdd;
-
+    @FXML
+    private Button userFavorites;
+    @FXML
+    private ImageView userFavoritesIcon;
     @FXML
     private ImageView loginImage;
+
 
 
     public static MainController getControllerInstance() {
@@ -56,6 +60,10 @@ public class MainController {
     @FXML
     protected void onAddClick() {
         Main.switchToView(StaticViews.AddRecipeView);
+    }
+    @FXML
+    protected void onFavoritesButtonClick() {
+        Main.switchToView(StaticViews.RecipesView);
     }
 
 
@@ -136,7 +144,10 @@ public class MainController {
             if (loggedInUser != null) {
                 controllerInstance.accountBtn.setText("Logout");
                 controllerInstance.adminEdit.setVisible(loggedInUser.equals("admin")); // Setzen Sie die Sichtbarkeit des adminEdit-Buttons basierend auf dem Benutzernamen
-                controllerInstance.adminAdd.setVisible(loggedInUser.equals("admin")); // Setzen Sie die Sichtbarkeit des adminAdd-Buttons basierend auf dem Benutzernamen
+                controllerInstance.adminAdd.setVisible(loggedInUser.equals("admin"));// Setzen Sie die Sichtbarkeit des adminAdd-Buttons basierend auf dem Benutzernamen
+                controllerInstance.userFavorites.setVisible(!loggedInUser.equals("admin"));
+                controllerInstance.userFavoritesIcon.setVisible(!loggedInUser.equals("admin"));
+
             } else {
                 controllerInstance.accountBtn.setText("Login");
                 MainController.getControllerInstance().resetProfileImage();
@@ -148,6 +159,8 @@ public class MainController {
                 // Setzen Sie die Sichtbarkeit des adminEdit-Buttons auf false, wenn der Benutzer nicht eingeloggt ist
                 controllerInstance.adminEdit.setVisible(false);
                 controllerInstance.adminAdd.setVisible(false);
+                controllerInstance.userFavorites.setVisible(false);
+                controllerInstance.userFavoritesIcon.setVisible(false);
             }
         }
     }

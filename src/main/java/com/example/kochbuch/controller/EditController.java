@@ -4,7 +4,7 @@ import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
-import com.example.kochbuch.databasehandler.DataTransmitter;
+import com.example.kochbuch.helper.DataTransmitter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

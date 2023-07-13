@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    public static boolean isAdmin;
     private static MainController mainController;
 
 
