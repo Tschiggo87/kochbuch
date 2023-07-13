@@ -63,7 +63,7 @@ public class MainController {
     }
     @FXML
     protected void onFavoritesButtonClick() {
-        Main.switchToView(StaticViews.RecipesView);
+        Main.switchToView(StaticViews.FavoritesView);
     }
 
 

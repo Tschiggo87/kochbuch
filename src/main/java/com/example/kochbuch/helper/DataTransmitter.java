@@ -1,10 +1,11 @@
 package com.example.kochbuch.helper;
 
 public class DataTransmitter {
+
+
     private static DataTransmitter instance = new DataTransmitter();
 
     private int recipeId;
-
 
     private DataTransmitter() {}
 

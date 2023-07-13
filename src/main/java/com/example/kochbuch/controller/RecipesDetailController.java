@@ -42,8 +42,10 @@ public class RecipesDetailController {
 
     @FXML
     private ImageView recipeImage;
+
     @FXML
     private Button editBtn;
+
     private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
     private int recipeId;
@@ -115,14 +117,13 @@ public class RecipesDetailController {
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
+    @FXML
     public void onEditBtnClick() {
-
         // Wechseln Sie zur Bearbeitungsansicht
         Main.switchToView(StaticViews.RecipeEditView);
-
-
     }
 
+    @FXML
     public void onBackToRecipesBtnClick() {
         // Zurück zur Rezeptansicht wechseln
         Main.switchToView(StaticViews.RecipesView);

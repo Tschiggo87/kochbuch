@@ -6,13 +6,18 @@ import com.example.kochbuch.helper.DataTransmitter;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import com.example.kochbuch.model.RezeptModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
-
+/**
+ * @class RecipesController ist für die Anzeige der Rezepte auf der Rezept Overview zuständig.
+ * @author Enrico Kälin
+ * */
 public class RecipesController {
     private static final int NUM_RECIPES = 6;
 
@@ -25,83 +30,93 @@ public class RecipesController {
     @FXML
     private Label recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6;
 
-    private DatabaseHandler databaseHelper;
+    private DatabaseHandler databaseHandler;
 
+    /**
+     * Initialisierung der Rezept Overview
+     * */
     public void initialize() {
-        // Instanziierung des DatabaseHandler
-        databaseHelper = new DatabaseHandler();
-        List<RezeptModel> rezepte = databaseHelper.getRezepteFromDatabase();
+        // Initialisierung des DatabaseHandler
+        databaseHandler = new DatabaseHandler();
+        List<RezeptModel> rezepte = databaseHandler.getRezepteFromDatabase();
         populateLabels(rezepte);
-
-    }
-    private void applyCoverScaling(ImageView imageView, double parentWidth, double parentHeight) {
-        imageView.setPreserveRatio(false);
-        imageView.setFitWidth(parentWidth);
-        imageView.setFitHeight(parentHeight);
-        imageView.setSmooth(true);
-        imageView.setClip(new Rectangle(parentWidth, parentHeight));
     }
 
-    // Methode zum Befüllen der Labels mit den Rezeptinformationen
+
+    /**
+     * @param rezepte Liste der Rezepte
+     * */
     public void populateLabels(List<RezeptModel> rezepte) {
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
+
+        // Arrays für die Labels und ImageView-Elemente erstellen
         Label[] recipeNames = {recipeName1, recipeName2, recipeName3, recipeName4, recipeName5, recipeName6};
         ImageView[] recipeImages = {recipeImage1, recipeImage2, recipeImage3, recipeImage4, recipeImage5, recipeImage6};
         Label[] recipeDescriptions = {recipeDescription1, recipeDescription2, recipeDescription3, recipeDescription4, recipeDescription5, recipeDescription6};
         Label[] recipeDifficulties = {recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6};
+
         for (int i = 0; i < NUM_RECIPES; i++) {
-            recipeImages[i].setImage(new Image("file:" + imageDirectory + rezepte.get(i).getBild()));
-            recipeNames[i].setText(rezepte.get(i).getName());
-            recipeDescriptions[i].setText(rezepte.get(i).getBeschreibung());
-            recipeDifficulties[i].setText(rezepte.get(i).getSchwierigkeitsgrad());
+            // Rezeptinformationen aus der Liste abrufen
+            RezeptModel rezept = rezepte.get(i);
+
+            // Bild des Rezepts setzen
+            recipeImages[i].setImage(new Image("file:" + imageDirectory + rezept.getBild()));
+
+            // Name, Beschreibung und Schwierigkeitsgrad des Rezepts setzen
+            recipeNames[i].setText(rezept.getName());
+            recipeDescriptions[i].setText(rezept.getBeschreibung());
+            recipeDifficulties[i].setText(rezept.getSchwierigkeitsgrad());
         }
     }
 
+    // Detailansichts-Buttons
     @FXML
     public void onDetailBtnClick1() {
-        // Rezept-ID setzen und zur Detailansicht wechseln
-        DataTransmitter.getInstance().setRecipeId(1);
-        Main.switchToView(StaticViews.RecipesDetailView);
+        openRecipeDetailView(1);
     }
 
     @FXML
     public void onDetailBtnClick2() {
-        // Rezept-ID setzen und zur Detailansicht wechseln
-        DataTransmitter.getInstance().setRecipeId(2);
-        Main.switchToView(StaticViews.RecipesDetailView);
+        openRecipeDetailView(2);
     }
 
     @FXML
     public void onDetailBtnClick3() {
-        // Rezept-ID setzen und zur Detailansicht wechseln
-        DataTransmitter.getInstance().setRecipeId(3);
-        Main.switchToView(StaticViews.RecipesDetailView);
+        openRecipeDetailView(3);
     }
 
     @FXML
     public void onDetailBtnClick4() {
-        // Rezept-ID setzen und zur Detailansicht wechseln
-        DataTransmitter.getInstance().setRecipeId(4);
-        Main.switchToView(StaticViews.RecipesDetailView);
+        openRecipeDetailView(4);
     }
 
     @FXML
     public void onDetailBtnClick5() {
-        // Rezept-ID setzen und zur Detailansicht wechseln
-        DataTransmitter.getInstance().setRecipeId(5);
-        Main.switchToView(StaticViews.RecipesDetailView);
+        openRecipeDetailView(5);
     }
 
     @FXML
     public void onDetailBtnClick6() {
-        // Rezept-ID setzen und zur Detailansicht wechseln
-        DataTransmitter.getInstance().setRecipeId(6);
+        openRecipeDetailView(6);
+    }
+
+    // Methode zum Öffnen der Detailansicht eines Rezepts
+    private void openRecipeDetailView(int recipeId) {
+        // Rezept-ID setzen und Detailansicht öffnen
+        DataTransmitter.getInstance().setRecipeId(recipeId);
         Main.switchToView(StaticViews.RecipesDetailView);
     }
 
+    // Zurück-Button
     @FXML
     public void onRecipesBackBtnClick() {
-        // Zurück zur Willkommensansicht wechseln
         Main.switchToView(StaticViews.WelcomeView);
+    }
+
+    public void addToFavoritesBtn() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Rezept wurde zu den Favoriten hinzugefügt!", ButtonType.OK);
+        alert.setHeaderText(null); // Keinen Header-Text anzeigen
+        alert.setTitle("Favoriten hinzugefügt");
+        alert.showAndWait();
     }
 }
