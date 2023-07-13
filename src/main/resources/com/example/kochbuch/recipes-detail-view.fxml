@@ -188,7 +188,7 @@
                   <Image url="@../../../images/icons/favorites.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#onAddToFavoritesBtn" styleClass="button-style" text="Add to Favorites">
+            <Button fx:id="favoriteBtn" mnemonicParsing="false" onAction="#addToFavoritesBtn" styleClass="button-style" text="Add to Favorites">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
