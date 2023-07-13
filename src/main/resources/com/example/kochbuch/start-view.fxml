@@ -3,63 +3,25 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <BorderPane fx:id="content" prefHeight="683.0" prefWidth="825.0" BorderPane.alignment="CENTER">
-         <center>
-            <Label text="WELCOME" textFill="WHITE" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="96.0" />
-               </font>
-            </Label>
-         </center>
-         <BorderPane.margin>
-            <Insets right="-1.0" />
-         </BorderPane.margin>
-      </BorderPane>
-   </center>
-   <left>
-      <AnchorPane prefHeight="658.0" prefWidth="138.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+
+<AnchorPane maxHeight="700.0" minHeight="700.0" prefHeight="700.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.MainController">
+   <children>
+      <AnchorPane prefHeight="700.0" prefWidth="190.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fitHeight="679.0" fitWidth="198.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="701.0" fitWidth="198.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/backgroundWelcome1-split_(6).jpg" />
+                  <Image url="@../../../images/side-menu.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER" layoutY="5.0" prefHeight="673.0" prefWidth="187.0">
+            <VBox alignment="CENTER" layoutY="1.0" prefHeight="673.0" prefWidth="187.0">
                <children>
                   <Label text="Cookz" textFill="WHITE">
                      <font>
@@ -149,5 +111,19 @@
             <Insets />
          </opaqueInsets>
       </AnchorPane>
-   </left>
-</BorderPane>
+      <AnchorPane fx:id="content" layoutX="191.0" layoutY="-1.0" prefHeight="701.0" prefWidth="1061.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fitHeight="700.0" fitWidth="1145.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/welcome-view.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="221.0" layoutY="334.0" text="WELCOME" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="96.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

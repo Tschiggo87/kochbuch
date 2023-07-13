@@ -14,9 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1150.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesController">
+<AnchorPane prefHeight="693.0" prefWidth="1100.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="139.0" prefHeight="481.0" prefWidth="1093.0" stylesheets="@styles.css">
+      <ImageView fitHeight="700.0" fitWidth="1100.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../images/bg-recipe.jpg" />
+         </image>
+      </ImageView>
+      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="139.0" prefHeight="481.0" prefWidth="1000.0" stylesheets="@styles.css">
          <content>
             <GridPane hgap="10.0" prefHeight="462.0" prefWidth="1697.0" style="-fx-background-color: white;" vgap="10.0">
                <columnConstraints>
@@ -29,7 +34,7 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox">
                      <children>
                         <ImageView fx:id="recipeImage1" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox layoutX="264.0" layoutY="27.0" prefHeight="180.0" prefWidth="236.0">
@@ -70,7 +75,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick1" styleClass="button-style-reverse" stylesheets="@../../../styles.css" text="Detail">
+                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick1" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -82,7 +87,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.rowIndex="1">
                      <children>
                         <ImageView fx:id="recipeImage2" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox layoutX="264.0" layoutY="27.0" prefHeight="180.0" prefWidth="236.0">
@@ -123,7 +128,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick2" styleClass="button-style-reverse" stylesheets="@../../../styles.css" text="Detail">
+                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick2" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -135,7 +140,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.columnIndex="1">
                      <children>
                         <ImageView fx:id="recipeImage3" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox layoutX="264.0" layoutY="27.0" prefHeight="180.0" prefWidth="236.0">
@@ -176,7 +181,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick3" styleClass="button-style-reverse" stylesheets="@../../../styles.css" text="Detail">
+                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick3" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -188,7 +193,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <ImageView fx:id="recipeImage4" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox layoutX="264.0" layoutY="27.0" prefHeight="180.0" prefWidth="236.0">
@@ -229,7 +234,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick4" styleClass="button-style-reverse" stylesheets="@../../../styles.css" text="Detail">
+                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick4" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -241,7 +246,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.columnIndex="2">
                      <children>
                         <ImageView fx:id="recipeImage5" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox layoutX="264.0" layoutY="27.0" prefHeight="136.0" prefWidth="236.0">
@@ -281,8 +286,8 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick5" styleClass="button-style-reverse" stylesheets="@../../../styles.css" text="Detail">
+                              <Region prefHeight="47.0" prefWidth="236.0" />
+                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick5" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -294,7 +299,7 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
                         <ImageView fx:id="recipeImage6" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox layoutX="264.0" layoutY="27.0" prefHeight="136.0" prefWidth="236.0">
@@ -335,7 +340,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick6" styleClass="button-style-reverse" stylesheets="@../../../styles.css" text="Detail">
+                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick6" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -351,31 +356,15 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Button layoutX="1022.0" layoutY="624.0" mnemonicParsing="false" onAction="#onRecipesBackBtnClick" prefHeight="26.0" prefWidth="84.0" styleClass="button-style-reverse" text="Zurück">
+      <Button layoutX="958.0" layoutY="631.0" mnemonicParsing="false" onAction="#onRecipesBackBtnClick" prefHeight="26.0" prefWidth="84.0" styleClass="button-style-reverse" text="Zurück">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Button>
-      <AnchorPane layoutX="55.0" prefHeight="118.0" prefWidth="1105.0" styleClass="anchor-pane" stylesheets="@styles.css">
-         <children>
-            <AnchorPane prefHeight="97.0" prefWidth="1103.0" style="-fx-background-color: black;" stylesheets="@../../../styles.css">
-               <children>
-                  <ImageView fx:id="recipeImage" fitHeight="112.0" fitWidth="251.0" layoutX="-10.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/header-image.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="recipeName" layoutX="293.0" layoutY="33.0" styleClass="frame" stylesheets="@styles.css" text="Rezepte" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="36.0" />
-                     </font>
-                  </Label>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
+      <Label fx:id="recipeName" layoutX="387.0" layoutY="62.0" styleClass="frame" stylesheets="@styles.css" text="REZEPT ÜBERSICHT">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

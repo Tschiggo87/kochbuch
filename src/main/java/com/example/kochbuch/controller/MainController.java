@@ -3,18 +3,22 @@ package com.example.kochbuch.controller;
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+
 
 import java.io.InputStream;
 
 public class MainController {
     @FXML
-    private BorderPane content;
+    private AnchorPane content;
 
     @FXML
     private Button accountBtn;
@@ -67,8 +71,12 @@ public class MainController {
     }
 
     public void switchContent(Pane root) {
-        content.setCenter(root);
+        StackPane stackPane = new StackPane(root);
+        StackPane.setAlignment(root, Pos.CENTER);
+        content.getChildren().clear();
+        content.getChildren().add(stackPane);
     }
+
 
 
     public static void setLoggedInUser(String username) {
