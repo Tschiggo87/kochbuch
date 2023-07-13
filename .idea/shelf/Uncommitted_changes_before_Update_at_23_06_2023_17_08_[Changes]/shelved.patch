@@ -1,0 +1,30 @@
+Index: src/main/resources/com/example/kochbuch/edit-view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import java.lang.*?>\r\n<?import java.util.*?>\r\n<?import javafx.scene.*?>\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n<AnchorPane xmlns=\"http://javafx.com/javafx\"\r\n            xmlns:fx=\"http://javafx.com/fxml\"\r\n            fx:controller=\"com.example.kochbuch.controller.EditController\"\r\n            prefHeight=\"400.0\" prefWidth=\"600.0\">\r\n\r\n</AnchorPane>\r\n\r\n        <!-- Test Test -->
+===================================================================
+diff --git a/src/main/resources/com/example/kochbuch/edit-view.fxml b/src/main/resources/com/example/kochbuch/edit-view.fxml
+--- a/src/main/resources/com/example/kochbuch/edit-view.fxml	
++++ b/src/main/resources/com/example/kochbuch/edit-view.fxml	
+@@ -1,16 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+-<?import java.lang.*?>
+-<?import java.util.*?>
+-<?import javafx.scene.*?>
+-<?import javafx.scene.control.*?>
+ <?import javafx.scene.layout.*?>
+ 
+-<AnchorPane xmlns="http://javafx.com/javafx"
+-            xmlns:fx="http://javafx.com/fxml"
+-            fx:controller="com.example.kochbuch.controller.EditController"
+-            prefHeight="400.0" prefWidth="600.0">
++<!-- Test Test -->
++
++
++<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.EditController">
+ 
+ </AnchorPane>
+-
+-        <!-- Test Test -->
+\ No newline at end of file
