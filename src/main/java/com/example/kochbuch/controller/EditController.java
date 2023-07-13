@@ -46,7 +46,11 @@ public class EditController {
 
         // Binden der Modellwerte an die UI-Elemente
         bindModel();
+
+
     }
+
+
 
     // Methode zum Laden der Rezeptdetails in das Modell
     public void loadRecipeDetails(RezeptModel recipeModel) {
