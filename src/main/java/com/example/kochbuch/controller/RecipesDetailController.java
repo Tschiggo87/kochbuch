@@ -16,9 +16,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.example.kochbuch.model.RezeptModel;
-import com.example.kochbuch.controller.EditController;
-
 
 public class RecipesDetailController {
 
