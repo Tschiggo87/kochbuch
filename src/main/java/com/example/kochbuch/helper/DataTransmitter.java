@@ -1,4 +1,4 @@
-package com.example.kochbuch.databasehandler;
+package com.example.kochbuch.helper;
 
 public class DataTransmitter {
     private static DataTransmitter instance = new DataTransmitter();

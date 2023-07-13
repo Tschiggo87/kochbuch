@@ -2,7 +2,7 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
-import com.example.kochbuch.databasehandler.DataTransmitter;
+import com.example.kochbuch.helper.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
