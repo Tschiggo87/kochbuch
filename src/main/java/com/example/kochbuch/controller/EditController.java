@@ -55,15 +55,26 @@ public class EditController {
 
     // Methode zum Binden der Modellwerte an die UI-Elemente
     private void bindModel() {
-        recipeName.textProperty().bindBidirectional(model.nameProperty());
-        recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
-        recipeTime.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
-        recipePortion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
-        recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
-        recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
-        recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
-        recipeImage.textProperty().bindBidirectional(model.bildProperty());
+        try {
+            recipeName.textProperty().bindBidirectional(model.nameProperty());
+            recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
+            recipeTime.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
+            recipePortion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+            recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+            recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
+            recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
+            recipeImage.textProperty().bindBidirectional(model.bildProperty());
+        } catch (NumberFormatException e) {
+            // Behandlung des Fehlers
+            System.err.println("Fehler beim Binden der Modellwerte: " + e.getMessage());
+            e.printStackTrace();
+
+            // Optional: Zeigen Sie dem Benutzer eine Fehlermeldung an
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Falscher Datenwert.", ButtonType.OK);
+            alert.showAndWait();
+        }
     }
+
 
     // Methode zum Anzeigen der aktuellen Werte des Modells in der Konsole
     public void onShowValues() {
@@ -90,26 +101,7 @@ public class EditController {
     // Methode zum Zurücksetzen der UI-Elemente auf die Standardwerte
     @FXML
     public void onResetBtnClick() {
-        // Erzeugen eines Bestätigungsdialogs
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Möchten Sie die Daten wirklich zurücksetzen?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-
-        // Überprüfen der Benutzerentscheidung
-        if (alert.getResult() == ButtonType.YES) {
-            // Zurücksetzen der UI-Elemente auf die Standardwerte
-            recipeName.clear();
-            recipeDescription.clear();
-            recipeTime.clear();
-            recipePortion.clear();
-            recipeDifficulty.clear();
-            recipeInstruction.clear();
-            recipeIngredients.clear();
-            recipeImage.clear();
-
-            // Erzeugen eines Informationsdialogs
-            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gelöscht.", ButtonType.OK);
-            infoAlert.showAndWait();
-        }
+        initialize();
     }
 
     // Methode zum Speichern der Modellwerte in die Datenbank

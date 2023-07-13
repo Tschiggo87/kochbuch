@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1057.0" style="-fx-background-color: #FFFFFF;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RegisterController">
+<AnchorPane prefHeight="700.0" prefWidth="1057.0" style="-fx-background-color: #FFFFFF;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RegisterController">
    <children>
       <ImageView fitHeight="700.0" fitWidth="1100.0" pickOnBounds="true">
          <image>
@@ -60,12 +56,12 @@
       </Label>
       <PasswordField fx:id="setPasswordField" layoutX="315.0" layoutY="390.0" prefHeight="25.0" prefWidth="362.0" promptText="Passwort" />
       <PasswordField fx:id="confirmPasswordField" layoutX="315.0" layoutY="457.0" prefHeight="25.0" prefWidth="362.0" promptText="Passwort bestätigen" />
-      <Button fx:id="registerButton" layoutX="432.0" layoutY="506.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="27.0" prefWidth="136.0" styleClass="button-style-reverse" stylesheets="@styles.css" text="Anmelden">
+      <Button fx:id="registerButton" layoutX="432.0" layoutY="506.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="27.0" prefWidth="136.0" styleClass="button-style" stylesheets="@styles.css" text="Anmelden">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="closeButton" layoutX="432.0" layoutY="548.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="27.0" prefWidth="136.0" styleClass="button-style-reverse" stylesheets="@styles.css" text="Schliessen">
+      <Button fx:id="closeButton" layoutX="432.0" layoutY="548.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="27.0" prefWidth="136.0" styleClass="button-style" stylesheets="@styles.css" text="Schliessen">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
