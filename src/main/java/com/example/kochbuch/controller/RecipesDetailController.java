@@ -2,7 +2,7 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
-import com.example.kochbuch.databasehandler.DataTransmitter;
+import com.example.kochbuch.helper.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
@@ -15,9 +15,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.example.kochbuch.model.RezeptModel;
-import com.example.kochbuch.controller.EditController;
 
 
 public class RecipesDetailController {
