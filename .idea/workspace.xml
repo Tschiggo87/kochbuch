@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_07_2023_11_06__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
