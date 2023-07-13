@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Zurücksetzen Button">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Add Favorite Button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,32 +55,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev2&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev2",
+    "last_directory_selection": "/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch",
+    "last_opened_file_path": "/Users/enrico/IdeaProjects/kochbuch/src/main/resources/com/example/kochbuch",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Developments\Java\kochbuch\src\main\resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/kochbuch" />
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Developments\Java\kochbuch\src\main\resources\com\example\kochbuch" />
@@ -104,7 +105,6 @@
       <workItem from="1687799275199" duration="4227000" />
       <workItem from="1689189856944" duration="1512000" />
       <workItem from="1689192357476" duration="207000" />
-      <workItem from="1689270339835" duration="4515000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -305,21 +305,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689255488930</updated>
     </task>
-    <task id="LOCAL-00028" summary="save">
+    <task id="LOCAL-00028" summary="Add Favorits Button">
       <option name="closed" value="true" />
-      <created>1689266660791</created>
+      <created>1689265949743</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1689266660791</updated>
+      <updated>1689265949743</updated>
     </task>
-    <task id="LOCAL-00029" summary="Zurücksetzen Button">
+    <task id="LOCAL-00029" summary="Add Favorite Button">
       <option name="closed" value="true" />
-      <created>1689269575909</created>
+      <created>1689273832232</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1689269575909</updated>
+      <updated>1689273832232</updated>
     </task>
     <option name="localTasksCounter" value="30" />
     <servers />
@@ -370,9 +370,9 @@
     <MESSAGE value="sichere version" />
     <MESSAGE value="sichere version5" />
     <MESSAGE value="Some Design Changes, to make a unified Complette lock" />
-    <MESSAGE value="save" />
-    <MESSAGE value="Zurücksetzen Button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zurücksetzen Button" />
+    <MESSAGE value="Add Favorits Button" />
+    <MESSAGE value="Add Favorite Button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Favorite Button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

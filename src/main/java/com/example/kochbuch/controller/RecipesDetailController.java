@@ -6,6 +6,7 @@ import com.example.kochbuch.helper.DataTransmitter;
 import com.example.kochbuch.model.RezeptModel;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -42,8 +43,14 @@ public class RecipesDetailController {
 
     @FXML
     private ImageView recipeImage;
+
     @FXML
     private Button editBtn;
+    @FXML
+    private Button favoriteBtn;
+    @FXML
+    private ImageView userFavoritesIcon;
+
     private final DatabaseHandler databaseHandler;
     private final RezeptModel recipeModel;
     private int recipeId;
@@ -68,11 +75,34 @@ public class RecipesDetailController {
             // Rezeptinformationen anzeigen
             showRecipeInfo();
 
+            // Update the visibility of the edit button
+            updateButtonVisibility();
+
         } catch (SQLException e) {
             e.printStackTrace();
             // SQLException behandeln
         }
     }
+
+    public void updateButtonVisibility() {
+        String loggedInUser = MainController.getLoggedInUser();
+
+        if (loggedInUser != null && loggedInUser.equals("admin")) {
+            editBtn.setVisible(true);
+            favoriteBtn.setVisible(false);
+            userFavoritesIcon.setVisible(false);
+        } else if (loggedInUser != null) { // Benutzer eingeloggt, aber nicht admin
+            editBtn.setVisible(false);
+            favoriteBtn.setVisible(true);
+            userFavoritesIcon.setVisible(true);
+        } else { // Benutzer nicht eingeloggt
+            editBtn.setVisible(false);
+            favoriteBtn.setVisible(false);
+            userFavoritesIcon.setVisible(false);
+        }
+    }
+
+
 
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
         // SQL-Abfrage zum Abrufen der Rezeptinformationen basierend auf der Rezept-ID
@@ -115,17 +145,26 @@ public class RecipesDetailController {
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
+    @FXML
     public void onEditBtnClick() {
-
         // Wechseln Sie zur Bearbeitungsansicht
         Main.switchToView(StaticViews.RecipeEditView);
-
-
     }
 
+    @FXML
     public void onBackToRecipesBtnClick() {
         // Zurück zur Rezeptansicht wechseln
         Main.switchToView(StaticViews.RecipesView);
+    }
+
+    @FXML
+    public void addToFavoritesBtn() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Favoriten hinzufügen");
+        alert.setHeaderText(null);
+        alert.setContentText("Das Rezept wurde zu den Favoriten hinzugefügt!");
+
+        alert.showAndWait();
     }
 
 }

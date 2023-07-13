@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.kochbuch.model.RezeptModel;
 
+/**
+ * @author Enrico
+ * @version 1.0.0
+ *
+ *         Diese Klasse stellt die Verbindung zur Datenbank her und liest die
+ *         Rezepte aus der Datenbank aus.
+ */
 public class DatabaseHandler {
 
     private static final String URL = "jdbc:mysql://lx8.hoststar.hosting/ch355797_kochbuch";
@@ -17,6 +24,10 @@ public class DatabaseHandler {
 
     private Connection databaseLink;
 
+    /**
+     * Stellt eine Verbindung zur Datenbank her.
+     * @return Verbindung zur Datenbank
+     */
     public Connection getConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,6 +39,10 @@ public class DatabaseHandler {
         return databaseLink;
     }
 
+    /**
+     * Liest alle Rezepte aus der Datenbank aus und gibt sie als Liste zurück.
+     * @return Liste aller Rezepte
+     */
     public List<RezeptModel> getRezepteFromDatabase() {
         List<RezeptModel> rezepte = new ArrayList<>();
 
@@ -69,7 +84,11 @@ public class DatabaseHandler {
         return rezepte;
     }
 
-
+    /**
+     * Updated ein Rezept in der Datenbank.
+     * @param recipeModel
+     * @return true, wenn das Rezept erfolgreich aktualisiert wurde
+     */
     public boolean updateRezeptInDatabase(RezeptModel recipeModel) {
         try {
             // Verbindung zur Datenbank herstellen
@@ -104,6 +123,11 @@ public class DatabaseHandler {
         return false;
     }
 
+    /**
+     * Fügt ein Rezept in die Datenbank ein.
+     * @param rezept Rezept, das in die Datenbank eingefügt werden soll
+     * @return true, wenn das Rezept erfolgreich hinzugefügt wurde
+     */
     public boolean addRezeptToDatabase(RezeptModel rezept) {
         try {
             // Verbindung zur Datenbank herstellen
