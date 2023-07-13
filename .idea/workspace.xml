@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="sichere version5">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/backgroundWelcome1-split7.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/add-recipe-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/add-recipe-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/edit-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/edit-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/login-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-detail-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/recipes-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/start-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/bruschetta.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/bruschetta.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ceasar-salad.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ceasar-salad.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/huehenchen-curry.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/huehenchen-curry.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/lasagne.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/lasagne.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ruehrei.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/ruehrei.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/spaghetti.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/RezeptBilder/spaghetti.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,6 +369,11 @@
           <properties class="java.lang.RuntimeException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/LoginController.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
