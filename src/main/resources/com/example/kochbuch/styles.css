@@ -23,6 +23,7 @@
 
 /* Recipes View */
 .recipesBox {
+   -fx-background-color: black;
   -fx-background-radius: 10px;
   -fx-border-radius: 10px;
   -fx-border-color: #5b5b5b;
@@ -130,4 +131,9 @@
     -fx-font-size: 20px;
     -fx-margin-left: auto;
     -fx-margin-right: auto;
+}
+
+.scroll-pane {
+    -fx-border-style: none;
+    -fx-background-color: transparent;
 }

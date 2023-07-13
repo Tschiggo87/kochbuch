@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="AddRecipeController hinzugefügt (auskommentiert)&#10;add-recipe-view hinzugefügt&#10;und StaticViews ergänzt">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_02_07_2023_11_06__Changes_.xml" beforeDir="false" />
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="sichere version5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev2&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/enrico/IdeaProjects/kochbuch/src/main/java/com/example/kochbuch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/lib/mysql-connector-j-8.0.33.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Developments/Java/kochbuch/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,9 +79,13 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/kochbuch" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources\com\example\kochbuch" />
+      <recent name="C:\Developments\Java\kochbuch\src\main\resources" />
+      <recent name="C:\Developments\Java\kochbuch\src\main\java\com\example\kochbuch" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -98,6 +103,8 @@
       <workItem from="1687764415250" duration="5905000" />
       <workItem from="1687777332418" duration="11862000" />
       <workItem from="1687799275199" duration="4227000" />
+      <workItem from="1689189856944" duration="1512000" />
+      <workItem from="1689192357476" duration="207000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1686890738717</created>
@@ -282,15 +289,23 @@
       <option name="project" value="LOCAL" />
       <updated>1689010170665</updated>
     </task>
-    <task id="LOCAL-00026" summary="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe">
+    <task id="LOCAL-00026" summary="sichere version5">
       <option name="closed" value="true" />
-      <created>1689170088189</created>
+      <created>1689191047160</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1689170088189</updated>
+      <updated>1689191047160</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Some Design Changes, to make a unified Complette lock">
+      <option name="closed" value="true" />
+      <created>1689255488930</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1689255488930</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,8 +352,9 @@
     <MESSAGE value="Refactoring DatabaseHandler" />
     <MESSAGE value="Small visual fixes on the Sidebar" />
     <MESSAGE value="sichere version" />
-    <MESSAGE value="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add interaction from RecipesDetailController.java to EditController.java via dataransmitter to send the recipeId and load the right recipe" />
+    <MESSAGE value="sichere version5" />
+    <MESSAGE value="Some Design Changes, to make a unified Complette lock" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some Design Changes, to make a unified Complette lock" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

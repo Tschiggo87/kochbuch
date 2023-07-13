@@ -13,9 +13,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.AddRecipeController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.AddRecipeController">
     <children>
-      <GridPane layoutX="107.0" layoutY="186.0" prefHeight="337.0" prefWidth="337.0">
+      <ImageView fitHeight="704.0" fitWidth="1100.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../images/bg-recipe.jpg" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="89.0" layoutY="186.0" prefHeight="337.0" prefWidth="337.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="150.5" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="680.0" minWidth="10.0" prefWidth="155.0" />
@@ -67,7 +72,7 @@
             <TextField fx:id="recipeImage" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <GridPane layoutX="483.0" layoutY="200.0" prefHeight="390.0" prefWidth="574.0">
+      <GridPane layoutX="465.0" layoutY="200.0" prefHeight="390.0" prefWidth="574.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="112.5" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="680.0" minWidth="10.0" prefWidth="461.5" />
@@ -108,7 +113,7 @@
             </Label>
          </children>
       </GridPane>
-      <GridPane layoutX="100.0" layoutY="617.0" prefHeight="30.0" prefWidth="959.0">
+      <GridPane layoutX="95.0" layoutY="627.0" prefHeight="30.0" prefWidth="959.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="801.0" minWidth="10.0" prefWidth="801.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="0.0" prefWidth="82.0" />
@@ -135,26 +140,10 @@
             </Button>
          </children>
       </GridPane>
-      <AnchorPane layoutX="113.0" layoutY="10.0" prefHeight="99.0" prefWidth="1045.0" styleClass="anchor-pane" stylesheets="@styles.css">
-         <children>
-            <AnchorPane layoutY="-13.0" prefHeight="107.0" prefWidth="1152.0" style="-fx-background-color: black;" stylesheets="@../../../styles.css">
-               <children>
-                  <ImageView fx:id="recipeImage11" fitHeight="157.0" fitWidth="654.0" layoutX="-8.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/header-image.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="recipeName11" layoutX="292.0" layoutY="36.0" styleClass="frame" stylesheets="@styles.css" text="Rezept hinzufügen" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="36.0" />
-                     </font>
-                  </Label>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
+      <Label fx:id="recipeName1" layoutX="389.0" layoutY="81.0" styleClass="frame" stylesheets="@styles.css" text="REZEPT HINZUFÜGEN">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="36.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

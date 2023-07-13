@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-
+    public static boolean isAdmin;
     private static MainController mainController;
 
 
@@ -21,7 +21,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(StaticViews.StartView));
         fxmlLoader.load();
         mainController = fxmlLoader.getController();
-        Scene scene = new Scene(fxmlLoader.getRoot(), 1300, 700);
+        Scene scene = new Scene(fxmlLoader.getRoot(), 1290, 700);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("Cookz - Kochbuch");
         stage.setScene(scene);

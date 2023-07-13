@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" styleClass="frame" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.LoginController">
-   <left>
-      <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="brandingImageView" fitHeight="400.0" fitWidth="245.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" styleClass="frame">
-               <image>
-                  <Image url="@../../../images/LoginResources/background1.jpg" />
-               </image></ImageView>
-         </children>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="423.0" prefWidth="295.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="lockImageView" fitHeight="81.0" fitWidth="83.0" focusTraversable="false" layoutX="98.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/LoginResources/LockLogo1.png" />
-               </image>
-            </ImageView>
-            <Label focusTraversable="false" layoutX="14.0" layoutY="205.0" text="Benutzername">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTextField" focusTraversable="true" layoutX="110.0" layoutY="200.0" prefHeight="25.0" prefWidth="137.0" promptText="Benutzername" />
-            <Label focusTraversable="false" layoutX="14.0" layoutY="240.0" text="Passwort">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="12.0" />
-               </font>
-            </Label>
-            <Button id="loginbtn" fx:id="loginButton" focusTraversable="false" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style2" stylesheets="@styles.css" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button id="loginbtn" fx:id="SignUpButton" focusTraversable="false" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style2" stylesheets="@styles.css" text="Sign Up!" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="13.0" />
-               </font>
-            </Button>
-            <Label fx:id="loginMessageLabel" focusTraversable="false" layoutX="15.0" layoutY="168.0" prefHeight="15.0" prefWidth="230.0" textFill="RED">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="12.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="enterPasswordField" focusTraversable="true" layoutX="111.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Passwort" />
-            <Button id="loginbtn" fx:id="cancelButton" focusTraversable="false" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style2" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="13.0" />
-               </font>
-            </Button>
-         </children></AnchorPane>
-   </right>
-</BorderPane>
+
+<AnchorPane minHeight="698.0" minWidth="1100.0" prefHeight="698.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.LoginController">
+   <children>
+      <ImageView fitHeight="706.0" fitWidth="1105.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/welcome-view.-blur.jpg" />
+         </image>
+      </ImageView>
+      <BorderPane layoutX="294.0" layoutY="142.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" styleClass="frame" stylesheets="@styles.css">
+         <left>
+            <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="brandingImageView" fitHeight="400.0" fitWidth="245.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" styleClass="frame">
+                     <image>
+                        <Image url="@../../../images/LoginResources/background1.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane prefHeight="423.0" prefWidth="295.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="lockImageView" fitHeight="81.0" fitWidth="83.0" focusTraversable="false" layoutX="98.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/LoginResources/LockLogo1.png" />
+                     </image>
+                  </ImageView>
+                  <Label focusTraversable="false" layoutX="14.0" layoutY="205.0" text="Benutzername">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameTextField" focusTraversable="true" layoutX="110.0" layoutY="200.0" prefHeight="25.0" prefWidth="137.0" promptText="Benutzername" />
+                  <Label focusTraversable="false" layoutX="14.0" layoutY="240.0" text="Passwort">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button id="loginbtn" fx:id="loginButton" focusTraversable="false" layoutX="82.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="75.0" styleClass="button-style2" stylesheets="@styles.css" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button id="loginbtn" fx:id="SignUpButton" focusTraversable="false" layoutX="168.0" layoutY="290.0" mnemonicParsing="false" onAction="#onActionSingUpButton" prefHeight="17.0" prefWidth="75.0" styleClass="button-style2" stylesheets="@styles.css" text="Sign Up!" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="loginMessageLabel" focusTraversable="false" layoutX="15.0" layoutY="168.0" prefHeight="15.0" prefWidth="230.0" textFill="RED">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="enterPasswordField" focusTraversable="true" layoutX="111.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Passwort" />
+                  <Button id="loginbtn" fx:id="cancelButton" focusTraversable="false" layoutX="76.0" layoutY="346.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="24.0" prefWidth="167.0" styleClass="button-style2" stylesheets="@styles.css" text="Schliessen" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
