@@ -2,6 +2,7 @@ package com.example.kochbuch.controller;
 
 import com.example.kochbuch.Main;
 import com.example.kochbuch.StaticViews;
+import com.example.kochbuch.helper.UserSession;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,8 +16,10 @@ import javafx.scene.layout.StackPane;
 
 
 import java.io.InputStream;
+import java.util.Observable;
+import java.util.Observer;
 
-public class MainController {
+public class MainController implements Observer {
     @FXML
     private AnchorPane content;
 
@@ -88,20 +91,22 @@ public class MainController {
 
 
     public static void setLoggedInUser(String username) {
-        loggedInUser = username;
+        UserSession.getInstance().setLoggedInUser(username);
         updateLoggedInUserLabel();
         updateAccountButtonText();
     }
 
     public static String getLoggedInUser() {
-        return loggedInUser;
+        return UserSession.getInstance().getLoggedInUser();
     }
 
     public void initialize() {
         controllerInstance = this;
+        UserSession.getInstance().addObserver(this);
         updateLoggedInUserLabel();
         updateAccountButtonText();
     }
+
 
     private static final double ORIGINAL_WIDTH = 30.0; // Ersetzen Sie durch die ursprüngliche Breite
     private static final double ORIGINAL_HEIGHT = 30.0; // Ersetzen Sie durch die ursprüngliche Höhe
@@ -148,6 +153,7 @@ public class MainController {
                 controllerInstance.userFavorites.setVisible(!loggedInUser.equals("admin"));
                 controllerInstance.userFavoritesIcon.setVisible(!loggedInUser.equals("admin"));
 
+
             } else {
                 controllerInstance.accountBtn.setText("Login");
                 MainController.getControllerInstance().resetProfileImage();
@@ -165,6 +171,10 @@ public class MainController {
         }
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
 }
 
 

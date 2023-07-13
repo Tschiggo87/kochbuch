@@ -79,11 +79,14 @@ public class RegisterController implements Initializable {
         String userName = registerModel.getUsernameTextField();
         String password = registerModel.getSetPasswordField();
 
-        if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || password.isEmpty()) {
+        if (firstName == null || firstName.isEmpty() ||
+                lastName == null || lastName.isEmpty() ||
+                userName == null || userName.isEmpty() ||
+                password == null || password.isEmpty()) {
             registrationMessageLabel.setText("Bitte füllen Sie alle Felder aus.");
         } else if (checkUsernameExists()) {
             registrationMessageLabel.setText("Der Benutzername ist bereits vorhanden.");
-        } else if (!setPasswordField.getText().equals(confirmPasswordField.getText())) {
+        } else if (password == null || !password.equals(confirmPasswordField.getText())) {
             registrationMessageLabel.setText("Die Passwörter stimmen nicht überein.");
         } else {
             registerUser();
@@ -95,6 +98,7 @@ public class RegisterController implements Initializable {
             pause.play();
         }
     }
+
 
 
     //Überprüfung, ob der Benutzername bereits existiert
@@ -194,4 +198,6 @@ public class RegisterController implements Initializable {
 
         return null;
     }
+
+
 }

@@ -68,11 +68,25 @@ public class RecipesDetailController {
             // Rezeptinformationen anzeigen
             showRecipeInfo();
 
+            // Update the visibility of the edit button
+            updateButtonVisibility();
+
         } catch (SQLException e) {
             e.printStackTrace();
             // SQLException behandeln
         }
     }
+
+    public void updateButtonVisibility() {
+        String loggedInUser = MainController.getLoggedInUser();
+
+        if (loggedInUser != null && loggedInUser.equals("admin")) {
+            editBtn.setVisible(true);
+        } else {
+            editBtn.setVisible(false);
+        }
+    }
+
 
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
         // SQL-Abfrage zum Abrufen der Rezeptinformationen basierend auf der Rezept-ID
