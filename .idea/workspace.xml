@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="sichere version5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" afterDir="false" />
-    </list>
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="random" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -305,7 +301,23 @@
       <option name="project" value="LOCAL" />
       <updated>1689255488930</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="random">
+      <option name="closed" value="true" />
+      <created>1689265080020</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1689265080020</updated>
+    </task>
+    <task id="LOCAL-00029" summary="random">
+      <option name="closed" value="true" />
+      <created>1689265164276</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1689265164276</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +366,8 @@
     <MESSAGE value="sichere version" />
     <MESSAGE value="sichere version5" />
     <MESSAGE value="Some Design Changes, to make a unified Complette lock" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some Design Changes, to make a unified Complette lock" />
+    <MESSAGE value="random" />
+    <option name="LAST_COMMIT_MESSAGE" value="random" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
