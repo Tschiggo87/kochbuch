@@ -10,12 +10,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.converter.NumberStringConverter;
+
 import java.util.List;
 
 public class EditController {
 
     // UI-Elemente, die in der FXML-Datei definiert sind
+    @FXML
     public TextField recipeName;
     public TextField recipeDescription;
     public TextField recipeTime;
@@ -27,30 +28,24 @@ public class EditController {
 
     // Instanzvariablen
     private RezeptModel model;
-    private List<RezeptModel> recipeList;
-    private int recipeId;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         model = new RezeptModel(); // Erstellen einer neuen Instanz von RezeptModel
 
         // Datenbankzugriff zum Laden der Rezepte
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        recipeList = databaseHandler.getRezepteFromDatabase();
+        List<RezeptModel> recipeList = databaseHandler.getRezepteFromDatabase();
 
         // Laden des aktuellen Rezept-IDs vom DataTransmitter
-        recipeId = DataTransmitter.getInstance().getRecipeId();
+        int recipeId = DataTransmitter.getInstance().getRecipeId();
 
         // Laden der Rezeptdetails in das Modell
-        loadRecipeDetails(recipeList.get(recipeId -1));
+        loadRecipeDetails(recipeList.get(recipeId - 1));
 
         // Binden der Modellwerte an die UI-Elemente
         bindModel();
-
-
     }
-
-
 
     // Methode zum Laden der Rezeptdetails in das Modell
     public void loadRecipeDetails(RezeptModel recipeModel) {
@@ -59,42 +54,14 @@ public class EditController {
 
     // Methode zum Binden der Modellwerte an die UI-Elemente
     private void bindModel() {
-        try {
-            recipeName.textProperty().bindBidirectional(model.nameProperty());
-            recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
-            recipeTime.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
-            recipePortion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
-            recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
-            recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
-            recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
-            recipeImage.textProperty().bindBidirectional(model.bildProperty());
-        } catch (NumberFormatException e) {
-            // Behandlung des Fehlers
-            System.err.println("Fehler beim Binden der Modellwerte: " + e.getMessage());
-            e.printStackTrace();
-
-            // Optional: Zeigen Sie dem Benutzer eine Fehlermeldung an
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Falscher Datenwert.", ButtonType.OK);
-            alert.showAndWait();
-        }
-    }
-
-
-    // Methode zum Anzeigen der aktuellen Werte des Modells in der Konsole
-    public void onShowValues() {
-        System.out.println(model.toString());
-    }
-
-    // Methode zum Zurücksetzen des Modells auf die Standardwerte
-    public void onReset() {
-        model.setName(null);
-        model.setBeschreibung(null);
-        model.setDauer(0);
-        model.setPortion(0);
-        model.setSchwierigkeitsgrad(null);
-        model.setAnweisungen(null);
-        model.setZutaten(null);
-        model.setBild(null);
+        recipeName.textProperty().bindBidirectional(model.nameProperty());
+        recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
+        recipeTime.textProperty().bindBidirectional(model.dauerProperty());
+        recipePortion.textProperty().bindBidirectional(model.portionProperty());
+        recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
+        recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
+        recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
+        recipeImage.textProperty().bindBidirectional(model.bildProperty());
     }
 
     // Methode zum Wechseln zur Rezeptdetailansicht
@@ -111,16 +78,6 @@ public class EditController {
     // Methode zum Speichern der Modellwerte in die Datenbank
     @FXML
     public void onSaveBtnClick() {
-        // Speichern der Werte aus den UI-Elementen im Modell
-        model.setName(recipeName.getText());
-        model.setBeschreibung(recipeDescription.getText());
-        model.setDauer(Integer.parseInt(recipeTime.getText()));
-        model.setPortion(Integer.parseInt(recipePortion.getText()));
-        model.setSchwierigkeitsgrad(recipeDifficulty.getText());
-        model.setAnweisungen(recipeInstruction.getText());
-        model.setZutaten(recipeIngredients.getText());
-        model.setBild(recipeImage.getText());
-
         // Speichern des Modells in der Datenbank
         DatabaseHandler databaseHandler = new DatabaseHandler();
         boolean success = databaseHandler.updateRezeptInDatabase(model);

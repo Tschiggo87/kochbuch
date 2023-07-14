@@ -10,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.converter.NumberStringConverter;
 
 public class AddRecipeController {
     public TextField recipeName;
@@ -32,17 +31,14 @@ public class AddRecipeController {
     private void bindModel() {
         recipeName.textProperty().bindBidirectional(model.nameProperty());
         recipeDescription.textProperty().bindBidirectional(model.beschreibungProperty());
-        recipeTime.textProperty().bindBidirectional(model.dauerProperty(), new NumberStringConverter());
-        recipePortion.textProperty().bindBidirectional(model.portionProperty(), new NumberStringConverter());
+        recipeTime.textProperty().bindBidirectional(model.dauerProperty());
+        recipePortion.textProperty().bindBidirectional(model.portionProperty());
         recipeDifficulty.textProperty().bindBidirectional(model.schwierigkeitsgradProperty());
         recipeInstruction.textProperty().bindBidirectional(model.anweisungenProperty());
         recipeIngredients.textProperty().bindBidirectional(model.zutatenProperty());
         recipeImage.textProperty().bindBidirectional(model.bildProperty());
     }
 
-    public void onShowValues() {
-        System.out.println(model.toString());
-    }
 
     @FXML
     public void onResetBtnClick() {
@@ -63,8 +59,10 @@ public class AddRecipeController {
             infoAlert.showAndWait();
         }
         else {
-            // User clicked "No" or closed the dialog, do nothing
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden nicht Gelöscht.", ButtonType.OK);
+            infoAlert.showAndWait();
         }
+
     }
 
     public void onBackToRecipesDetailBtnClick() {

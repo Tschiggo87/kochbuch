@@ -10,12 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -31,8 +31,6 @@ public class MainController implements Observer {
 
     private static MainController controllerInstance;
 
-    private static String loggedInUser;
-
     @FXML
     private Button adminEdit;
     @FXML
@@ -43,6 +41,10 @@ public class MainController implements Observer {
     private ImageView userFavoritesIcon;
     @FXML
     private ImageView loginImage;
+    @FXML
+    private ImageView editIcon;
+    @FXML
+    private ImageView addIcon;
 
 
 
@@ -135,11 +137,7 @@ public class MainController implements Observer {
         if (controllerInstance != null && controllerInstance.loggedInUserLabel != null) {
             String loggedInUser = getLoggedInUser();
 
-            if (loggedInUser != null) {
-                controllerInstance.loggedInUserLabel.setText(loggedInUser);
-            } else {
-                controllerInstance.loggedInUserLabel.setText("");
-            }
+            controllerInstance.loggedInUserLabel.setText(Objects.requireNonNullElse(loggedInUser, ""));
         }
     }
 
@@ -148,10 +146,12 @@ public class MainController implements Observer {
             String loggedInUser = getLoggedInUser();
             if (loggedInUser != null) {
                 controllerInstance.accountBtn.setText("Logout");
-                controllerInstance.adminEdit.setVisible(loggedInUser.equals("admin")); // Setzen Sie die Sichtbarkeit des adminEdit-Buttons basierend auf dem Benutzernamen
-                controllerInstance.adminAdd.setVisible(loggedInUser.equals("admin"));// Setzen Sie die Sichtbarkeit des adminAdd-Buttons basierend auf dem Benutzernamen
+                controllerInstance.adminEdit.setVisible(loggedInUser.equals("admin"));
+                controllerInstance.adminAdd.setVisible(loggedInUser.equals("admin"));
                 controllerInstance.userFavorites.setVisible(!loggedInUser.equals("admin"));
                 controllerInstance.userFavoritesIcon.setVisible(!loggedInUser.equals("admin"));
+                controllerInstance.editIcon.setVisible(loggedInUser.equals("admin"));
+                controllerInstance.addIcon.setVisible(loggedInUser.equals("admin"));
 
 
             } else {
@@ -167,13 +167,17 @@ public class MainController implements Observer {
                 controllerInstance.adminAdd.setVisible(false);
                 controllerInstance.userFavorites.setVisible(false);
                 controllerInstance.userFavoritesIcon.setVisible(false);
+                controllerInstance.editIcon.setVisible(false);
+                controllerInstance.addIcon.setVisible(false);
             }
         }
     }
 
+
     @Override
     public void update(Observable o, Object arg) {
-
+        updateLoggedInUserLabel();
+        updateAccountButtonText();
     }
 }
 

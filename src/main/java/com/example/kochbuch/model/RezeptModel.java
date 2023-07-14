@@ -7,22 +7,22 @@ import javafx.beans.property.StringProperty;
 
 public class RezeptModel {
 
-    private IntegerProperty rezeptID;
-    private StringProperty name;
-    private StringProperty beschreibung;
-    private IntegerProperty dauer;
-    private IntegerProperty portion;
-    private StringProperty schwierigkeitsgrad;
-    private StringProperty anweisungen;
-    private StringProperty zutaten;
-    private StringProperty bild;
+    private final IntegerProperty rezeptID;
+    private final StringProperty name;
+    private final StringProperty beschreibung;
+    private final StringProperty dauer;
+    private final StringProperty portion;
+    private final StringProperty schwierigkeitsgrad;
+    private final StringProperty anweisungen;
+    private final StringProperty zutaten;
+    private final StringProperty bild;
 
     public RezeptModel(){
         rezeptID = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
         beschreibung = new SimpleStringProperty();
-        dauer = new SimpleIntegerProperty();
-        portion = new SimpleIntegerProperty();
+        dauer = new SimpleStringProperty();
+        portion = new SimpleStringProperty();
         schwierigkeitsgrad = new SimpleStringProperty();
         anweisungen = new SimpleStringProperty();
         zutaten = new SimpleStringProperty();
@@ -66,30 +66,29 @@ public class RezeptModel {
         this.beschreibung.set(beschreibung);
     }
 
-    public int getDauer() {
+    public String getDauer() {
         return dauer.get();
     }
 
-    public IntegerProperty dauerProperty() {
+    public StringProperty dauerProperty() {
         return dauer;
     }
 
-    public void setDauer(int dauer) {
+    public void setDauer(String dauer) {
         this.dauer.set(dauer);
     }
 
-    public int getPortion() {
+    public String getPortion() {
         return portion.get();
     }
 
-    public IntegerProperty portionProperty() {
+    public StringProperty portionProperty() {
         return portion;
     }
 
-    public void setPortion(int portion) {
+    public void setPortion(String portion) {
         this.portion.set(portion);
     }
-
     public String getSchwierigkeitsgrad() {
         return schwierigkeitsgrad.get();
     }
