@@ -63,8 +63,8 @@ public class DatabaseHandler {
                 rezept.setRezeptID(resultSet.getInt("rezeptID"));
                 rezept.setName(resultSet.getString("name"));
                 rezept.setBeschreibung(resultSet.getString("beschreibung"));
-                rezept.setDauer(resultSet.getInt("dauer"));
-                rezept.setPortion(resultSet.getInt("portion"));
+                rezept.setDauer(resultSet.getString("dauer"));
+                rezept.setPortion(resultSet.getString("portion"));
                 rezept.setSchwierigkeitsgrad(resultSet.getString("schwierigkeitsgrad"));
                 rezept.setAnweisungen(resultSet.getString("anweisungen"));
                 rezept.setZutaten(resultSet.getString("zutaten"));
@@ -86,7 +86,7 @@ public class DatabaseHandler {
 
     /**
      * Updated ein Rezept in der Datenbank.
-     * @param recipeModel
+     * @param recipeModel Rezept, das aktualisiert werden soll
      * @return true, wenn das Rezept erfolgreich aktualisiert wurde
      */
     public boolean updateRezeptInDatabase(RezeptModel recipeModel) {
@@ -99,8 +99,8 @@ public class DatabaseHandler {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, recipeModel.getName());
             statement.setString(2, recipeModel.getBeschreibung());
-            statement.setInt(3, recipeModel.getDauer());
-            statement.setInt(4, recipeModel.getPortion());
+            statement.setString(3, recipeModel.getDauer());
+            statement.setString(4, recipeModel.getPortion());
             statement.setString(5, recipeModel.getSchwierigkeitsgrad());
             statement.setString(6, recipeModel.getAnweisungen());
             statement.setString(7, recipeModel.getZutaten());
@@ -140,8 +140,8 @@ public class DatabaseHandler {
             // Werte setzen
             statement.setString(1, rezept.getName());
             statement.setString(2, rezept.getBeschreibung());
-            statement.setInt(3, rezept.getDauer());
-            statement.setInt(4, rezept.getPortion());
+            statement.setString(3, rezept.getDauer());
+            statement.setString(4, rezept.getPortion());
             statement.setString(5, rezept.getSchwierigkeitsgrad());
             statement.setString(6, rezept.getAnweisungen());
             statement.setString(7, rezept.getZutaten());

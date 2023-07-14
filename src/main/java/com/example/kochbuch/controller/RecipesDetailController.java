@@ -117,8 +117,8 @@ public class RecipesDetailController {
                     // Rezeptinformationen aus dem ResultSet abrufen und im recipeModel speichern
                     recipeModel.setName(resultSet.getString("name"));
                     recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
-                    recipeModel.setDauer(resultSet.getInt("dauer"));
-                    recipeModel.setPortion(resultSet.getInt("portion"));
+                    recipeModel.setDauer(resultSet.getString("dauer"));
+                    recipeModel.setPortion(resultSet.getString("portion"));
                     recipeModel.setAnweisungen(resultSet.getString("anweisungen"));
                     recipeModel.setSchwierigkeitsgrad(resultSet.getString("schwierigkeitsgrad"));
                     recipeModel.setZutaten(resultSet.getString("zutaten"));
@@ -135,8 +135,8 @@ public class RecipesDetailController {
         // Rezeptinformationen auf den entsprechenden UI-Elementen anzeigen
         recipeName.setText(recipeModel.getName());
         recipeDescription.setText(recipeModel.getBeschreibung());
-        recipeTime.setText(Integer.toString(recipeModel.getDauer()));
-        recipePortion.setText(Integer.toString(recipeModel.getPortion()));
+        recipeTime.setText(recipeModel.getDauer());
+        recipePortion.setText(recipeModel.getPortion());
         recipeInstruction.setText(recipeModel.getAnweisungen());
         recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
         recipeIngredients.setText(recipeModel.getZutaten());
