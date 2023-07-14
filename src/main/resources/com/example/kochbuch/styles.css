@@ -1,0 +1,138 @@
+/* Start View */
+
+.menuBtn {
+  -fx-background-color: transparent;
+   -fx-background-radius: 10px;
+   -fx-border-radius: 10px;
+   -fx-cursor: hand;
+}
+
+.menuBtn:hover {
+  -fx-background-color: black;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-cursor: hand;
+  -fx-text-fill: linear-gradient(to right, #DBE7FF, #FBCCF8);
+}
+
+.sideBarMenu{
+    -fx-background-color: linear-gradient(to right, rgba(219,231,255,0.7), rgba(251,204,248,0.7));
+    -fx-margin: 20px;
+
+}
+
+/* Recipes View */
+.recipesBox {
+   -fx-background-color: black;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-border-color: #5b5b5b;
+  -fx-border-width: 0.5px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
+}
+
+.recipes-detail-btn {
+   -fx-background-color: white;
+   -fx-background-radius: 10px;
+   -fx-border-radius: 10px;
+   -fx-cursor: hand;
+}
+
+.recipe-image{
+    -fx-border-radius: 10px;
+    }
+
+.recipes-detail-btn:hover {
+  -fx-background-color: black;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-cursor: hand;
+  -fx-text-fill: linear-gradient(to right, #DBE7FF, #FBCCF8);
+}
+
+.scroll-pane {
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+
+
+/* Recipes Detail View */
+.recipes-detail-bg {
+  -fx-background-color: linear-gradient(to right, #ffffff, #DBE7FF, #FBCCF8);
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.21), 29, 0.0, 5, 4);
+}
+
+
+
+.button-style-reverse{
+    -fx-text-fill: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: black;
+}
+
+.button-style-reverse:hover {
+    -fx-background-color: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-text-fill: black;
+    -fx-border-color: black;
+}
+
+.button-style-border{
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+    -fx-border-color: black;
+}
+
+.button-style-border:hover{
+   -fx-background-color: black;
+   -fx-text-fill: white;
+    -fx-border-color: none;
+}
+
+/* Start View */
+.button-style {
+    -fx-text-fill: white;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+}
+
+.button-style:hover {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+
+}
+
+/* Login View */
+.button-style2 {
+    -fx-text-fill: black;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: transparent;
+}
+
+.button-style2:hover {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+
+}
+
+
+#text{
+    -fx-text-alignment: center;
+    -fx-text-alignment: center;
+    -fx-font-size: 20px;
+    -fx-margin-left: auto;
+    -fx-margin-right: auto;
+}
+
+.scroll-pane {
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="690.0" prefWidth="1101.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.RecipesDetailController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="-4.0" minHeight="700.0" minWidth="1105.0" prefHeight="701.0" prefWidth="1107.0">
+         <children>
+            <ImageView fitHeight="710.0" fitWidth="1112.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/bg-blur-recipe.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="-4.0" prefHeight="633.0" prefWidth="1083.0">
+               <children>
+                  <BorderPane layoutY="1.0" prefHeight="700.0" prefWidth="1088.0" stylesheets="@styles.css">
+                     <top>
+                        <VBox alignment="CENTER" prefHeight="148.0" prefWidth="1088.0">
+                           <children>
+                              <Label fx:id="recipeName" alignment="CENTER" contentDisplay="TOP" styleClass="frame" stylesheets="@styles.css" text="Rezept Name" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="recipeDescription" alignment="CENTER" contentDisplay="CENTER" styleClass="frame" stylesheets="@styles.css" text="Beschreibung" textAlignment="CENTER" textFill="#e8e8e8">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets top="12.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </top>
+                     <center>
+                        <VBox prefHeight="562.0" prefWidth="589.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="recipeMeasure" alignment="TOP_LEFT" prefHeight="0.0" prefWidth="617.0" text="Zubereitung" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="recipeInstruction" alignment="TOP_LEFT" prefHeight="457.0" prefWidth="665.0" text="Zubereitung " textFill="#e8e8e8" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets top="12.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets left="20.0" right="40.0" />
+                           </BorderPane.margin>
+                        </VBox>
+                     </center>
+                     <left>
+                        <VBox prefHeight="458.0" prefWidth="183.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="194.0" text="Zutaten" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="recipeIngredients" alignment="TOP_LEFT" prefHeight="462.0" prefWidth="362.0" text="Zutat" textFill="#e8e8e8" wrapText="true">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="12.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <HBox>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="10.0" />
+                           </opaqueInsets>
+                           <BorderPane.margin>
+                              <Insets left="50.0" />
+                           </BorderPane.margin>
+                        </VBox>
+                     </left>
+                     <right>
+                        <VBox prefHeight="491.0" prefWidth="148.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="recipeImage" fitHeight="160.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label text="Schwierigkeit" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="50.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="recipeDifficulty" alignment="TOP_LEFT" prefHeight="0.0" prefWidth="251.0" text="Schwieirgkeit" textFill="#e8e8e8" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets top="12.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="31.0" prefWidth="249.0" />
+                              <Label text="Portionen" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="recipePortion" text="Portionen" textFill="#e8e8e8">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Region prefHeight="31.0" prefWidth="249.0" />
+                              <Label text="Dauer" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="recipeTime" text="Label" textFill="#e8e8e8">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets left="10.0" right="20.0" />
+                           </BorderPane.margin>
+                        </VBox>
+                     </right>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <GridPane layoutX="37.0" layoutY="632.0" prefHeight="30.0" prefWidth="1052.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="801.0" minWidth="10.0" prefWidth="801.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="307.0" minWidth="0.0" prefWidth="82.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="76.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEditBtnClick" styleClass="button-style" text="Bearbeiten" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button minWidth="66.0" mnemonicParsing="false" onAction="#onBackToRecipesBtnClick" prefHeight="23.0" styleClass="button-style" stylesheets="@styles.css" text="Zurück" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="userFavoritesIcon" fitHeight="20.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/icons/favorites.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="favoriteBtn" mnemonicParsing="false" onAction="#addToFavoritesBtn" styleClass="button-style" text="Add to Favorites">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
