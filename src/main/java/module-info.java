@@ -8,5 +8,6 @@ module com.example.kochbuch {
     opens com.example.kochbuch to javafx.fxml;
     exports com.example.kochbuch;
     exports com.example.kochbuch.controller;
+    exports com.example.kochbuch.model;
     opens com.example.kochbuch.controller to javafx.fxml;
 }

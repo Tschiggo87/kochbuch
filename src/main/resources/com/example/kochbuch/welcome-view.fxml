@@ -6,21 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: #020202;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.WelcomeController">
-   <children>
-      <AnchorPane fx:id="content" layoutY="-2.0" prefHeight="701.0" prefWidth="1061.0" style="-fx-background-color: black;">
-         <children>
-            <ImageView fitHeight="700.0" fitWidth="1145.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/welcome-view.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="221.0" layoutY="334.0" text="WELCOME" textFill="WHITE">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="96.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane prefHeight="675.0" prefWidth="1064.0" style="-fx-background-color: #020202;"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane fx:id="content" layoutY="-2.0" prefHeight="701.0" prefWidth="1061.0"
+               style="-fx-background-color: black;">
+      <ImageView fitHeight="700.0" fitWidth="1145.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../../../images/welcome-view.png"/>
+      </ImageView>
+      <Label layoutX="221.0" layoutY="334.0" text="WELCOME" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="96.0"/>
+         </font>
+      </Label>
+   </AnchorPane>
 </AnchorPane>

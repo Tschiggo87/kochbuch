@@ -46,8 +46,10 @@ public class RecipesDetailController {
 
     @FXML
     private Button editBtn;
+
     @FXML
     private Button favoriteBtn;
+
     @FXML
     private ImageView userFavoritesIcon;
 
@@ -56,65 +58,65 @@ public class RecipesDetailController {
     private int recipeId;
 
     public RecipesDetailController() {
-        // Instanziierung des DatabaseHandler und RezeptModel
+        // Initialisiert die Instanzvariablen
         databaseHandler = new DatabaseHandler();
         recipeModel = new RezeptModel();
     }
 
     public void initialize() {
         try {
-            // Rezept-ID von DataTransmitter abrufen
+            // Holt die Rezept-ID vom DataTransmitter
             recipeId = DataTransmitter.getInstance().getRecipeId();
 
-            // Verbindung zur Datenbank herstellen
+            // Erstellt eine Verbindung zur Datenbank
             Connection connection = databaseHandler.getConnection();
 
-            // Rezeptinformationen aus der Datenbank laden
+            // Laden der Rezept details aus der Datenbank
             loadRecipeInfoFromDatabase(connection);
 
-            // Rezeptinformationen anzeigen
+            // Zeigt die Rezept details an
             showRecipeInfo();
 
-            // Update the visibility of the edit button
+            // Zuständig für die Sichtbarkeit der Buttons
             updateButtonVisibility();
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // SQLException behandeln
+            // Handle SQLException
         }
     }
 
+    /**
+     * Update the visibility of the edit button, favorite button, and userFavoritesIcon based on the logged-in user.
+     * If the user is an admin, show the edit button and hide the favorite button and userFavoritesIcon.
+     * If the user is logged in but not an admin, hide the edit button and show the favorite button and userFavoritesIcon.
+     * If no user is logged in, hide both the edit button and the favorite button along with userFavoritesIcon.
+     */
     public void updateButtonVisibility() {
         String loggedInUser = MainController.getLoggedInUser();
 
-        if (loggedInUser != null && loggedInUser.equals("admin")) {
-            editBtn.setVisible(true);
-            favoriteBtn.setVisible(false);
-            userFavoritesIcon.setVisible(false);
-        } else if (loggedInUser != null) { // Benutzer eingeloggt, aber nicht admin
-            editBtn.setVisible(false);
-            favoriteBtn.setVisible(true);
-            userFavoritesIcon.setVisible(true);
-        } else { // Benutzer nicht eingeloggt
-            editBtn.setVisible(false);
-            favoriteBtn.setVisible(false);
-            userFavoritesIcon.setVisible(false);
-        }
+        editBtn.setVisible(loggedInUser != null && loggedInUser.equals("admin"));
+        favoriteBtn.setVisible(loggedInUser != null && !loggedInUser.equals("admin"));
+        userFavoritesIcon.setVisible(loggedInUser != null && !loggedInUser.equals("admin"));
     }
 
 
-
+    /**
+     * Load recipe information from the database based on the recipe ID.
+     * @param connection The database connection
+     * @throws SQLException if a database access error occurs
+     */
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        // SQL-Abfrage zum Abrufen der Rezeptinformationen basierend auf der Rezept-ID
+        // SQL statement um die Rezept details aus der Datenbank zu laden
         String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            // Die Rezept-ID als Parameter in der SQL-Abfrage setzen
+            // Setzt die Rezept-ID als Parameter in das SQL statement
             statement.setInt(1, recipeId);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    // Rezeptinformationen aus dem ResultSet abrufen und im recipeModel speichern
+                    // Setzt die Rezept details in das RezeptModel
                     recipeModel.setName(resultSet.getString("name"));
                     recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
                     recipeModel.setDauer(resultSet.getString("dauer"));
@@ -128,11 +130,14 @@ public class RecipesDetailController {
         }
     }
 
+    /**
+     * Show recipe information on the corresponding UI elements.
+     */
     private void showRecipeInfo() {
-        // Verzeichnis, in dem Rezeptbilder gespeichert sind
+        // Pfad zum Ordner mit den Rezept Bildern
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
 
-        // Rezeptinformationen auf den entsprechenden UI-Elementen anzeigen
+        // Zeigt die Rezept details auf den entsprechenden UI Elementen an
         recipeName.setText(recipeModel.getName());
         recipeDescription.setText(recipeModel.getBeschreibung());
         recipeTime.setText(recipeModel.getDauer());
@@ -141,30 +146,29 @@ public class RecipesDetailController {
         recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
         recipeIngredients.setText(recipeModel.getZutaten());
 
-        // Rezeptbild laden und anzeigen
+        // Lädt das Rezept Bild aus dem Ordner mit den Rezept Bildern
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
     @FXML
     public void onEditBtnClick() {
-        // Wechseln Sie zur Bearbeitungsansicht
+        // Wechselt zur Rezept bearbeiten Ansicht
         Main.switchToView(StaticViews.RecipeEditView);
     }
 
     @FXML
     public void onBackToRecipesBtnClick() {
-        // Zurück zur Rezeptansicht wechseln
+        // Wechselt zur Rezepte Ansicht
         Main.switchToView(StaticViews.RecipesView);
     }
 
     @FXML
     public void addToFavoritesBtn() {
+        // Zeigt eine Meldung an, dass das Rezept zu den Favoriten hinzugefügt wurde
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Favoriten hinzufügen");
+        alert.setTitle("Add to Favorites");
         alert.setHeaderText(null);
-        alert.setContentText("Das Rezept wurde zu den Favoriten hinzugefügt!");
-
+        alert.setContentText("The recipe has been added to favorites!");
         alert.showAndWait();
     }
-
 }

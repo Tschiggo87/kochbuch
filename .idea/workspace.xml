@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Change the Type of the &quot;Portion&quot; und &quot;Dauer&quot; Field in the Databsehandler">
+    <list default="true" id="f2aa812e-3531-43b7-988b-8f6d530a1bb6" name="Changes" comment="Refactor the following classes:&#10;DataTransmitter, Main, RecipesDetailController, RecipesController.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/AddRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/AddRecipeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/EditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/RecipesDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/databasehandler/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/controller/WelcomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/helper/DataTransmitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/helper/DataTransmitter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RezeptModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/kochbuch/model/RezeptModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/kochbuch/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689275190289</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Change the Type of the &quot;Portion&quot; und &quot;Dauer&quot; Field in the Databsehandler">
+      <option name="closed" value="true" />
+      <created>1689308991089</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1689308991089</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +399,8 @@
     <MESSAGE value="Add Favorite Button" />
     <MESSAGE value="Add Favorite Button Functionality" />
     <MESSAGE value="Change the Type of the &quot;Portion&quot; und &quot;Dauer&quot; Field in the Databsehandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change the Type of the &quot;Portion&quot; und &quot;Dauer&quot; Field in the Databsehandler" />
+    <MESSAGE value="Refactor the following classes:&#10;DataTransmitter, Main, RecipesDetailController, RecipesController." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor the following classes:&#10;DataTransmitter, Main, RecipesDetailController, RecipesController." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

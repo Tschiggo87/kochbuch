@@ -9,9 +9,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class Main extends Application {
 
     private static MainController mainController;
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -36,12 +38,13 @@ public class Main extends Application {
         }
     }
 
+
+
     public static MainController getMainController() {
         return mainController;
     }
 
 
 }
-
 
 

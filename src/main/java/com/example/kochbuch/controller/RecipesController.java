@@ -6,12 +6,9 @@ import com.example.kochbuch.helper.DataTransmitter;
 import com.example.kochbuch.databasehandler.DatabaseHandler;
 import com.example.kochbuch.model.RezeptModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 /**
@@ -30,14 +27,12 @@ public class RecipesController {
     @FXML
     private Label recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6;
 
-    private DatabaseHandler databaseHandler;
-
     /**
      * Initialisierung der Rezept Overview
      * */
     public void initialize() {
         // Initialisierung des DatabaseHandler
-        databaseHandler = new DatabaseHandler();
+        DatabaseHandler databaseHandler = new DatabaseHandler();
         List<RezeptModel> rezepte = databaseHandler.getRezepteFromDatabase();
         populateLabels(rezepte);
     }
@@ -56,7 +51,7 @@ public class RecipesController {
         Label[] recipeDifficulties = {recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6};
 
         for (int i = 0; i < NUM_RECIPES; i++) {
-            // Rezeptinformationen aus der Liste abrufen
+            // Rezept informationen aus der Liste abrufen
             RezeptModel rezept = rezepte.get(i);
 
             // Bild des Rezepts setzen
@@ -69,7 +64,7 @@ public class RecipesController {
         }
     }
 
-    // Detailansichts-Buttons
+    // Detailansicht-Buttons
     @FXML
     public void onDetailBtnClick1() {
         openRecipeDetailView(1);
@@ -113,10 +108,4 @@ public class RecipesController {
         Main.switchToView(StaticViews.WelcomeView);
     }
 
-    public void addToFavoritesBtn() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Rezept wurde zu den Favoriten hinzugefügt!", ButtonType.OK);
-        alert.setHeaderText(null); // Keinen Header-Text anzeigen
-        alert.setTitle("Favoriten hinzugefügt");
-        alert.showAndWait();
-    }
 }
