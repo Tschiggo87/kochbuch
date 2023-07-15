@@ -204,13 +204,12 @@ public class MainController implements Observer {
     /**
      * Aktualisiert den Text des "Account" Buttons.
      */
-
     private static void updateAccountButtonText() {
         if (controllerInstance != null && controllerInstance.accountBtn != null) {
-            String loggedInUser = getLoggedInUser();
-            if (loggedInUser != null) {
+            boolean isAdmin = UserSession.getInstance().isAdmin();
+            if (UserSession.getInstance().getLoggedInUser() != null) {
                 controllerInstance.accountBtn.setText("Logout");
-                setUserBtnsVisible(loggedInUser.equals("admin"), !loggedInUser.equals("admin"));
+                setUserBtnsVisible(isAdmin, !isAdmin);
             } else {
                 controllerInstance.accountBtn.setText("Login");
                 MainController.getControllerInstance().resetProfileImage();
@@ -224,6 +223,12 @@ public class MainController implements Observer {
         }
     }
 
+    /**
+     * Setzt die Sichtbarkeit der Buttons für angemeldete Benutzer.
+     *
+     * @param isAdmin Gibt an, ob der angemeldete Benutzer ein Admin ist.
+     * @param isUser  Gibt an, ob der angemeldete Benutzer ein normaler Benutzer ist.
+     */
     private static void setUserBtnsVisible(boolean isAdmin, boolean isUser) {
         controllerInstance.adminEdit.setVisible(isAdmin);
         controllerInstance.adminAdd.setVisible(isAdmin);
@@ -233,13 +238,14 @@ public class MainController implements Observer {
         controllerInstance.addIcon.setVisible(isAdmin);
     }
 
-    /**
-     * Aktualisiert die Ansicht basierend auf Änderungen in der UserSession.
-     *
-     * @param o   Das Observable-Objekt.
-     * @param arg Das Argument, das an den Observer übergeben wird.
-     */
 
+
+    /**
+         * Aktualisiert die Ansicht basierend auf Änderungen in der UserSession.
+         *
+         * @param o   Das Observable-Objekt.
+         * @param arg Das Argument, das an den Observer übergeben wird.
+         */
     @Override
     public void update(Observable o, Object arg) {
         updateLoggedInUserLabel();

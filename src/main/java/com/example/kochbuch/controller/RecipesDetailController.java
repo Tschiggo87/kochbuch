@@ -102,11 +102,13 @@ public class RecipesDetailController {
      */
     public void updateButtonVisibility() {
         String loggedInUser = MainController.getLoggedInUser();
+        boolean isAdmin = loggedInUser != null && loggedInUser.equals("admin");
 
-        editBtn.setVisible(loggedInUser != null && loggedInUser.equals("admin"));
-        favoriteBtn.setVisible(loggedInUser != null && !loggedInUser.equals("admin"));
-        userFavoritesIcon.setVisible(loggedInUser != null && !loggedInUser.equals("admin"));
+        editBtn.setVisible(isAdmin);
+        favoriteBtn.setVisible(!isAdmin);
+        userFavoritesIcon.setVisible(!isAdmin);
     }
+
 
     /**
      * Lädt die Rezeptinformationen aus der Datenbank basierend auf der Rezept-ID.
