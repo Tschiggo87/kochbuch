@@ -75,7 +75,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick1" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
+                              <Button fx:id="detailButton1" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -128,7 +128,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick2" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
+                              <Button fx:id="detailButton2" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -181,7 +181,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick3" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
+                              <Button fx:id="detailButton3" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -234,7 +234,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick4" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
+                              <Button fx:id="detailButton4" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -287,7 +287,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="47.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick5" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
+                              <Button fx:id="detailButton5" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
@@ -340,7 +340,7 @@
                                  </VBox.margin>
                               </Label>
                               <Region prefHeight="55.0" prefWidth="236.0" />
-                              <Button mnemonicParsing="false" onAction="#onDetailBtnClick6" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
+                              <Button fx:id="detailButton6" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>
