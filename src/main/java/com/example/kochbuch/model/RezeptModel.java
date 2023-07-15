@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Das RezeptModel repräsentiert ein Rezept mit verschiedenen Eigenschaften.
+ */
 public class RezeptModel {
 
     private final IntegerProperty rezeptID;
@@ -17,7 +20,11 @@ public class RezeptModel {
     private final StringProperty zutaten;
     private final StringProperty bild;
 
-    public RezeptModel(){
+    /**
+     * Konstruktor für das RezeptModel.
+     * Initialisiert die Eigenschaften mit den entsprechenden Property-Objekten.
+     */
+    public RezeptModel() {
         rezeptID = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
         beschreibung = new SimpleStringProperty();
@@ -29,8 +36,8 @@ public class RezeptModel {
         bild = new SimpleStringProperty();
     }
 
-    // Getter and Setter methods
-    // RezeptID
+    // Getter und Setter-Methoden für die Eigenschaften
+
     public int getRezeptID() {
         return rezeptID.get();
     }
@@ -42,6 +49,7 @@ public class RezeptModel {
     public void setRezeptID(int rezeptID) {
         this.rezeptID.set(rezeptID);
     }
+
     public String getName() {
         return name.get();
     }
@@ -89,6 +97,7 @@ public class RezeptModel {
     public void setPortion(String portion) {
         this.portion.set(portion);
     }
+
     public String getSchwierigkeitsgrad() {
         return schwierigkeitsgrad.get();
     }
@@ -125,7 +134,8 @@ public class RezeptModel {
         this.zutaten.set(zutaten);
     }
 
-    public String getBild() {return bild.get();
+    public String getBild() {
+        return bild.get();
     }
 
     public StringProperty bildProperty() {
@@ -136,10 +146,14 @@ public class RezeptModel {
         this.bild.set(bild);
     }
 
+    /**
+     * toString-Methode für das RezeptModel.
+     * @return String mit den Eigenschaften des RezeptModels.
+     */
     @Override
     public String toString() {
         return "RezeptModel{" +
-                "  rezeptID=" + rezeptID.get() +
+                "rezeptID=" + rezeptID.get() +
                 ", name=" + name.get() +
                 ", beschreibung=" + beschreibung.get() +
                 ", dauer=" + dauer.get() +
@@ -147,8 +161,7 @@ public class RezeptModel {
                 ", schwierigkeitsgrad=" + schwierigkeitsgrad.get() +
                 ", anweisungen=" + anweisungen.get() +
                 ", zutaten=" + zutaten.get() +
-                ", bild=" + bild.get() + '}';
+                ", bild=" + bild.get() +
+                '}';
     }
-
-
 }

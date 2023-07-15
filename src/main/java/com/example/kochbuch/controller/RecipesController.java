@@ -11,11 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.List;
+
 /**
- * @class RecipesController ist für die Anzeige der Rezepte auf der Rezept Overview zuständig.
- * @author Enrico Kälin
- * */
+ * Der RecipesController ist für die Anzeige der Rezepte auf der Rezeptübersicht zuständig.
+ */
 public class RecipesController {
+    //
     private static final int NUM_RECIPES = 6;
 
     @FXML
@@ -28,19 +29,22 @@ public class RecipesController {
     private Label recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6;
 
     /**
-     * Initialisierung der Rezept Overview
-     * */
+     * Initialisiert die Rezeptübersicht.
+     */
     public void initialize() {
         // Initialisierung des DatabaseHandler
         DatabaseHandler databaseHandler = new DatabaseHandler();
+        // Rezepte aus der Datenbank holen
         List<RezeptModel> rezepte = databaseHandler.getRezepteFromDatabase();
+        //
         populateLabels(rezepte);
     }
 
-
     /**
-     * @param rezepte Liste der Rezepte
-     * */
+     * Füllt die Labels in der Rezeptübersicht mit den Daten aus der Liste der Rezepte.
+     *
+     * @param rezepte Die Liste der Rezepte.
+     */
     public void populateLabels(List<RezeptModel> rezepte) {
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
 
@@ -51,7 +55,7 @@ public class RecipesController {
         Label[] recipeDifficulties = {recipeDifficulty1, recipeDifficulty2, recipeDifficulty3, recipeDifficulty4, recipeDifficulty5, recipeDifficulty6};
 
         for (int i = 0; i < NUM_RECIPES; i++) {
-            // Rezept informationen aus der Liste abrufen
+            // Rezeptinformationen aus der Liste abrufen
             RezeptModel rezept = rezepte.get(i);
 
             // Bild des Rezepts setzen
@@ -107,5 +111,4 @@ public class RecipesController {
     public void onRecipesBackBtnClick() {
         Main.switchToView(StaticViews.WelcomeView);
     }
-
 }
