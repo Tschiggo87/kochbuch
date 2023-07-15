@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane minHeight="698.0" minWidth="1100.0" prefHeight="698.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.kochbuch.controller.LoginController">
    <children>
       <ImageView fitHeight="706.0" fitWidth="1105.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
