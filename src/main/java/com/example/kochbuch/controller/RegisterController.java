@@ -27,7 +27,11 @@ import javafx.animation.PauseTransition;
 
 
 
-
+/**
+ * Die Klasse RegisterController ist zuständig für die Registrierung neuer Benutzer.
+ * Sie prüft, ob die eingegebenen Anmeldedaten korrekt sind und führt entsprechende Aktionen aus.
+ * Dieser Controller steuert auch die Darstellung der Registrierungsseite, inklusive der Hintergrundbilder und Icons.
+ */
 public class RegisterController implements Initializable {
 
 
@@ -48,7 +52,7 @@ public class RegisterController implements Initializable {
     private Label registrationMessageLabel;
     private RegisterModel registerModel;
 
-
+/** Hierm wird initialisiert, dass das Logo angezeigt wird und die Textfelder mit dem Model verbunden werden. */
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File shieldFile = new File("src/main/resources/images/LoginResources/registerLogo.png");
@@ -59,7 +63,7 @@ public class RegisterController implements Initializable {
         bindPropertiesToModel();
     }
 
-
+    /** Hier wird die Registrierung abgebrochen und das Login-Fenster wieder angezeigt. */
     private void bindPropertiesToModel() {
         firstnameTextField.textProperty().bindBidirectional(registerModel.firstnameTextFieldProperty());
         lastNameTextField.textProperty().bindBidirectional(registerModel.lastNameTextFieldProperty());
@@ -67,12 +71,15 @@ public class RegisterController implements Initializable {
         setPasswordField.textProperty().bindBidirectional(registerModel.setPasswordFieldProperty());
         confirmPasswordField.textProperty().bindBidirectional(registerModel.confirmPasswordFieldProperty());
     }
+
+
+    /** Hier wird die Registrierung abgebrochen und das Login-Fenster wieder angezeigt. */
     private void onShowValues() {
         System.out.println(registerModel.toString());
     }
 
 
-    //Button aktion zum Absenden der anmeldedaten
+    /** Hier wird die Registrierung abgebrochen und das Login-Fenster wieder angezeigt. */
     public void registerButtonOnAction(ActionEvent event) {
         String firstName = registerModel.getFirstnameTextField();
         String lastName = registerModel.getLastNameTextField();
@@ -101,7 +108,7 @@ public class RegisterController implements Initializable {
 
 
 
-    //Überprüfung, ob der Benutzername bereits existiert
+    /** Hier wird das Passwort gehasht. */
     private boolean checkUsernameExists() {
         String username = registerModel.getUsernameTextField();
         boolean usernameExists = false;
@@ -136,12 +143,12 @@ public class RegisterController implements Initializable {
     }
 
 
-    //Button aktion zum Schließen des Fensters, beziehungsweise wird hier die WelcomeView aufgerufen
+    /** Hier wird die View geschlossen und zur Welcomeview gewechselt. */
     public void closeButtonOnAction() {
         Main.switchToView(StaticViews.WelcomeView);
     }
 
-
+    /** Der User wird registriert. */
     public void registerUser() {
         DatabaseHandler handler = new DatabaseHandler();
         Connection connection = handler.getConnection();
@@ -176,7 +183,7 @@ public class RegisterController implements Initializable {
     }
 
 
-    //das Passwort wird für das Speichern in der Datenbank gehasht(SHA-256)
+    /** Hier wird das Passwort gehasht. */
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

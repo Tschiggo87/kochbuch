@@ -24,7 +24,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-//LoginController ist für die Anmeldung zuständig
+/**
+ * Die Klasse LoginController ist zuständig für die Authentifizierung der Benutzer.
+ * Sie prüft, ob die eingegebenen Anmeldedaten korrekt sind und führt entsprechende Aktionen aus.
+ * Dieser Controller steuert auch die Darstellung der Anmeldeseite, inklusive der Hintergrundbilder und Icons.
+ */
 public class LoginController implements Initializable {
 
     @FXML
@@ -46,7 +50,14 @@ public class LoginController implements Initializable {
     private LoginModel loginModel = new LoginModel ();
     private LoginModel editBtn = new LoginModel ();
 
-    // Methode zum Öffnen des CreateAccount Fensters und bindet die Bilder ein.
+
+    /**
+     * Diese Methode initialisiert die Anmeldeseite.
+     * Sie bindet die benötigten Bilder ein und initialisiert die Textfelder.
+     *
+     * @param url Die URL, die zur Initialisierung verwendet wird.
+     * @param resourceBundle Das ResourceBundle, das zur Initialisierung verwendet wird.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("src/main/resources/images/LoginResources/background1.jpg");
@@ -59,9 +70,29 @@ public class LoginController implements Initializable {
 
         usernameTextField.textProperty().bindBidirectional(loginModel.usernameTextFieldProperty());
         enterPasswordField.textProperty().bindBidirectional(loginModel.enterPasswordFieldProperty());
+
+        enterPasswordField.setOnAction(event -> {
+            String username = usernameTextField.getText();
+            String password = enterPasswordField.getText();
+            if (username != null && !username.isBlank() && password != null && !password.isBlank()) {
+                validateLogin();
+            } else {
+                loginMessageLabel.setText("Benutzername und Passwort eingeben!");
+            }
+        });
     }
 
-    // Login Felder werden überprüft, ob sie leer sind. Wenn nicht, wird die Methode validateLogin() aufgerufen.
+
+
+
+
+    /**
+     * Diese Methode wird aufgerufen, wenn der Anmeldebutton geklickt wird.
+     * Sie prüft, ob die Textfelder für Benutzername und Passwort leer sind.
+     * Wenn sie nicht leer sind, wird die Methode validateLogin() aufgerufen.
+     *
+     * @param event Das ausgelöste ActionEvent.
+     */
     @FXML
     private void loginButtonOnAction(ActionEvent event) {
         String username = usernameTextField.getText();
@@ -74,16 +105,25 @@ public class LoginController implements Initializable {
     }
 
 
-    // Der Cancel Button schließt das Login Fenster.
+    /**
+     * Diese Methode schließt das Anmeldefenster, wenn der Abbrechen-Button geklickt wird.
+     */
     public void cancelButtonOnAction() {
         Main.switchToView(StaticViews.WelcomeView);
     }
+
+    /**
+     * Diese Methode wechselt zur Registrierungsseite, wenn der SingUp-Button geklickt wird.
+     */
 
     @FXML
     protected void onActionSingUpButton()  {
         Main.switchToView(StaticViews.RegisterView);
     }
 
+    /**
+     * Diese Methode wechselt zur Passwort vergessen Seite, wenn der ForgotPassword-Button geklickt wird.
+     */
     @FXML
     private void validateLogin() {
         DatabaseHandler dbhandler = new DatabaseHandler();
@@ -128,7 +168,10 @@ public class LoginController implements Initializable {
         }
     }
 
-    // Methode zum Verschlüsseln des Passworts.
+    /**
+     * Diese Methode überprüft, ob die Anmeldedaten korrekt sind, indem sie diese mit den in der Datenbank gespeicherten Daten vergleicht.
+     * Wenn die Daten übereinstimmen, wird der Benutzer angemeldet und zur Willkommensseite weitergeleitet.
+     */
     private String getHashedPassword(String password) {
         String hashedPassword = null;
         try {
