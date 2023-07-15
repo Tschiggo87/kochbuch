@@ -210,12 +210,7 @@ public class MainController implements Observer {
             String loggedInUser = getLoggedInUser();
             if (loggedInUser != null) {
                 controllerInstance.accountBtn.setText("Logout");
-                controllerInstance.adminEdit.setVisible(loggedInUser.equals("admin"));
-                controllerInstance.adminAdd.setVisible(loggedInUser.equals("admin"));
-                controllerInstance.userFavorites.setVisible(!loggedInUser.equals("admin"));
-                controllerInstance.userFavoritesIcon.setVisible(!loggedInUser.equals("admin"));
-                controllerInstance.editIcon.setVisible(loggedInUser.equals("admin"));
-                controllerInstance.addIcon.setVisible(loggedInUser.equals("admin"));
+                setUserBtnsVisible(loggedInUser.equals("admin"), !loggedInUser.equals("admin"));
             } else {
                 controllerInstance.accountBtn.setText("Login");
                 MainController.getControllerInstance().resetProfileImage();
@@ -224,14 +219,18 @@ public class MainController implements Observer {
                 } else {
                     System.out.println("Main.mainController is null");
                 }
-                controllerInstance.adminEdit.setVisible(false);
-                controllerInstance.adminAdd.setVisible(false);
-                controllerInstance.userFavorites.setVisible(false);
-                controllerInstance.userFavoritesIcon.setVisible(false);
-                controllerInstance.editIcon.setVisible(false);
-                controllerInstance.addIcon.setVisible(false);
+                setUserBtnsVisible(false, false);
             }
         }
+    }
+
+    private static void setUserBtnsVisible(boolean isAdmin, boolean isUser) {
+        controllerInstance.adminEdit.setVisible(isAdmin);
+        controllerInstance.adminAdd.setVisible(isAdmin);
+        controllerInstance.userFavorites.setVisible(isUser);
+        controllerInstance.userFavoritesIcon.setVisible(isUser);
+        controllerInstance.editIcon.setVisible(isAdmin);
+        controllerInstance.addIcon.setVisible(isAdmin);
     }
 
     /**
@@ -240,6 +239,7 @@ public class MainController implements Observer {
      * @param o   Das Observable-Objekt.
      * @param arg Das Argument, das an den Observer übergeben wird.
      */
+
     @Override
     public void update(Observable o, Object arg) {
         updateLoggedInUserLabel();
