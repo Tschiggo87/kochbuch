@@ -11,6 +11,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import javafx.scene.control.TextInputControl;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class EditController {
@@ -37,17 +40,27 @@ public class EditController {
         DatabaseHandler databaseHandler = new DatabaseHandler();
         List<RezeptModel> recipeList = databaseHandler.getRezepteFromDatabase();
 
-        // Laden des aktuellen Rezept-IDs vom DataTransmitter
+        // Laden der aktuellen Rezept-IDs vom DataTransmitter
         int recipeId = DataTransmitter.getInstance().getRecipeId();
 
-        // Laden der Rezeptdetails in das Modell
+        // Laden der Rezept-details in das Modell
         loadRecipeDetails(recipeList.get(recipeId - 1));
 
         // Binden der Modellwerte an die UI-Elemente
         bindModel();
+        textInputs = List.of(
+                recipeName,
+                recipeDescription,
+                recipeTime,
+                recipePortion,
+                recipeDifficulty,
+                recipeInstruction,
+                recipeIngredients,
+                recipeImage
+        );
     }
 
-    // Methode zum Laden der Rezeptdetails in das Modell
+    // Methode zum Laden der Rezept-details in das Modell
     public void loadRecipeDetails(RezeptModel recipeModel) {
         model = recipeModel;
     }
@@ -64,7 +77,7 @@ public class EditController {
         recipeImage.textProperty().bindBidirectional(model.bildProperty());
     }
 
-    // Methode zum Wechseln zur Rezeptdetailansicht
+    // Methode zum Wechseln zur Rezept-detailansicht
     public void onBackToRecipesDetailBtnClick() {
         Main.switchToView(StaticViews.RecipesDetailView);
     }
@@ -78,19 +91,33 @@ public class EditController {
     // Methode zum Speichern der Modellwerte in die Datenbank
     @FXML
     public void onSaveBtnClick() {
+
+        if (isAnyFieldEmpty()) {
+            // Erzeugen eines Warnungsdialogs
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Alle Felder müssen ausgefüllt werden!", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         // Speichern des Modells in der Datenbank
         DatabaseHandler databaseHandler = new DatabaseHandler();
         boolean success = databaseHandler.updateRezeptInDatabase(model);
 
         // Überprüfen des Speichererfolgs
+        Alert alert;
         if (success) {
             // Erzeugen eines Informationsdialogs
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
-            alert.showAndWait();
+            alert = new Alert(Alert.AlertType.INFORMATION, "Daten wurden gespeichert.", ButtonType.OK);
         } else {
-            // Erzeugen eines Fehlertdialogs
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Speichern der Daten.", ButtonType.OK);
-            alert.showAndWait();
+            // Erzeugen eines Fehlerdialogs
+            alert = new Alert(Alert.AlertType.ERROR, "Fehler beim Speichern der Daten.", ButtonType.OK);
         }
+        alert.showAndWait();
     }
+   public List<TextInputControl> textInputs;
+    private boolean isAnyFieldEmpty() {
+
+        return textInputs.stream().anyMatch(input -> input.getText().isEmpty());
+    }
+
 }
