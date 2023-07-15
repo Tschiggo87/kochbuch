@@ -249,7 +249,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.columnIndex="2">
                      <children>
                         <ImageView fx:id="recipeImage5" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
-                        <VBox layoutX="264.0" layoutY="27.0" prefHeight="136.0" prefWidth="236.0">
+                        <VBox layoutX="264.0" layoutY="27.0" prefHeight="180.0" prefWidth="236.0">
                            <children>
                               <Label fx:id="recipeName5" text="Titel" textFill="WHITE" wrapText="true">
                                  <font>
@@ -302,7 +302,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="recipesBox" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
                         <ImageView fx:id="recipeImage6" fitHeight="226.0" fitWidth="523.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" />
-                        <VBox layoutX="264.0" layoutY="27.0" prefHeight="136.0" prefWidth="236.0">
+                        <VBox layoutX="264.0" layoutY="27.0" prefHeight="180.0" prefWidth="236.0">
                            <children>
                               <Label fx:id="recipeName6" text="Titel" textFill="WHITE" wrapText="true">
                                  <font>
@@ -339,7 +339,7 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Region prefHeight="55.0" prefWidth="236.0" />
+                              <Region prefHeight="29.0" prefWidth="236.0" />
                               <Button fx:id="detailButton6" mnemonicParsing="false" onAction="#openRecipeDetailView" styleClass="button-style" stylesheets="@../../../styles.css" text="Detail">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
