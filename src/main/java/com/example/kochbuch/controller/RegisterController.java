@@ -91,13 +91,18 @@ public class RegisterController implements Initializable {
                 userName == null || userName.isEmpty() ||
                 password == null || password.isEmpty()) {
             registrationMessageLabel.setText("Bitte füllen Sie alle Felder aus.");
+            registrationMessageLabel.setStyle("-fx-text-fill: red;");
         } else if (checkUsernameExists()) {
             registrationMessageLabel.setText("Der Benutzername ist bereits vorhanden.");
+            registrationMessageLabel.setStyle("-fx-text-fill: red;");
+
         } else if (password == null || !password.equals(confirmPasswordField.getText())) {
             registrationMessageLabel.setText("Die Passwörter stimmen nicht überein.");
+            registrationMessageLabel.setStyle("-fx-text-fill: red;");
         } else {
             registerUser();
             registrationMessageLabel.setText("Anmeldung erfolgreich!");
+            registrationMessageLabel.setStyle("-fx-text-fill: green;");
 
             //Es wird eine Pause von 2,5 Sekunden eingefügt, bevor der LoginView aufgerufen wird, damit der Nutzer die Meldung "Anmeldung erfolgreich" lesen kann.
             PauseTransition pause = new PauseTransition(Duration.seconds(2.5));
