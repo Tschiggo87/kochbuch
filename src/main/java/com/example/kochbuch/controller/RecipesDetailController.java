@@ -17,7 +17,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ * Der RecipesDetailController ist für die Anzeige der Detailansicht eines Rezepts zuständig.
+ */
 public class RecipesDetailController {
 
     @FXML
@@ -57,12 +59,18 @@ public class RecipesDetailController {
     private final RezeptModel recipeModel;
     private int recipeId;
 
+    /**
+     * Konstruktor für den RecipesDetailController.
+     * Initialisiert die Instanzvariablen.
+     */
     public RecipesDetailController() {
-        // Initialisiert die Instanzvariablen
         databaseHandler = new DatabaseHandler();
         recipeModel = new RezeptModel();
     }
 
+    /**
+     * Initialisiert die Detailansicht eines Rezepts.
+     */
     public void initialize() {
         try {
             // Holt die Rezept-ID vom DataTransmitter
@@ -71,13 +79,13 @@ public class RecipesDetailController {
             // Erstellt eine Verbindung zur Datenbank
             Connection connection = databaseHandler.getConnection();
 
-            // Laden der Rezept details aus der Datenbank
+            // Lädt die Rezeptinformationen aus der Datenbank
             loadRecipeInfoFromDatabase(connection);
 
-            // Zeigt die Rezept details an
+            // Zeigt die Rezeptinformationen an
             showRecipeInfo();
 
-            // Zuständig für die Sichtbarkeit der Buttons
+            // Aktualisiert die Sichtbarkeit der Buttons
             updateButtonVisibility();
 
         } catch (SQLException e) {
@@ -87,10 +95,10 @@ public class RecipesDetailController {
     }
 
     /**
-     * Update the visibility of the edit button, favorite button, and userFavoritesIcon based on the logged-in user.
-     * If the user is an admin, show the edit button and hide the favorite button and userFavoritesIcon.
-     * If the user is logged in but not an admin, hide the edit button and show the favorite button and userFavoritesIcon.
-     * If no user is logged in, hide both the edit button and the favorite button along with userFavoritesIcon.
+     * Aktualisiert die Sichtbarkeit des Edit-Buttons, des Favorite-Buttons und des UserFavoritesIcons basierend auf dem angemeldeten Benutzer.
+     * Wenn der Benutzer ein Administrator ist, wird der Edit-Button angezeigt und der Favorite-Button sowie das UserFavoritesIcon werden ausgeblendet.
+     * Wenn der Benutzer angemeldet ist, aber kein Administrator ist, wird der Edit-Button ausgeblendet und der Favorite-Button sowie das UserFavoritesIcon werden angezeigt.
+     * Wenn kein Benutzer angemeldet ist, werden sowohl der Edit-Button als auch der Favorite-Button zusammen mit dem UserFavoritesIcon ausgeblendet.
      */
     public void updateButtonVisibility() {
         String loggedInUser = MainController.getLoggedInUser();
@@ -100,23 +108,23 @@ public class RecipesDetailController {
         userFavoritesIcon.setVisible(loggedInUser != null && !loggedInUser.equals("admin"));
     }
 
-
     /**
-     * Load recipe information from the database based on the recipe ID.
-     * @param connection The database connection
-     * @throws SQLException if a database access error occurs
+     * Lädt die Rezeptinformationen aus der Datenbank basierend auf der Rezept-ID.
+     *
+     * @param connection Die Datenbankverbindung.
+     * @throws SQLException Wenn ein Datenbankzugriffsfehler auftritt.
      */
     private void loadRecipeInfoFromDatabase(Connection connection) throws SQLException {
-        // SQL statement um die Rezept details aus der Datenbank zu laden
+        // SQL-Statement, um die Rezeptinformationen aus der Datenbank zu laden
         String query = "SELECT name, beschreibung, dauer, portion, anweisungen, schwierigkeitsgrad, zutaten, bild FROM Rezepte WHERE RezeptId = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            // Setzt die Rezept-ID als Parameter in das SQL statement
+            // Setzt die Rezept-ID als Parameter in das SQL-Statement
             statement.setInt(1, recipeId);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    // Setzt die Rezept details in das RezeptModel
+                    // Setzt die Rezeptinformationen im RezeptModel
                     recipeModel.setName(resultSet.getString("name"));
                     recipeModel.setBeschreibung(resultSet.getString("beschreibung"));
                     recipeModel.setDauer(resultSet.getString("dauer"));
@@ -131,13 +139,13 @@ public class RecipesDetailController {
     }
 
     /**
-     * Show recipe information on the corresponding UI elements.
+     * Zeigt die Rezeptinformationen auf den entsprechenden UI-Elementen an.
      */
     private void showRecipeInfo() {
-        // Pfad zum Ordner mit den Rezept Bildern
+        // Pfad zum Ordner mit den Rezeptbildern
         String imageDirectory = "src/main/resources/images/RezeptBilder/";
 
-        // Zeigt die Rezept details auf den entsprechenden UI Elementen an
+        // Zeigt die Rezeptinformationen auf den entsprechenden UI-Elementen an
         recipeName.setText(recipeModel.getName());
         recipeDescription.setText(recipeModel.getBeschreibung());
         recipeTime.setText(recipeModel.getDauer());
@@ -146,19 +154,19 @@ public class RecipesDetailController {
         recipeDifficulty.setText(recipeModel.getSchwierigkeitsgrad());
         recipeIngredients.setText(recipeModel.getZutaten());
 
-        // Lädt das Rezept Bild aus dem Ordner mit den Rezept Bildern
+        // Lädt das Rezeptbild aus dem Ordner mit den Rezeptbildern
         recipeImage.setImage(new Image("file:" + imageDirectory + recipeModel.getBild()));
     }
 
     @FXML
     public void onEditBtnClick() {
-        // Wechselt zur Rezept bearbeiten Ansicht
+        // Wechselt zur Rezeptbearbeiten-Ansicht
         Main.switchToView(StaticViews.RecipeEditView);
     }
 
     @FXML
     public void onBackToRecipesBtnClick() {
-        // Wechselt zur Rezepte Ansicht
+        // Wechselt zur Rezepte-Ansicht
         Main.switchToView(StaticViews.RecipesView);
     }
 
